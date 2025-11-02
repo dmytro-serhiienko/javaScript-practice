@@ -290,3 +290,168 @@
 // } else {
 //   alert("Обалдеть яке число");
 // }
+
+// * користувач вводить число і визначається парне чи непарне
+// const num = +prompt("");
+
+// alert(num % 2 === 0 ? "Парне" : "Непарне");
+
+// * чи є такий колір
+
+// const colors = ["red", "green", "blue", "yellow"];
+
+// const askColor = prompt("Введіть свій улюблений колір:");
+
+// if (colors.includes(askColor)) {
+//   alert("Є такий колір!");
+// } else {
+//   alert("Такого кольору немає :(");
+// }
+
+// 2.	Користувач вводить колір через prompt().
+// 3.	Якщо цей колір є в масиві, виведи "Є такий колір!".
+// 4.	Якщо немає, виведи "Такого кольору немає :(".
+// 5.	Використай метод includes().
+
+//* видаляємо
+// const numbers = [10, 20, 30, 40];
+
+// numbers.push(50);
+// numbers.shift();
+// numbers.unshift(5);
+// numbers.pop();
+
+// console.log(numbers);
+
+// 1.	Додай у кінець число 50 (push).
+// 2.	Видали перший елемент (shift).
+// 3.	Додай число 5 на початок (unshift).
+// 4.	Видали останній елемент (pop).
+// 5.	Виведи фінальний масив у консоль.
+
+// *
+
+// const users = ["Anna", "Dmytro", "Olena", "Ivan"];
+
+// const hasDmytro = users.includes("Dmytro");
+// const indexOlena = users.indexOf("Olena");
+// const nameStartsWithI = users.find((name) => name.startsWith("I"));
+
+// console.log("Є Dmytro:", hasDmytro);
+// console.log("Індекс Olena:", indexOlena);
+// console.log("Ім’я на I:", nameStartsWithI);
+
+// 1.	Перевір, чи є в масиві ім’я "Dmytro" (через includes).
+// 2.	Знайди індекс імені "Olena" (через indexOf).
+// 3.	Знайди перше ім’я, яке починається з літери "I" (через find).
+// 4.	Виведи всі результати у консоль.
+
+// * Задача: Пошук найдорожчого товару
+
+// function findMostExpensiveProduct() {
+//   const products = [
+//     { name: "Radar", price: 1300, quantity: 4 },
+//     { name: "Scanner", price: 2700, quantity: 3 },
+//     { name: "Droid", price: 400, quantity: 7 },
+//     { name: "Grip", price: 1200, quantity: 9 },
+//   ];
+
+//   let maxPrice = 0;
+//   let maxName = "";
+
+//   for (const prod of products) {
+//     if (maxPrice <= prod.price) {
+//       maxPrice = prod.price;
+//       maxName = prod.name;
+//     }
+//   }
+//   return maxName;
+// }
+
+// console.log(findMostExpensiveProduct()); // "Scanner"
+
+// Напиши функцію findMostExpensiveProduct(), яка не приймає параметрів. Функція містить масив об'єктів products з властивостями name, price і quantity.
+// Функція повинна:
+
+// Знайти товар з найвищою ціною (price)
+// Повернути назву (name) цього товару
+// Якщо масив порожній, повернути null
+
+// Умови:
+
+// Оголошена функція findMostExpensiveProduct()
+// Виклик findMostExpensiveProduct() повертає "Scanner"
+// Функція використовує цикл for...of
+
+// * Задача 2: Підрахунок студентів за оцінкою
+// Напиши функцію countStudentsByGrade(grade), яка приймає оцінку (наприклад "A", "B", "C").
+// Функція повинна повернути кількість студентів, які мають цю оцінку.
+// Умови:
+
+// Виклик countStudentsByGrade("A") повертає 2
+// Виклик countStudentsByGrade("B") повертає 1
+// Виклик countStudentsByGrade("C") повертає 1
+// Виклик countStudentsByGrade("F") повертає 0
+
+// function countStudentsByGrade(grade) {
+//   const students = [
+//     { name: "Anna", grade: "A" },
+//     { name: "Bob", grade: "B" },
+//     { name: "Charlie", grade: "A" },
+//     { name: "Diana", grade: "C" },
+//   ];
+
+//   let count = 0;
+
+//   for (const stud of students) {
+//     if (stud.grade === grade) {
+//       count++;
+//     }
+//   }
+
+//   return count;
+// }
+
+// *
+
+// 1.	Використовуючи цикл for, виведи в консоль усі назви продуктів.
+// 2.	Використовуючи цикл for…of, виведи в консоль усі продукти, у яких ціна більша за 8.
+// 3.	Порахуй загальну вартість всіх продуктів і виведи результат у консоль.
+
+const products = [
+  { name: "Apple", price: 10 },
+  { name: "Banana", price: 5 },
+  { name: "Cherry", price: 15 },
+  { name: "Orange", price: 8 },
+];
+
+let nameProd = "";
+let priceMinEight = [];
+let totalPrice = 0;
+
+function nameOfProduct(products) {
+  for (let i = 0; i < products.length; i++) {
+    nameProd += products[i].name;
+  }
+  return nameProd;
+}
+
+function minEight(products) {
+  for (const product of products) {
+    if (product.price > 8) {
+      priceMinEight += product.price;
+    }
+  }
+  return priceMinEight;
+}
+
+function totalPriceofAll(products) {
+  for (const prod of products) {
+    totalPrice += prod.price;
+  }
+  return totalPrice;
+}
+
+console.log(nameOfProduct(products));
+console.log(minEight(products));
+console.log(totalPriceofAll(products));
