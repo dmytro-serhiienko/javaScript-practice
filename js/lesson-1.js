@@ -1,4 +1,4 @@
-// !задача 1
+// ?задача 1
 // Запропонуйте користувачу ввести число за допомогою prompt().
 // Збережіть введене значення у змінну number.
 // Перевірте, чи дорівнює змінна number числу 10:
@@ -29,7 +29,7 @@
 // *Варіант 3
 // number === 10 ? alert("Вірно") : alert("Невірно");
 
-// !задача 2
+// ?задача 2
 // У змінній min лежить випадкове число від 0 до 59.
 // Визначте, в яку чверть години потрапляє це число (у першу, другу, третю чи четверту).
 // Виведіть в alert відповідне повідомлення, наприклад: "10 входить в першу чверть"
@@ -47,7 +47,7 @@
 //   alert(`${min} входить у четверту чверть`);
 // }
 
-// !задача 3
+// ?задача 3
 // Змінна num може набувати 4 значення: '1', '2', '3' або '4'
 // (запитуй це значення у користувача через prompt).
 
@@ -111,7 +111,7 @@
 // !Завдання 6:
 // Використайте цикл while, щоб вивести в console всі числа від 0 до 20 включно.
 
-// !Завдання 7:
+// ?Завдання 7:
 // Напишіть функцію getNumbers(min, max), що приймає 2 параметри -
 // мінімальне і максимальне число відповідно.
 // Напишіть цикл всередині функції, який виводить у консоль
@@ -123,7 +123,7 @@
 //   let sum = 0;
 
 //   for (let i = max; i >= min; i--) {
-//     // console.log(i);
+// console.log(i);
 //     if (i % 2 === 0) {
 //       sum += i;
 //     }
@@ -133,7 +133,7 @@
 
 // console.log(getNumbers(5, 25));
 
-// !Завдання 8:
+// ?Завдання 8:
 // Напишіть функцію min(a, b), яка приймає 2 числа і повертає меньше з них.
 // Потрібно додати перевірку, що функція отримує саме числа, в іншому випадку
 // повертати з функції рядок - 'Not a number!'.
@@ -164,7 +164,7 @@
 // console.log(min(10, -5));
 // console.log(min("5", 2));
 
-// !Завдання 9:
+// ?Завдання 9:
 // Напишіть функцію isAdult(age), яка  приймає число - вік користувача і повертає true,
 // якщо параметр age більше чи дорівнює 18.
 // В іншому випадку вона запитує підтвердження через confirm
@@ -182,7 +182,7 @@
 // console.log(isAdult(17));
 // console.log(isAdult(19));
 
-// !Завдання 10:
+// ?Завдання 10:
 // Напишіть функцію fizzBuzz(num), яка приймає число і перевіряє кожне число від 1 до num:
 // Якщо число ділитися  без остачі на 3 - виводить в консоль 'fizz',
 // якщо ділиться  без остачі на 5 - виводить в консоль 'buzz',
@@ -412,46 +412,351 @@
 //   return count;
 // }
 
-// *
+// !
 
 // 1.	Використовуючи цикл for, виведи в консоль усі назви продуктів.
 // 2.	Використовуючи цикл for…of, виведи в консоль усі продукти, у яких ціна більша за 8.
 // 3.	Порахуй загальну вартість всіх продуктів і виведи результат у консоль.
 
-const products = [
-  { name: "Apple", price: 10 },
-  { name: "Banana", price: 5 },
-  { name: "Cherry", price: 15 },
-  { name: "Orange", price: 8 },
-];
+// const products = [
+//   { name: "Apple", price: 10 },
+//   { name: "Banana", price: 5 },
+//   { name: "Cherry", price: 15 },
+//   { name: "Orange", price: 8 },
+// ];
 
-let nameProd = "";
-let priceMinEight = [];
-let totalPrice = 0;
+// let nameProd = "";
+// let priceMinEight = [];
+// let totalPrice = 0;
 
-function nameOfProduct(products) {
-  for (let i = 0; i < products.length; i++) {
-    nameProd += products[i].name;
-  }
-  return nameProd;
-}
+// function nameOfProduct(products) {
+//   for (let i = 0; i < products.length; i++) {
+//     nameProd += products[i].name;
+//   }
+//   return nameProd;
+// }
 
-function minEight(products) {
-  for (const product of products) {
-    if (product.price > 8) {
-      priceMinEight += product.price;
+// function minEight(products) {
+//   for (const product of products) {
+//     if (product.price > 8) {
+//       priceMinEight += product.price;
+//     }
+//   }
+//   return priceMinEight;
+// }
+
+// function totalPriceofAll(products) {
+//   for (const prod of products) {
+//     totalPrice += prod.price;
+//   }
+//   return totalPrice;
+// }
+
+// console.log(nameOfProduct(products));
+// console.log(minEight(products));
+// console.log(totalPriceofAll(products));
+
+// !1. Массиви та методи
+
+// Задача:
+// Є масив чисел [2, 5, 8, 3, 10].
+// 	•	Додай число 7 в кінець масиву.
+// 	•	Видали перший елемент.
+// 	•	Перевір, чи масив містить число 3.
+// 	•	Виведи кінцевий масив.
+
+// const numbers = [2, 5, 8, 3, 10];
+// numbers.push(7);
+// numbers.shift();
+
+// const ifInclude = numbers.includes(3);
+
+// const obiednania = numbers.concat(ifInclude);
+
+// console.log(obiednania);
+// console.log(ifInclude);
+// console.log(numbers);
+
+// console.log приклад
+// Кінець масиву: [5, 8, 3, 10, 7]
+// Містить 3? true
+
+//! Задача 2: Функції та цикли
+// const numbers = [4, 7, 10, 15, 20];
+
+// function doubleNumbers(arr) {
+//   const newMasive = [];
+//   for (const number of arr) {
+
+//     newMasive.push(number * 2);
+//   }
+//   return newMasive;
+// }
+
+// console.log(doubleNumbers(numbers));
+// 1.	Напиши функцію doubleNumbers(arr), яка повертає новий масив, де кожне число подвоєне.
+// 2.	Використай цикл for of всередині функції.
+// 3.	Виведи результат у консоль.
+
+//! Задача 3: Фільтрація користувачів
+
+// const users = [
+//   { name: "Anna", age: 20 },
+//   { name: "Dmytro", age: 25 },
+//   { name: "Olena", age: 18 },
+//   { name: "Ivan", age: 30 },
+// ];
+
+// function getAdultUsers() {
+//   const newObj = [];
+
+//   for (const user of users) {
+//     if (user.age > 21) {
+//       newObj.push(user.name);
+//     }
+//   }
+//   return newObj;
+// }
+
+// console.log(getAdultUsers());
+
+// 1.	Напиши функцію getAdultUsers(arr), яка повертає новий масив імен користувачів, старших за 21 рік.
+// 2.	Використай цикл for...of.
+// 3.	Виведи результат у консоль.
+
+//! Задача 4: Середнє значення та фільтрація
+
+// const numbers = [5, 10, 15, 20, 25, 30];
+
+// function aboveAverage(arr) {
+//   let sum = 0;
+//   for (const num of arr) {
+//     sum += num;
+//   }
+
+//   const average = sum / arr.length;
+
+//   const result = [];
+//   for (const num of arr) {
+//     if (num > average) {
+//       result.push(num);
+//     }
+//   }
+
+//   return result;
+// }
+
+// console.log(aboveAverage(numbers));
+
+// 1.	Напиши функцію aboveAverage(arr), яка:
+// •	Знаходить середнє значення всіх чисел у масиві.
+// •	Повертає новий масив, який містить лише ті числа, що більші за середнє.
+// 2.	Використовуй цикл for...of для перебору масиву.
+// 3.	Виведи результат у консоль.
+
+// ! Розділити слово та наоборот
+// const str = "JavaScript is awesome";
+
+// const newMasive = str.split(" ").reverse().join(" ");
+
+// console.log(newMasive);
+
+// •	Розбий рядок на слова.
+// •	Створи новий масив, де кожне слово перевернуте (наприклад, "JavaScript" → "tpircSavaJ").
+// •	Виведи результат у консоль.
+
+// !Задача Масив чисел – парні/непарні
+
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// const parNumbers = [];
+// const neparNumbers = [];
+
+// function splitEvenOdd() {
+//   for (const number of numbers) {
+//     if (number % 2 === 0) {
+//       parNumbers.push(number);
+//     } else {
+//       neparNumbers.push(number);
+//     }
+//   }
+//   return { parNumbers, neparNumbers };
+// }
+
+// console.log(splitEvenOdd());
+
+// •	Напиши функцію splitEvenOdd(arr), яка повертає об’єкт з двома масивами:
+// •	even → містить всі парні числа
+// •	odd → містить всі непарні числа
+
+// ! Задача;
+
+// const numbers = [10, 5, 8, 12, 3, 20, 7];
+
+// function getNumbersInfo() {
+//   let totalNum = 0;
+//   let bigNum = numbers[0];
+//   let smallNum = numbers[0];
+
+//   for (const number of numbers) {
+//     totalNum += number;
+
+//     if (number > bigNum) {
+//       bigNum = number;
+//     }
+
+//     if (number < smallNum) {
+//       smallNum = number;
+//     }
+//   }
+
+//   return { totalNum, bigNum, smallNum };
+// }
+
+// console.log(getNumbersInfo());
+
+// Створи функцію getNumbersInfo(), яка:
+// 	1.	Розрахує суму всіх чисел.
+// 	2.	Знайде найбільше число.
+// 	3.	Знайде найменше число.
+// 	4.	Поверне об’єкт з цими трьома результатами.
+
+//! Задача;
+// const students = {
+//   Anna: 85,
+//   Dmytro: 92,
+//   Olena: 78,
+//   Ivan: 90,
+// };
+
+// function getTopStudent() {
+//   let studBetter = "";
+//   let maxScore = 0;
+
+//   for (const key in students) {
+//     if (students[key] > maxScore) {
+//       maxScore = students[key];
+//       studBetter = key;
+//     }
+//   }
+//   return `Найкращий студент: ${studBetter} - ${maxScore}`;
+// }
+
+// console.log(getTopStudent());
+
+// Напиши функцію getTopStudent(), яка:
+// 	1.	Перебирає всіх студентів за допомогою for...in.
+// 	2.	Знаходить студента з найвищим балом.
+// 	3.	Повертає рядок у форматі: "Найкращий студент: Dmytro — 92 балів"
+
+// !Задача
+
+// const products = [
+//   { name: "Laptop", price: 1200 },
+//   { name: "Phone", price: 800 },
+//   { name: "Tablet", price: 400 },
+//   { name: "Monitor", price: 300 },
+//   { name: "Keyboard", price: 100 },
+// ];
+
+// for (const product of products) {
+//   if (product.price > 500) {
+//     console.log(`${product.name}: ${product.price}`);
+//   }
+// }
+
+// Напиши функцію getExpensiveProducts(), яка:
+// 	1.	Перебирає масив і вибирає всі товари, ціна яких більше або дорівнює 500.
+// 	2.	Повертає масив імен цих товарів.
+
+// !Задача
+
+// const products = [
+//   { name: "Laptop", price: 1200 },
+//   { name: "Phone", price: 800 },
+//   { name: "Tablet", price: 400 },
+//   { name: "Monitor", price: 300 },
+//   { name: "Keyboard", price: 100 },
+// ];
+
+// function getExpensiveProductsInfo() {
+//   let names = [];
+//   let totalPrice = 0;
+
+//   for (const product of products) {
+//     if (product.price >= 500) {
+//       names.push(product.name);
+//       totalPrice += product.price;
+//     }
+//   }
+//   return { names, totalPrice };
+// }
+
+// console.log(getExpensiveProductsInfo());
+// Напиши функцію getExpensiveProductsInfo(), яка:
+// 	1.	Вибирає товари з ціною >= 500.
+
+// 	2.	Повертає об’єкт з двома властивостями:
+// 	•	names — масив імен цих товарів
+// 	•	totalPrice — сума цін цих товарів
+
+// !Задача
+
+// const products = [
+//   { name: "Laptop", price: 1200 },
+//   { name: "Phone", price: 800 },
+//   { name: "Tablet", price: 400 },
+//   { name: "Monitor", price: 300 },
+//   { name: "Keyboard", price: 100 },
+// ];
+
+// function getSortedExpensiveProducts() {
+//   let newMasRev = [];
+
+//   for (const product of products) {
+//     if (product.price >= 300) {
+//       newMasRev.push(product);
+//     }
+//   }
+
+//   return newMasRev;
+// }
+
+// console.table(getSortedExpensiveProducts());
+// Напиши функцію getSortedExpensiveProducts(), яка:
+// 	1.	Вибирає товари з ціною >= 300.
+// 	2.	Повертає новий масив цих товарів, відсортований за ціною від більшого до меншого.
+
+// !Задача
+
+const warehouse = {
+  apples: 150,
+  bananas: 300,
+  oranges: 100,
+  grapes: 250,
+  pears: 180,
+};
+
+function getWarehouseInfo() {
+  let totalItems = 0;
+  let mostStockName = "";
+  let maxCount = 0;
+
+  for (const key in warehouse) {
+    totalItems += warehouse[key];
+
+    // перевіряємо, чи це найбільше значення
+    if (warehouse[key] > maxCount) {
+      maxCount = warehouse[key]; // оновлюємо максимум
+      mostStockName = key; // зберігаємо назву продукту
     }
   }
-  return priceMinEight;
+
+  return `Загальна кількість: ${totalItems}, найбільше товару: ${mostStockName}`;
 }
 
-function totalPriceofAll(products) {
-  for (const prod of products) {
-    totalPrice += prod.price;
-  }
-  return totalPrice;
-}
+console.log(getWarehouseInfo());
 
-console.log(nameOfProduct(products));
-console.log(minEight(products));
-console.log(totalPriceofAll(products));
+// Є об’єкт із кількістю товарів на складі.
+// Треба:
+// 	1.	Порахувати загальну кількість товарів.
+// 	2.	Знайти товар, якого найбільше на складі.
