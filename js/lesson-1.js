@@ -728,35 +728,303 @@
 
 // !Задача
 
-const warehouse = {
-  apples: 150,
-  bananas: 300,
-  oranges: 100,
-  grapes: 250,
-  pears: 180,
-};
+// const warehouse = {
+//   apples: 150,
+//   bananas: 300,
+//   oranges: 100,
+//   grapes: 250,
+//   pears: 180,
+// };
 
-function getWarehouseInfo() {
-  let totalItems = 0;
-  let mostStockName = "";
-  let maxCount = 0;
+// function getWarehouseInfo() {
+//   let totalItems = 0;
+//   let mostStockName = "";
+//   let maxCount = 0;
 
-  for (const key in warehouse) {
-    totalItems += warehouse[key];
+//   for (const key in warehouse) {
+//     totalItems += warehouse[key];
 
-    // перевіряємо, чи це найбільше значення
-    if (warehouse[key] > maxCount) {
-      maxCount = warehouse[key]; // оновлюємо максимум
-      mostStockName = key; // зберігаємо назву продукту
-    }
-  }
+//     // перевіряємо, чи це найбільше значення
+//     if (warehouse[key] > maxCount) {
+//       maxCount = warehouse[key]; // оновлюємо максимум
+//       mostStockName = key; // зберігаємо назву продукту
+//     }
+//   }
 
-  return `Загальна кількість: ${totalItems}, найбільше товару: ${mostStockName}`;
-}
+//   return `Загальна кількість: ${totalItems}, найбільше товару: ${mostStockName}`;
+// }
 
-console.log(getWarehouseInfo());
+// console.log(getWarehouseInfo());
 
 // Є об’єкт із кількістю товарів на складі.
 // Треба:
 // 	1.	Порахувати загальну кількість товарів.
 // 	2.	Знайти товар, якого найбільше на складі.
+
+// !
+
+// const votes = {
+//   Alice: 120,
+//   Bob: 150,
+//   Carol: 90,
+//   David: 200,
+//   Emma: 180,
+// };
+
+// function getWinner(votes) {
+//   let winnerName = "";
+//   let maxVotes = 0;
+
+//   for (const key in votes) {
+//     if (maxVotes < votes[key]) {
+//       maxVotes = votes[key];
+//       winnerName = key;
+//     }
+//   }
+//   return winnerName;
+// }
+
+// console.log(getWinner(votes));
+
+// Напиши функцію getWinner(votes), яка:
+// 	1.	Знаходить, хто набрав найбільше голосів.
+// 	2.	Повертає рядок у форматі:
+// "Переможець: David з 200 голосами"
+
+// !
+
+// const testResults = {
+//   Anna: 85,
+//   Dmytro: 92,
+//   Olena: 78,
+//   Ivan: 90,
+//   Katya: 95,
+// };
+
+// function getAverageScore(results) {
+//   let zagalnyiBal = 0;
+
+//   for (const key in results) {
+//     zagalnyiBal += results[key];
+//   }
+//   return zagalnyiBal / Object.keys(results).length;
+// }
+
+// console.log(getAverageScore(testResults));
+
+// Напиши функцію getAverageScore(results), яка:
+// 	1.	Порахує середній бал усіх студентів.
+// 	2.	Поверне це середнє значення.
+
+// !Задача: Є масив чисел. Знайди суму всіх парних чисел.
+
+// const numbers = [1, 4, 7, 10, 13, 16];
+
+// // const evenNumbers = numbers.filter((num) => num % 2 === 0);
+// // console.log(evenNumbers);
+
+// function searchNumber() {
+//   let parNumber = [];
+//   let sum = 0;
+
+//   for (const number of numbers) {
+//     if (number % 2 === 0) {
+//       parNumber.push(number);
+//       sum += number;
+//     }
+//   }
+
+//   return parNumber, sum;
+// }
+
+// console.log(searchNumber());
+
+// !Задача: Виведи всі числа від 1 до 100, які діляться на 7, але не на 5.
+
+// function sum() {
+//   let array = [];
+
+//   for (let i = 0; i < 100; i++) {
+//     if (i % 7 === 0 && i % 5 !== 0) {
+//       array.push(i);
+//     }
+//   }
+
+//   return array;
+// }
+// console.log(sum());
+
+//! Методи масивів
+
+// const words = ["apple", "bat", "cherry", "dog"];
+// console.log(words);
+
+// function wordsFun() {
+//   let newMasive = [];
+
+//   for (const word of words) {
+//     if (word.length > 4 && word.includes("rr")) {
+//       newMasive.push(word);
+//     }
+//   }
+//   return newMasive;
+// }
+
+// console.log(wordsFun());
+
+// const wordsNew = wordsFun();
+// console.log(wordsNew);
+
+// Очікуваний результат: ["apple", "cherry"]
+
+// Задача: Є масив слів. Поверни новий масив, де всі слова довжиною більше 4 символів.
+
+//! Задача: Є об’єкт з оцінками: Поверни масив імен студентів, які отримали менше ніж 90 балів.
+
+// const scores = { Anna: 85, Dmytro: 92, Olena: 78, Ivan: 90 };
+
+// let sroresName = [];
+// let scoresBal = [];
+
+// function scoreFind() {
+//   for (const key in scores) {
+//     if (scores[key] < 90) {
+//       sroresName.push(key);
+//       scoresBal.push(scores[key]);
+//     }
+//   }
+//   //   return sroresName + scoresBal;
+// }
+// scoreFind(); // заповнюємо масиви
+
+// let result = sroresName.concat(scoresBal);
+
+// console.log(sroresName);
+// console.log(scoresBal);
+// console.table(result);
+
+//! Задача: Робота з об’єктами та масивами Є об’єкт з товарами та їх цінами: Завдання:
+// 1.	Створи два масиви:
+// •	first — імена товарів, ціна яких більше 40
+// •	second — ціни цих товарів
+// 2.	Потім об’єднай ці масиви у масив рядків у форматі:
+
+// const products = {
+//   apple: 30,
+//   banana: 15,
+//   orange: 50,
+//   mango: 80,
+//   kiwi: 25,
+// };
+
+// let first = [];
+// let second = [];
+
+// function searchFun() {
+//   for (const key in products) {
+//     if (products[key] >= 40) {
+//       first.push(key);
+//       second.push(products[key]);
+//     }
+//   }
+// }
+// searchFun();
+
+// let result = first.map((item, index) => item + " - " + second[index]);
+
+// console.log(first);
+// console.log(second);
+// console.log(result);
+
+// !Задача 1: Калькулятор (об'єкт з методами)
+
+// const calculator = {
+//   a: 0,
+//   b: 0,
+
+//   setNumbers: function setNumbers(num1, num2) {
+//     // твій код - збережи числа в a і b
+//     this.a = num1;
+//     this.b = num2;
+//   },
+
+//   sum: function () {
+//     // твій код - поверни суму a + b
+//     return this.a + this.b;
+//   },
+
+//   multiply: function () {
+//     // твій код - поверни добуток a * b
+//     return this.a * this.b;
+//   },
+// };
+
+// // Тест:
+// calculator.setNumbers(5, 3);
+
+// console.log(calculator.sum()); // має вивести 8
+// console.log(calculator.multiply()); // має вивести 15
+
+// ! Задача 1: Інформація про користувача
+// Створи об'єкт user з властивостями та методом:
+
+// const user = {
+//   name: "Іван",
+//   age: 25,
+//   city: "Київ",
+
+//   getInfo: function () {
+//     // поверни рядок: "Мене звати [name], мені [age] років, я з міста [city]"
+//     return `Мене звати ${this.name}, мені ${this.age} років, я з міста ${this.city}`;
+//   },
+// };
+
+// console.log(user.getInfo());
+// // "Мене звати Іван, мені 25 років, я з міста Київ"
+
+// ! Задача 2: Машина
+
+// const car = {
+//   brand: "Toyota",
+//   model: "Camry",
+//   year: 2020,
+
+//   getAge: function () {
+//     // поверни скільки років машині (поточний рік 2025)
+//     return 2025 - this.year;
+//   },
+
+//   getFullName: function () {
+//     // поверни "[brand] [model]"
+//     return `${this.brand} ${this.model}`;
+//   },
+// };
+
+// console.log(car.getAge()); // 5
+// console.log(car.getFullName()); // "Toyota Camry"
+
+// !Задача 3: Рахунок в банку
+
+// const account = {
+//   balance: 1000,
+
+//   deposit: function (amount) {
+//     // додай amount до balance
+//     this.balance += amount;
+//   },
+
+//   withdraw: function (amount) {
+//     // відніми amount від balance
+//     this.balance -= amount;
+//   },
+
+//   getBalance: function () {
+//     // поверни balance
+//     return this.balance;
+//   },
+// };
+
+// account.deposit(500);
+// console.log(account.getBalance()); // 1500
+// account.withdraw(200);
+// console.log(account.getBalance()); // 1300
