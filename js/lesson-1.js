@@ -1028,3 +1028,351 @@
 // console.log(account.getBalance()); // 1500
 // account.withdraw(200);
 // console.log(account.getBalance()); // 1300
+
+// // ! Задача 1: Змінні та умови
+
+// function checkTemperature(temp) {
+//   if (temp > 25) {
+//     return "Жарко";
+//   } else if (temp > 10) {
+//     return "Холодно";
+//   } else {
+//     return "Нормально";
+//   }
+
+//   // якщо temp > 25, поверни "Жарко"
+//   // якщо temp < 10, поверни "Холодно"
+//   // інакше поверни "Нормально"
+// }
+
+// console.log(checkTemperature(30)); // "Жарко"
+// console.log(checkTemperature(5)); // "Холодно"
+// console.log(checkTemperature(20)); // "Нормально"
+
+// ! Задача 2: Масиви
+
+// const numbers = [1, 2, 3, 4, 5];
+
+// let sum = 0;
+
+// for (const number of numbers) {
+//   sum += number;
+// }
+
+// console.log(sum);
+
+// знайди суму всіх чисел в масиві
+// підказка: використай цикл for або forEach
+
+// ! Задача 3: Об'єкти
+
+// const book = {
+//   title: "Гаррі Поттер",
+//   author: "Дж. Роулінг",
+//   pages: 320,
+
+//   isLong() {
+//     if (this.pages > 300) {
+//       console.log(true);
+//     } else {
+//       console.log(false);
+//     }
+//   },
+// };
+
+// console.log(book.isLong());
+
+//! виведи в консоль числа від 1 до 10
+
+// for (let index = 1; index <= 10; index++) {
+//   console.log(index);
+// }
+
+// ! Задача 1: Методи масивів - filter()
+
+// const ages = [12, 18, 25, 16, 30, 14, 22];
+
+// const adults = ages.filter((ages) => ages >= 18);
+
+// // Використай метод filter(), щоб отримати масив тільки з дорослими (age >= 18)
+// console.log(adults);
+
+// ! Задача 2: Методи масивів - map()
+
+// const prices = [100, 200, 150, 300];
+
+// const pricesWithTax = prices.map((prices) => prices * 1.2);
+// // Використай map(), щоб додати 20% податок до кожної ціни
+// console.log(pricesWithTax); // твій код // [120, 240, 180, 360]
+
+// ! Задача 3: Комбінована (об'єкти + масиви)
+
+// const students = [
+//   { name: "Олег", grade: 85 },
+//   { name: "Марія", grade: 92 },
+//   { name: "Іван", grade: 78 },
+//   { name: "Анна", grade: 95 },
+// ];
+
+// const gradeBig = students
+//   .filter((students) => students.grade >= 90)
+//   .map((students) => students.name);
+
+// console.log(gradeBig);
+
+// 1. Знайди всіх студентів з оцінкою >= 90 (filter)
+// 2. Виведи тільки їх імена (map)
+
+// Результат: ["Марія", "Анна"]
+
+// !Задача 1: Привітання (колбек)
+
+// // Функція приймає ім'я та колбек
+// function sayHello(name, callback) {
+//   console.log("Привіт, " + name);
+//   callback(); // викликаємо колбек
+// }
+
+// // Твоя задача: створи функцію bye, яка виводить "До побачення!"
+// function bye() {
+//   console.log("До побачення!");
+// }
+
+// // Тест:
+// sayHello("Олег", bye);
+// // Має вивести:
+// // "Привіт, Олег"
+// // "До побачення!"
+
+// ! Функція приймає два числа та колбек
+// function calculate(a, b, operation) {
+//   const result = operation(a, b); // викликаємо колбек з числами
+//   console.log("Результат: " + result);
+// }
+
+// // Твоя задача: створи функцію add, яка додає два числа
+// function add(x, y) {
+//   return x + y;
+//   // твій код - поверни суму
+// }
+
+// // Тест:
+// calculate(5, 3, add); // "Результат: 8"
+
+// ! Задача
+
+// const fruits = ["яблуко", "банан", "груша"];
+
+// // Виведи кожен фрукт в консоль, використовуючи forEach
+// // Підказка: forEach(function(fruit) { ... })
+
+// fruits.forEach(function (fruit) {
+//   console.log(fruit);
+// });
+
+// // Має вивести:
+// // яблуко
+// // банан
+// // груша
+
+// ! Задача
+
+// const numbers = [1, 2, 3, 4, 5];
+
+// // Виведи кожне число, помножене на 2
+// numbers.forEach(function (num) {
+//   let sum = num * 2;
+//   console.log(sum);
+
+//   // твій код
+// });
+
+// // Має вивести: 2, 4, 6, 8, 10
+
+// ! Задача
+// const ages = [10, 15, 20, 25, 30];
+
+// // Залиши тільки числа більші за 18
+// const adults = ages.filter(function (age) {
+//   if (age > 18) {
+//     return true;
+//   }
+
+//   // твій код - поверни true або false
+// });
+
+// console.log(adults); // [20, 25, 30]
+
+// ! Напиши функцію doubleNumber, яка приймає число та колбек
+// Функція має подвоїти число, а потім викликати колбек з результатом
+
+// function doubleNumber(num, callback) {
+//   const result = num * 2;
+//   showResult(result);
+
+//   // твій код
+// }
+
+// // Колбек для виводу результату
+// function showResult(result) {
+//   console.log("Результат: " + result);
+// }
+
+// // Тест:
+// doubleNumber(5, showResult); // "Результат: 10"
+
+// !
+
+// function greet(name, callback) {
+//   console.log("Привіт " + name);
+
+//   callback();
+// }
+
+// function sayBye() {
+//   console.log("До побачення!");
+// }
+
+// greet("Дмитро", sayBye);
+
+// !
+
+// Задача: Калькулятор з колбеком
+// Умова:
+// Створи функцію calculate, яка:
+
+// Приймає три параметри: a, b, operation
+// Викликає функцію operation, передаючи їй a та b
+// Результат зберігає у змінну result
+// Виводить в консоль: "Результат: " + результат
+
+// Потім створи дві колбек-функції:
+
+// add(x, y) - повертає суму x + y
+// multiply(x, y) - повертає добуток x * y
+
+// Викликай:
+
+// function calculate(a, b, operation) {
+//   const result = operation(a, b);
+//   console.log("Результат: " + result);
+// }
+
+// function add(x, y) {
+//   return x + y;
+// }
+
+// function multiply(x, y) {
+//   return x * y;
+// }
+
+// calculate(5, 3, add);
+// calculate(5, 3, multiply);
+
+// ! Задача: Привітай та попрощайся
+// Напиши:
+
+// Функцію greetAndBye з одним параметром callback
+// Всередині виведи "Привіт!"
+// Потім викликай callback()
+// Створи функцію sayBye без параметрів
+// Всередині виведи "Бувай!"
+// Викличи greetAndBye і передай їй sayBye
+
+// function greetAndBye(callback) {
+//   console.log("Привіт!");
+
+//   callback();
+// }
+
+// function sayBye() {
+//   console.log("Бувай!");
+// }
+
+// greetAndBye(sayBye);
+
+// !Задача: Подвій число
+// Напиши:
+
+// Функцію processNumber з двома параметрами: number та callback
+// Всередині подвій число (помнож на 2) і збережи в змінну doubled
+
+// Викликай callback і передай йому doubled
+
+// Створи функцію showResult з одним параметром result
+// Всередині виведи: "Результат: " + result
+// Викличи processNumber(7, showResult)
+
+// function processNumber(number, callback) {
+//   let doubled = number * 2;
+
+//   callback(doubled);
+// }
+
+// function showResult(result) {
+//   console.log("Результат: " + result);
+// }
+
+// processNumber(7, showResult);
+
+// ! Задача: Привітання з іменем
+// Напиши:
+
+// Функцію welcomeUser з двома параметрами: name та callback
+// Всередині створи змінну message зі значенням "Ласкаво просимо, " + name + "!"
+// Викликай callback і передай йому message
+// Створи функцію printMessage з одним параметром text
+// Всередині виведи цей text в консоль
+// Викличи welcomeUser("Дмитро", printMessage)
+
+// function welcomeUser(name, callback) {
+//   let message = `Ласкаво просимо, ${name} !`;
+
+//   callback(message);
+// }
+
+// function printMessage(text) {
+//   console.log(text);
+// }
+
+// welcomeUser("Дмитро", printMessage);
+
+// !
+// const names = ["Олег", "Марія", "Іван", "Анна"];
+
+// names.forEach(function (name) {
+//   console.log(name);
+// });
+
+// Використай forEach, щоб вивести кожне ім'я в консоль
+
+// **Очікуваний результат в консолі:**
+// ```;
+// Олег;
+// Марія;
+// Іван;
+// Анна;
+
+// ! Задача: Подвій кожне число
+// Є масив чисел [2, 5, 8, 10]
+// Використай forEach, щоб вивести подвоєне значення кожного числа.
+
+// const numbers = [2, 5, 8, 10];
+
+// numbers.forEach(function (num) {
+//   console.log(num * 2);
+// });
+
+// ! Задача: Привітай кожного
+// Є масив імен ["Дмитро", "Олена", "Максим"]
+// Використай forEach, щоб для кожного імені вивести: "Привіт, " + ім'я + "!"
+
+// const names = ["Дмитро", "Олена", "Максим"];
+
+// names.forEach(function (name) {
+//   console.log(`Привіт, ${name}!`);
+// });
+
+// Привіт, Дмитро!
+// Привіт, Олена!
+// Привіт, Максим!
