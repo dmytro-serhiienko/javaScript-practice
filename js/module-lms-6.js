@@ -664,67 +664,281 @@
 // console.log(supAdmin.greet());
 // console.log(supAdmin.superPower);
 
-//! ЗАДАЧА
-// 1️⃣ Створи клас User
-// 	•	властивості:
-// 	•	name
-// 	•	email
-// 	•	метод greet(), який повертає:
-// Привіт! Я користувач < name >.Мій email: <email></email>
+//! ✅ Задача
 
-// 2️⃣ Створи клас Moderator, який успадковує User
-// 	•	додаткова властивість:
-// 	•	canBan (булеве значення — true або false)
-// 	•	метод banUser(userName), який повертає:
+// Створи клас Product, який:
+// 	1.	У конструкторі приймає два параметри:
+// 	•	name (назва товару)
+// 	•	price (ціна)
+// 	2.	Має метод getInfo(), який повертає рядок:
+// "Товар: {name}, ціна: {price} грн"
+// 	3.	Створи два екземпляри цього класу та виведи результат роботи getInfo() у консоль.
 
-// Модератор < name > забанив користувача < userName >
+// class Product {
+//   constructor(name, price) {
+//     this.name = name;
+//     this.price = price;
+//   }
 
-// 3️⃣ Створи клас Admin, який успадковує Moderator
-// 	•	додаткова властивість:
-// 	•	permissions (масив, наприклад: [“delete”, “edit”, “add”])
-// 	•	метод showPermissions(), який повертає:
-// Адмін < name > має доступи: delete, edit, add
+//   getInfo() {
+//     return `Товар: ${this.name}, ціна: ${this.price} грн`;
+//   }
+// }
 
-// 4️⃣ Створи клас SuperAdmin, який успадковує Admin
-// 	•	додаткова властивість:
-// 	•	superPower (рядок, наприклад: “full control”)
-// 	•	метод useSuperPower(), який повертає:
-// SuperAdmin < name > використовує суперсилу: <superPower></superPower>
-//     5️⃣ Створи масив users, який містить:
-// 	•	одного User
-// 	•	одного Moderator
-// 	•	одного Admin
-// 	•	одного SuperAdmin
-//     6️⃣ Перебери масив users і:
-// 	•	виклич greet() для всіх;
-// 	•	якщо об’єкт — Moderator, виклич banUser() (вигадане ім’я);
-// 	•	якщо Admin або SuperAdmin, виклич showPermissions();
-// 	•	якщо SuperAdmin, виклич useSuperPower().
+// const user1 = new Product("Каптопля", 43);
+// console.log("🚀 ~ user1:", user1);
 
-class User {
-  constructor(name, email) {
-    this.name = name;
-    this.email = email;
+// console.log(user1.getInfo());
+
+//! ✅ Задача 2 — Класи + успадкування
+
+// Створи два класи:
+
+// 1. Клас User
+// 	•	приймає name та email
+// 	•	має метод getInfo(), який повертає:
+// "Користувач: {name}, Email: {email}"
+
+// 2. Клас Admin, який успадковується від User
+// 	•	у конструкторі приймає:
+// name, email, accessLevel
+// 	•	має додаткову властивість accessLevel
+// 	•	має метод isSuperAdmin(), який повертає:
+// 	•	true, якщо accessLevel === "super"
+// 	•	false — в інших випадках
+
+// class User {
+//   constructor(name, email) {
+//     this.name = name;
+//     this.email = email;
+//   }
+
+//   getInfo() {
+//     return `Користувач: ${this.name}, Email: ${this.email}`;
+//   }
+// }
+
+// class Admin extends User {
+//   constructor(name, email, accessLevel) {
+//     super(name, email);
+//     this.accessLevel = accessLevel;
+//   }
+
+//   isSuperAdmin() {
+//     return this.accessLevel === "super";
+//   }
+// }
+
+// const user1 = new User("Dima", "dima@gmail.com");
+// console.log("🚀 ~ user1:", user1);
+// console.log(user1.getInfo());
+
+// const admin1 = new Admin("Lana", "lana@gmail.com", "super");
+// console.log("🚀 ~ admin1:", admin1);
+
+// console.log(admin1.isSuperAdmin());
+
+// ! ✅ Задача 3 — Приватні поля та геттери/сеттери
+
+// Створи клас BankAccount, який:
+
+// 1. Має приватне поле
+// 	•	#balance — число (початково 0)
+
+// 2. Має методи
+// 	•	deposit(amount)
+// додає гроші на рахунок (якщо amount > 0)
+// 	•	withdraw(amount)
+// знімає гроші, але лише якщо достатньо грошей на рахунку
+// 	•	getBalance()
+// повертає поточний баланс
+
+// class BankAccount {
+//   #balance = 0;
+
+//   deposit(amount) {
+//     this.#balance = this.#balance + amount;
+//     return this.#balance;
+//   }
+
+//   withdraw(amount) {
+//     if (this.#balance >= amount) {
+//       this.#balance = this.#balance - amount;
+//     } else {
+//       console.log(
+//         `Недостатньо коштів на рахунку. На рахунку: ${this.#balance}`
+//       );
+//     }
+//     return this.#balance;
+//   }
+
+//   getBalance() {
+//     return this.#balance;
+//   }
+// }
+
+// const accaunt = new BankAccount();
+
+// console.log(accaunt.deposit(1000));
+
+// console.log(accaunt.withdraw(200));
+
+// console.log(accaunt.getBalance());
+
+// !  ✅ Задача 4 — Магазин
+
+// Створи клас Store, який:
+
+// 1. Має властивість
+// 	•	products — масив товарів (спочатку порожній)
+
+// 2. Має методи
+// 	•	addProduct(product) — додає товар у масив
+// (товар — це об’єкт {name, price})
+// 	•	getProducts() — повертає масив товарів
+// 	•	getTotalPrice() — повертає суму цін усіх товарів у магазині
+
+// class Store {
+//   constructor(products) {
+//     this.products = [];
+//   }
+
+//   addProduct(product) {
+//     return this.products.push(product);
+//   }
+
+//   getProducts() {
+//     return this.products;
+//   }
+
+//   getTotalPrice() {
+//     return this.products.reduce((accum, num) => {
+//       return accum + num.price;
+//     }, 0);
+//   }
+// }
+
+// const prod = new Store();
+
+// prod.addProduct({ name: "Картопля", price: 50 });
+// console.log(prod.getProducts());
+
+// prod.addProduct({ name: "Помідори", price: 60 });
+// prod.addProduct({ name: "Гречка", price: 40 });
+// console.log(prod.getProducts());
+
+// console.log(prod.getTotalPrice());
+
+// ! ✅ Задача 5 — Клас “Кошик” з товарами
+
+// Створи клас Cart, який:
+
+// 1️⃣ Має приватне поле
+// 	•	#items — масив об’єктів {name, price, quantity}
+
+// 2️⃣ Методи
+// 	•	addItem(name, price, quantity) — додає товар у кошик
+// 	•	getItems() — повертає всі товари у кошику
+// 	•	getTotalPrice() — повертає загальну суму всіх товарів, враховуючи кількість (price * quantity)
+// 	•	getTotalQuantity() — повертає загальну кількість всіх товарів
+
+// class Cart {
+//   #items = [];
+
+//   addItem(name, price, quantity) {
+//     this.#items.push({ name, price, quantity });
+//   }
+
+//   getItems() {
+//     return this.#items;
+//   }
+
+//   getTotalPrice() {
+//     return this.#items.reduce((accum, num) => {
+//       return accum + num.price * num.quantity;
+//     }, 0);
+//   }
+
+//   getTotalQuantity() {
+//     return this.#items.reduce((accum, num) => {
+//       return accum + num.quantity;
+//     }, 0);
+//   }
+// }
+
+// const cart1 = new Cart();
+
+// cart1.addItem("Картопля", 50, 4);
+// console.table(cart1.getItems());
+
+// cart1.addItem("Помідори", 10, 5);
+// cart1.addItem("Цибуля", 10, 2);
+// console.table(cart1.getItems());
+
+// console.log(cart1.getTotalPrice());
+
+// console.log(cart1.getTotalQuantity());
+
+//!  ✅ Задача 6 — Магазин з фільтром і знижками
+
+// Створи клас DiscountStore, який:
+
+// 1️⃣ Має приватне поле
+// 	•	#products — масив об’єктів {name, price, category}
+
+// 2️⃣ Методи
+// 	•	addProduct(name, price, category) — додає товар у магазин
+// 	•	getProducts() — повертає всі товари
+
+// 	•	getProductsByCategory(category) — повертає тільки товари з певної категорії
+
+// 	•	getTotalPrice(discount = 0) — повертає суму всіх товарів, з урахуванням знижки (у %), якщо передали discount
+
+// 	•	Наприклад, якщо discount = 10 → знижка 10% на всю суму
+
+// 	•	getAveragePrice() — повертає середню ціну товару
+
+class DiscountStore {
+  #products = [];
+
+  addProduct(name, price, category) {
+    return this.#products.push({ name, price, category });
   }
 
-  greet() {
-    return `Привіт! Я користувач ${this.name}. Мій email: ${this.email}`;
+  getProducts() {
+    return this.#products;
+  }
+
+  getProductsByCategory(category) {
+    return this.#products.filter((el) => {
+      return el.category === category;
+    });
+  }
+
+  getTotalPrice(discount = 0) {
+    return this.#products.reduce((accum, num) => {
+      return accum + num.price;
+    }, 0);
+  }
+
+  getAveragePrice() {
+    return (
+      this.#products.reduce((accum, num) => {
+        return accum + num.price;
+      }, 0) / this.#products.length
+    );
   }
 }
 
-class Moderator extends User {
-  constructor(name, email, canBan) {
-    super(name, email);
-    this.canBan = canBan;
-  }
+const store1 = new DiscountStore();
 
-  banUser(userName) {
-    return `Модератор ${this.name} забанив користувача ${userName}`;
-  }
-}
+store1.addProduct("Кросівки", 400, "Взуття");
+store1.addProduct("Сандалі", 200, "Взуття");
+store1.addProduct("Куртка", 500, "Верхній одяг");
+store1.addProduct("Кепка", 200, "Головні убори");
 
-class Admin extends Moderator {
-  constructor(name, email, permissions) {
-    this.permissions = permissions;
-  }
-}
+// console.table(store1.getProducts());
+
+console.log(store1.getProductsByCategory("Взуття"));
+
+console.log(store1.getAveragePrice());
