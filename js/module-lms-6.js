@@ -1068,3 +1068,56 @@
 // store.addProduct({ name: "Bread", price: 20 });
 
 // console.log(store.getTotalPrice()); // 50
+
+//!  Напиши функцію getUnique(arr), яка приймає масив і повертає новий масив тільки з унікальними значеннями (без повторів).
+
+// const numbers = [1, 2, 2, 3, 4, 4, 5, 1, 6];
+
+// const checker = numbers.reduce((accum, el) => {
+//   if (!accum.includes(el)) {
+//     accum.push(el);
+//   }
+//   return accum;
+// }, []);
+// console.log("🚀 ~ checker:", checker);
+
+//!  Задача 2 — Рядки
+
+// const fruits = ["apple", "banana", "apple", "orange", "banana", "kiwi"];
+
+// const checker = fruits.reduce((accum, el) => {
+//   if (!accum.includes(el)) {
+//     accum.push(el);
+//   }
+//   return accum;
+// }, []);
+// console.log("🚀 ~ checker:", checker);
+
+//! Напиши функцію getUnique(arr), яка працює зі змішаними типами (числа, рядки, булеві).
+
+// const mixed = [1, "1", 2, 2, true, false, true, "hello", "hello"];
+
+// const checker = mixed.reduce((accum, el) => {
+//   if (!accum.includes(el)) {
+//     accum.push(el);
+//   }
+//   return accum;
+// }, []);
+// console.log("🚀 ~ checker:", checker);
+
+//!!!!! не правильна! Задача 4 — Повторювані об’єкти
+
+// const users = [
+//   { id: 1, name: "Dmytro" },
+//   { id: 2, name: "Ira" },
+//   { id: 1, name: "Dmytro" },
+//   { id: 3, name: "Oleg" },
+// ];
+
+// const checker = users.reduce((accum, el) => {
+//   if (!accum.some((el) => users.id === el.id)) {
+//     accum.push(el.id) && accum.push(el.name);
+//   }
+//   return accum;
+// }, []);
+// console.log("🚀 ~ checker:", checker);

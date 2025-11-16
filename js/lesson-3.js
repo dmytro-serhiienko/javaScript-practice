@@ -1,22 +1,55 @@
-// ?Завдання 1:
+//?Завдання 1:
 // Дано масив чисел [1, 2, 3, 4, 5]. Створіть новий масив, що містить
 // квадрати кожного елементу вхідного масиву.
 // Очікуваний результат: [1, 4, 9, 16, 25].
 
-// const numbers = [1, 2, 3, 4, 5]
+// const numbers = [1, 2, 3, 4, 5];
 
-// ?Завдання 2:
+//* Variant 1
+// const quad = numbers.reduce((accum, num) => {
+//   accum.push(num * num);
+//   return accum;
+// }, []);
+// console.log("🚀 ~ quad:", quad);
+
+//* Variant 2
+// const quad = numbers.map((num) => {
+//   return num * num;
+// });
+// console.log("🚀 ~ quad:", quad);
+
+//? Завдання 2:
 // Дано масив об'єктів. Створіть новий масив, що містить всі значення
 // з масивів values кожного об'єкту, збережених в одному масиві.
 // Очікуваний результат: [1, 2, 3, 4, 5, 6, 7, 8, 9].
 
 // const data = [
-//  { id: 1, values: [1, 2, 3] },
-//  { id: 2, values: [4, 5, 6] },
-//  { id: 3, values: [7, 8, 9] },
+//   { id: 1, values: [1, 2, 3] },
+//   { id: 2, values: [4, 5, 6] },
+//   { id: 3, values: [7, 8, 9] },
 // ];
 
-// ?Завдання 3:
+//* Variant 1
+// const addValues = data.reduce((accum, num) => {
+//   accum.push(...num.values);
+//   return accum;
+// }, []);
+// console.log("🚀 ~ addValues:", addValues);
+
+//* Variant 2
+// function newValues() {
+//   const result = [];
+
+//   for (const element of data) {
+//     if (!result.includes(element.values)) {
+//       result.push(...element.values);
+//     }
+//   }
+//   return result;
+// }
+// console.log(newValues());
+
+//? Завдання 3:
 // Дано масив об'єктів.
 // Перевірте, чи є хоча б один об'єкт з віком менше 20 років.
 // Очікуваний результат: true.
@@ -27,40 +60,112 @@
 //   { name: "Bob", age: 19 },
 // ];
 
-// ?Завдання 4:
+//* Variant 1
+// const checker = people.some((age) => age.age <= 20);
+// console.log("🚀 ~ checker:", checker);
+
+//* Variant 2
+// function checker() {
+//   for (const element of people) {
+//     if (element.age < 20) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+// console.log(checker());
+
+//? Завдання 4:
 // Дано масив чисел [2, 4, 6, 8, 10].
-// Перевірте, чи є кожен елемент масиву парним. Очікуваний результат: true.
+// Перевірте, чи є кожен елемент масиву парним.
+// Очікуваний результат: true.
 
 // const numbers = [2, 4, 6, 8, 10];
 
-// ?Завдання 5:
+//* Variant 1
+// const checker = numbers.every((num) => num % 2 === 0);
+// console.log("🚀 ~ checker:", checker);
+
+//* Variant 2
+// function checker() {
+//   for (const el of numbers) {
+//     if (el % 2 === 0) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }
+// }
+// console.log("🚀 ~ checker ~ checker:", checker(numbers));
+
+//? Завдання 5:
 // Знайдіть перше непарне число
 
 // const numbers = [2, 1, 6, 8, 9, 10, 12];
 
-// ?Завдання 6:
+//* Variant 1
+// const checker = numbers.find((num) => num % 2 !== 0);
+// console.log("🚀 ~ checker:", checker);
+
+//* Variant 2 всі не парні
+// const checker = numbers.filter((num) => num % 2 !== 0);
+// console.log("🚀 ~ checker:", checker);
+
+//* Variant 2
+// function checker() {
+//   for (const el of numbers) {
+//     if (el % 2 !== 0) {
+//       return el;
+//     }
+//   }
+// }
+// console.log("🚀 ~ checker ~ checker:", checker(numbers));
+
+//? Завдання 6:
 // Відсортуйте масив чисел [4, 2, 5, 1, 3]
 // у порядку зростання. Очікуваний результат: [1, 2, 3, 4, 5].
 
 // const numbersArray = [4, 2, 5, 1, 3];
+
+//* Variant 1
+// const normalize = numbersArray.toSorted((a, b) => a - b);
+// console.log("🚀 ~ normalize:", normalize);
+
+//* Variant 2
+// const normalize = numbersArray.sort((a, b) => a - b);
+// console.log("🚀 ~ normalize:", normalize);
+// console.log("🚀 ~ numbersArray:", numbersArray);
 
 // ?Завдання 7:
 // Відсортуйте масив рядків ["banana", "orange", "apple", "pear"]
 //  у порядку алфавіту.
 // Очікуваний результат: ["apple", "banana", "orange", "pear"].
 
-// const stringArray = ['banana', 'orange', 'apple', 'pear'];
+// const stringArray = ["banana", "orange", "apple", "pear"];
+
+//* Variant 1
+// const normalaizer = stringArray.toSorted((a, b) => a.localeCompare(b));
+// console.log("🚀 ~ normalaizer:", normalaizer);
 
 // ?Завдання 8:
 
 //  Відсортуйте масив об'єктів за віком у порядку зростання.
 // Очікуваний результат: [{name: "Bob", age: 19}, {name: "John", age: 27}, {name: "Jane", age: 31}].
 
-//const users = [
-//  { name: 'John', age: 27 },
-//  { name: 'Jane', age: 31 },
-//  { name: 'Bob', age: 19 },
+// const users = [
+//   { name: "John", age: 27 },
+//   { name: "Jane", age: 31 },
+//   { name: "Bob", age: 19 },
 // ];
+
+//* Variant 1
+// const normalaizerAge = users.toSorted((a, b) => a.age - b.age);
+// console.log("🚀 ~ normalaizerAge:", normalaizerAge);
+
+//* Variant 2
+// const normalaizerAge = users.sort((a, b) => a.age - b.age);
+// console.log("🚀 ~ normalaizerAge:", normalaizerAge);
+// console.log("🚀 ~ users:", users);
 
 // ?Завдання 9:
 // Дано масив об'єктів.
@@ -68,17 +173,60 @@
 // вік більше 20 років.
 // Очікуваний результат: [{name: "John", age: 27}, {name: "Jane", age: 31}]
 
-//const user = [
-//  { name: 'John', age: 27 },
-//  { name: 'Jane', age: 31 },
-//  { name: 'Bob', age: 19 },
-// ]
+// const user = [
+//   { name: "John", age: 27 },
+//   { name: "Jane", age: 31 },
+//   { name: "Bob", age: 19 },
+// ];
+
+//* Variant 1
+// const newArray = user.reduce((accum, el) => {
+//   if (el.age > 20) {
+//     accum.push(el);
+//   }
+//   return accum;
+// }, []);
+// console.log("🚀 ~ newArray:", newArray);
+
+//* Variant 2
+// const newArray = user.filter((age) => age.age > 20);
+// console.log("🚀 ~ newArray:", newArray);
+
+//* Variant 3
+// function newArray() {
+//   const resultArray = [];
+
+//   for (const el of user) {
+//     if (el.age > 20) {
+//       resultArray.push(el);
+//     }
+//   }
+//   return resultArray;
+// }
+// console.log("🚀 ~ newArray ~ newArray:", newArray());
 
 // ?Завдання 10:
 // Дано масив чисел [1, 2, 3, 4, 5].
 // Застосуйте метод для обчислення суми елементів масиву.
 
-// const numbers = [1, 2, 3, 4, 5];
+const numbers = [1, 2, 3, 4, 5];
+
+//* Variant 1
+// const total = numbers.reduce((accum, num) => {
+//   return accum + num;
+// });
+// console.log("🚀 ~ total:", total);
+
+//* Variant 2
+// function total() {
+//   let result = 0;
+
+//   for (const number of numbers) {
+//     result = result + number;
+//   }
+//   return result;
+// }
+// console.log("🚀 ~ total ~ total:", total(numbers));
 
 // ?Завдання 11:
 // Розроби клас Calculator, який дозволяє виконувати арифметичні
@@ -106,23 +254,64 @@
 
 // Об'єкт класу може проводити послідовні операції у вигляді ланцюжка
 
-// Приклад використання:
+// class Calculator {
+//   number(value) {
+//     this.value = value;
+//     return this;
+//   }
+
+//   add(num) {
+//     this.value += num;
+//     return this;
+//   }
+
+//   substract(num) {
+//     this.value -= num;
+//     return this;
+//   }
+
+//   multiply(num) {
+//     this.value *= num;
+//     return this;
+//   }
+
+//   divide(num) {
+//     this.value /= num;
+//     return this;
+//   }
+
+//   getResult() {
+//     return this.value;
+//   }
+// }
+
+// // Приклад використання:
 // const calc = new Calculator();
 
 // const result = calc
-//   .number(10)   // Встановлюємо початкове значення 10
-//   .add(5)       // Додаємо 5 (10 + 5 = 15)
-//   .subtract(3)  // Віднімаємо 3 (15 - 3 = 12)
-//   .multiply(4)  // Множимо на 4 (12 * 4 = 48)
-//   .divide(2)    // Ділимо на 2 (48 / 2 = 24)
+//   .number(10) // Встановлюємо початкове значення 10
+//   .add(5) // Додаємо 5 (10 + 5 = 15)
+//   .substract(3) // Віднімаємо 3 (15 - 3 = 12)
+//   .multiply(4) // Множимо на 4 (12 * 4 = 48)
+//   .divide(2) // Ділимо на 2 (48 / 2 = 24)
 //   .getResult(); // Отримуємо результат: 24
 
-//   console.log(result); // 24
+// console.log(result); // 24
 
 // ?Завдання 12:
 // Напиши клас Client який створює об'єкт з властивостями login email.
 // Оголоси приватні властивості #login #email, доступ до яких зроби
 // через геттер та сеттер login email
+
+class Client {
+  #login = "";
+  #email = "";
+
+  constructor(login, email) {
+    this.login = login;
+    this.email = email;
+  }
+}
 
 // ?Завдання 13:
 //  Наслідування у класах!
