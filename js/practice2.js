@@ -1039,13 +1039,120 @@
 // Приклад:
 // 	•	Введено: "Він дурень і лінивий" → виводимо: "Він *** і ***"
 
-const forbidden = ["дурак", "лінивий", "дурень"];
+// const forbidden = ["дурак", "лінивий", "дурень"];
 
-const item1 = document.querySelector("#filter");
-const item2 = document.querySelector("#filter-result");
+// const item1 = document.querySelector("#filter");
+// const item2 = document.querySelector("#filter-result");
 
-item1.addEventListener("input", (event) => {
-  if (event.target.value) {
-    item2.textContent = event.target.value;
+// item1.addEventListener("input", (event) => {
+//   if (event.target.value) {
+//     item2.textContent = event.target.value;
+//   }
+// });
+
+// ! Умова:
+
+// HTML-структура:
+// Створіть HTML-сторінку з такими елементами:
+
+// Кнопка з класом change-color
+// Елемент <span> з класом color для відображення коду кольору
+
+// function getRandomHexColor() {
+//   return `#${Math.floor(Math.random() * 16777215)
+//     .toString(16)
+//     .padStart(6, 0)}`;
+// }
+
+// const btn = document.querySelector(".change-color");
+// const res = document.querySelector(".color");
+
+// btn.addEventListener("click", () => {
+//   const colorResult = getRandomHexColor();
+
+//   document.body.style.backgroundColor = colorResult;
+
+//   res.textContent = colorResult;
+// });
+
+// ! Знайди перший <p> всередині .container через querySelector.
+// •	Зміни його текст на "Перший абзац змінено".
+// •	Зміни колір тексту на червоний.
+
+// const first = document.querySelector(".container p");
+
+// first.textContent = "Новий перший абзац";
+// first.style.color = "red";
+
+// console.log("🚀 ~ first:", first);
+
+// ! Зміни всі елементи списку
+
+// •	Знайди всі <li> всередині .fruits.
+// •	Зроби так, щоб текст усіх <li> став жирним (font-weight: bold).
+
+// const find = document.querySelectorAll(".fruits li");
+
+// find.forEach((text) => (text.style.fontWeight = "bold"));
+
+// ! 	1.	Спочатку додай у .box текст “Привіт!” через textContent.
+// 	2.	Потім всередину того ж елемента додай кнопку <button>Натисни мене</button> через innerHTML.
+
+// Тобі треба спробувати поетапно, спочатку текст, потім кнопка.
+
+// const find1 = document.querySelector(".box");
+// find1.innerHTML = "Privit! <button>Натисни мене</button>";
+
+//! Зроби колір тексту синім.
+// •	Змініть розмір шрифту на 36px.
+// •	Додай фон жовтого кольору.
+
+// const find1 = document.querySelector(".title");
+// find1.style.fontSize = "36px";
+// find1.style.color = "blue";
+// find1.style.backgroundColor = "yellow";
+
+//! 1.	Додай клас active до .card.
+// 2.	Потім перевір, чи клас active є, і видали його.
+// 3.	Заміни клас card на card-highlight.
+
+// const find = document.querySelector(".card");
+// find.classList.add("active");
+// console.log("🚀 ~ find:", find);
+
+// console.log(find.classList.contains("active"));
+
+// find.classList.remove("active");
+// console.log(find.classList.contains("active"));
+
+// find.classList.replace("card", "card-highlight");
+// console.log(find.classList.contains("card-highlight"));
+
+// ! Умова JS:
+// 	•	При натисканні на кнопку .switch треба додати або видалити клас on у блоці .light.
+// 	•	Якщо клас on вже є — він видаляється, якщо немає — додається.
+
+// const btn = document.querySelector(".switch");
+// const divTheme = document.querySelector(".light");
+
+// btn.addEventListener("click", (event) => {
+//   divTheme.classList.toggle("on");
+// });
+
+// ! Задача 7: Динамічне додавання елементів у список
+// Умова JS:
+// 	1.	Коли користувач вводить текст у поле і натискає Enter, створюй новий <li> з введеним текстом.
+// 	2.	Додавай цей <li> у кінець списку .todo-list.
+// 	3.	Після додавання очищуй поле вводу.
+
+const item1 = document.querySelector(".todo-input");
+const item2 = document.querySelector(".todo-list");
+
+item1.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    const li = document.createElement("li");
+    li.textContent = event.target.value; // текст додаємо тут
+    item2.appendChild(li); // вставляємо в список тут
+    event.target.value = ""; // очищаємо поле вводу
   }
 });
