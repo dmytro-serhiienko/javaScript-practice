@@ -1516,15 +1516,274 @@
 //   item2.classList.toggle("active");
 // });
 
-//! 🟦 Задача 4 — Додати новий <li> у список при натисканні кнопки
-// 	•	Є поле вводу (input) і кнопка.
-// 	•	Коли користувач вводить текст і натискає кнопку — створити новий <li> і додати його в кінець списку.
-// 	•	Якщо поле порожнє — нічого не додавати.
+//! Завдання 1: Зміна тексту та класів
 
-const item1 = document.querySelector("#addInput");
-const item2 = document.querySelector("#addItemBtn");
-const item3 = document.querySelector("#addList");
+// Завдання: При кліку на кнопку "Змінити текст" - зміни текст параграфа на
+// будь-який інший.
+// При кліку на "Виділити" -
+// використай classList.toggle() для класу highlight
 
-item2.addEventListener("click", (klaz) => {
-  item3.
-})
+// const item1 = document.querySelector("#text-demo");
+// console.log("🚀 ~ item1:", item1);
+
+// const item2 = document.querySelector("#change-text-btn");
+// console.log("🚀 ~ item2:", item2);
+
+// const item3 = document.querySelector("#toggle-highlight-btn");
+// console.log("🚀 ~ item3:", item3);
+
+// item2.addEventListener("click", () => {
+//   item1.textContent = `Новий текст`;
+// });
+
+// item3.addEventListener("click", () => {
+//   item1.classList.toggle("highlight");
+// });
+
+// !Завдання 2: Додавання елементів у список
+// Завдання: При кліку на кнопку - бери значення з input,
+//   створюй < li > і додавай в список.При кліку на елемент списку -
+//     додавай клас completed
+
+// const item1 = document.querySelector("#item-input");
+// console.log("🚀 ~ item1:", item1);
+
+// const item2 = document.querySelector("#add-item-btn");
+// console.log("🚀 ~ item2:", item2);
+
+// const item3 = document.querySelector("#item-list");
+// console.log("🚀 ~ item3:", item3);
+
+// item2.addEventListener("click", () => {
+//   item3.insertAdjacentHTML(
+//     "beforeend",
+//     `<li class="completed">${item1.value}</li>`
+//   );
+// });
+
+// ! Завдання 4: Пошук по списку
+
+// Завдання: При події input - фільтруй список.
+// Якщо текст товару містить введене значення - показуй,
+//   якщо ні - ховай(додавай / видаляй клас hidden)
+
+// const item1 = document.querySelector("#search-input");
+// console.log("🚀 ~ item1:", item1);
+
+// const item2 = document.querySelectorAll("#product-list li");
+// console.log("🚀 ~ item2:", item2);
+
+// item1.addEventListener("input", () => {
+//   item2.forEach((el) => {
+//     el.classList.toggle("hidden", !el.textContent.includes(item1.value));
+//   });
+// });
+
+// ! Завдання 1: Показати/Сховати текст
+// Завдання: При кліку на кнопку - показуй/ховай
+// текст (використай classList.toggle('hidden'))
+
+// const item1 = document.querySelector("#secret-text");
+
+// const item2 = document.querySelector("#toggle-btn");
+
+// item2.addEventListener("click", () => {
+//   item1.classList.toggle("hidden");
+// });
+
+// ! Завдання 2: Зміна кольору
+// Завдання: При кліку на кнопку - змінюй
+// колір квадрата(використай element.style.background)
+
+// const item1 = document.querySelector("#color-box");
+
+// const item2 = document.querySelector("#red-btn");
+// const item3 = document.querySelector("#green-btn");
+// const item4 = document.querySelector("#yellow-btn");
+
+// item2.addEventListener("click", () => {
+//   item1.style.background = "red";
+// });
+
+// item3.addEventListener("click", () => {
+//   item1.style.background = "green";
+// });
+
+// item4.addEventListener("click", () => {
+//   item1.style.background = "yellow";
+// });
+
+// ! Завдання 3: Лічильник
+
+// Завдання: При кліку на кнопки - збільшуй/зменшуй/скидай
+// число в параграфі
+
+// const item1 = document.querySelector("#counter");
+
+// const item2 = document.querySelector("#plus-btn");
+// const item3 = document.querySelector("#minus-btn");
+// const item4 = document.querySelector("#reset-btn");
+
+// let count = 0;
+
+// item2.addEventListener("click", () => {
+//   item1.textContent = ++count;
+// });
+
+// item3.addEventListener("click", () => {
+//   item1.textContent = --count;
+// });
+
+// item4.addEventListener("click", () => {
+//   item1.textContent = 0;
+// });
+
+// ! Завдання 4: Привітання
+// Завдання: При кліку на кнопку - бери значення з input і
+// виводь "Привіт, [ім'я]!" в параграф
+
+// const item1 = document.querySelector("#name-input");
+
+// const item2 = document.querySelector("#greet-btn");
+
+// const item3 = document.querySelector("#greeting");
+
+// item2.addEventListener("click", () => {
+//   if (!/\d/.test(item1.value)) {
+//     item3.textContent = `Привіт, ${item1.value}`;
+//   } else {
+//     item3.textContent = `Напиши будь ласка своє ім’я`;
+//   }
+//   item1.value = "";
+// });
+
+// ! Завдання 5: Список справ (простий)
+// Завдання: При кліку на кнопку - створюй < li > з
+// текстом з input і додавай в список
+
+// const item1 = document.querySelector("#todo-input");
+
+// const item2 = document.querySelector("#todo-btn");
+
+// const item3 = document.querySelector("#todo-list");
+
+// item2.addEventListener("click", () => {
+//   item3.insertAdjacentHTML("beforeend", `<li>${item1.value}</li>`);
+
+//   item1.value = "";
+// });
+
+// item1.addEventListener("keydown", (event) => {
+//   if (event.key === "Enter") {
+//     item3.insertAdjacentHTML("beforeend", `<li>${item1.value}</li>`);
+//     item1.value = "";
+//   }
+// });
+
+// ! Завдання 6: Перебір масиву (вивід)
+// Завдання: При кліку на кнопку - перебери масив і додай кожен
+// елемент як <li> в список
+
+// const fruits = ["🍎 Яблуко", "🍌 Банан", "🍊 Апельсин", "🍇 Виноград"];
+
+// const item1 = document.querySelector("#fruits-list");
+// const item2 = document.querySelector("#show-fruits-btn");
+
+// item2.addEventListener("click", () => {
+//   // item1.innerHTML = ""; // очищаємо
+//   fruits.forEach((el) => {
+//     item1.insertAdjacentHTML("beforeend", `<li>${el}</li>`);
+//   });
+//   item2.disabled = true; // викикаємо кнопку після першого застосування
+// });
+
+// ! Завдання 7: Калькулятор
+
+// Завдання: При кліку на кнопку - бери два числа з input'ів,
+// виконуй операцію і виводь результат
+
+// const item1 = document.querySelector("#num1");
+// const item2 = document.querySelector("#num2");
+
+// const item3 = document.querySelector("#add-btn");
+// const item4 = document.querySelector("#subtract-btn");
+// const item5 = document.querySelector("#multiply-btn");
+// const item6 = document.querySelector("#divide-btn");
+
+// const item7 = document.querySelector("#result");
+
+// item3.addEventListener("click", () => {
+//   item7.textContent = Number(item1.value) + Number(item2.value);
+// });
+
+// item4.addEventListener("click", () => {
+//   item7.textContent = Number(item1.value) - Number(item2.value);
+// });
+
+// item5.addEventListener("click", () => {
+//   item7.textContent = Number(item1.value) * Number(item2.value);
+// });
+
+// item6.addEventListener("click", () => {
+//   item7.textContent = Number(item1.value) / Number(item2.value);
+// });
+
+// ! Завдання 8: Зміна розміру тексту
+
+// const item1 = document.querySelector("#text-size");
+// const item2 = document.querySelector("#increase-btn");
+// const item3 = document.querySelector("#decrease-btn");
+
+// item2.addEventListener("click", () => {
+//   item1.style.fontSize = "100px";
+// });
+
+// item3.addEventListener("click", () => {
+//   item1.style.fontSize = "11px";
+// });
+
+// ! Завдання 10: Перемикач теми
+// Завдання: При кліку - додавай/видаляй клас dark-theme на body
+
+// const item1 = document.querySelector("#theme-btn");
+// const body = document.body;
+
+// item1.addEventListener("click", () => {
+//   body.classList.toggle("dark-theme");
+// });
+
+// ! Завдання 13: Перебір масиву об'єктів
+
+// Завдання: При кліку - перебери масив і створи для кожного товару
+//   < div > з назвою, ціною та статусом(є в наявності чи ні)
+
+// const products = [
+//   { name: "Ноутбук", price: 25000, inStock: true },
+//   { name: "Миша", price: 500, inStock: false },
+//   { name: "Клавіатура", price: 1200, inStock: true },
+//   { name: "Монітор", price: 8000, inStock: true },
+// ];
+
+// const item1 = document.querySelector("#show-products-btn");
+// const item2 = document.querySelector("#products-container");
+
+// item1.addEventListener("click", () => {
+//   item2.innerHTML = "";
+//   products.forEach((el) =>
+//     item2.insertAdjacentHTML(
+//       "beforeend",
+
+//       `<div>
+//       <h3>Назва: ${el.name}</h3>
+//       <p>Ціна: ${el.price}</p>
+//       <p>В наявності: ${el.inStock}</p>
+//       </div>`
+//     )
+//   );
+// item1.disabled = true;
+// });
+
+// ! Завдання 16: Модальне вікно
+
+// Завдання: Відкривай/закривай модалку. Закривай при кліку поза вікном
+// (на темному фоні)
