@@ -2253,30 +2253,198 @@
 // При кліку на "Видалити" - видаляй цю картку через element.remove()
 // Підказка: Використай event.target.parentElement.remove()
 
-const item1 = document.querySelector("#cards-container");
+// const item1 = document.querySelector("#cards-container");
 
-const item2 = document.querySelector("#card-btn");
+// const item2 = document.querySelector("#card-btn");
 
-item2.addEventListener("click", () => {
-  const newDiv = document.createElement("div");
-  item1.prepend(newDiv);
+// item2.addEventListener("click", () => {
+//   const newDiv = document.createElement("div");
+//   item1.prepend(newDiv);
 
-  const newP = document.createElement("p");
-  newP.textContent = `New Card`;
-  newDiv.prepend(newP);
+//   const newP = document.createElement("p");
+//   newP.textContent = `New Card`;
+//   newDiv.prepend(newP);
 
-  const newBtn = document.createElement("button");
-  newBtn.textContent = `X`;
-  newDiv.prepend(newBtn);
+//   const newBtn = document.createElement("button");
+//   newBtn.textContent = `X`;
+//   newDiv.prepend(newBtn);
 
-  newBtn.addEventListener("click", () => {
-    newDiv.remove();
-  });
-});
+//   newBtn.addEventListener("click", () => {
+//     newDiv.remove();
+//   });
+// });
 
+//? var2
 // item2.addEventListener("click", () => {
 //   item1.insertAdjacentHTML(
 //     "beforeend",
 //     `<div><p>New Card</p><button id="close">X</button></div>`
 //   );
 // });
+
+//! Завдання 7: insertAdjacentHTML - всі позиції
+// Використай insertAdjacentHTML для додавання
+//   < p style = "color: red;" > Новий текст</ > в різних позиціях
+
+// const item1 = document.querySelector("#central-box p");
+// console.log("🚀 ~ item1:", item1);
+
+// const item2 = document.querySelector("#before-btn");
+// const item3 = document.querySelector("#start-btn");
+// const item4 = document.querySelector("#end-btn");
+// const item5 = document.querySelector("#after-btn");
+
+// item2.addEventListener("click", () => {
+//   item1.insertAdjacentHTML(
+//     "beforeend",
+//     `<p style = "color: red;" >Дмитро Дмитро</p>`
+//   );
+// });
+
+// item3.addEventListener("click", () => {
+//   item1.insertAdjacentHTML(
+//     "afterend",
+//     `<p style = "color: red;" >Дмитро Дмитро</p>`
+//   );
+// });
+
+// item4.addEventListener("click", () => {
+//   item1.insertAdjacentHTML(
+//     "beforebegin",
+//     `<p style = "color: red;" >Дмитро Дмитро</p>`
+//   );
+// });
+
+// item5.addEventListener("click", () => {
+//   item1.insertAdjacentHTML(
+//     "afterbegin",
+//     `<p style = "color: red;" >Дмитро Дмитро</p>`
+//   );
+// });
+
+//! Завдання 8: Події input, change, focus, blur
+// input подія на текстовому полі - показуй кількість символів
+// focus на текстовому полі - додавай клас input-focused
+// blur на текстовому полі - видаляй клас input-focused
+// change на select - показуй обрану тему в #theme-info
+
+// const item1 = document.querySelector("#live-input");
+
+// const item2 = document.querySelector("#live-counter");
+
+// const item3 = document.querySelector("#theme-select");
+// const item4 = document.querySelector("#theme-info");
+
+// item1.addEventListener("input", () => {
+//   item2.textContent = item1.value.length;
+// });
+
+// item1.addEventListener("focus", () => {
+//   item1.classList.add("input-focused");
+// });
+
+// item1.addEventListener("blur", () => {
+//   item1.classList.remove("input-focused");
+// });
+
+// item3.addEventListener("change", () => {
+//   item4.textContent = item3.value;
+// });
+
+//! Завдання 9: keydown - обробка клавіш
+// Якщо натиснуто Enter - виведи "Новий рядок!"
+// Якщо натиснуто Escape - очисти textarea
+// Якщо натиснуто Ctrl + S (перевір event.ctrlKey && event.key === 's') - збережи текст в #saved-text і покажи його
+
+// Підказка: Використай event.preventDefault() для Ctrl+S
+
+// const item1 = document.querySelector("#editor");
+
+// const item2 = document.querySelector("#key-info");
+
+// const item3 = document.querySelector("#saved-text");
+
+// item1.addEventListener("keydown", (event) => {
+//   if (event.key === "Enter") {
+//     item2.textContent = "Новий рядок!";
+//   }
+
+//   if (event.key === "Escape") {
+//     item1.value = "";
+//   }
+
+//   if (event.ctrlKey && event.key === "s") {
+//     event.preventDefault(); // блокує "Save Page"
+//     item3.textContent = item1.value; // зберігаємо текст
+//   }
+// });
+
+//! Завдання 10: submit - форма реєстрації
+// Повісь подію submit
+// Використай event.preventDefault()
+
+// Перевір: username >= 3 символи, password >= 6 символів
+// Якщо помилки - виведи в #errors
+// Якщо все ок - виведи "Успішна реєстрація!" в #success
+
+// const item1 = document.querySelector("#register-form");
+
+// item1.addEventListener("submit", (event) => {
+//   event.preventDefault();
+
+//   if (item2.value.length >= 3 && item4.value.length >= 6) {
+//     item7.textContent = `success`;
+//     item6.textContent = "";
+//   } else {
+//     item6.textContent = `error`;
+//     item7.textContent = "";
+//   }
+// });
+
+// const item2 = document.querySelector("#reg-username");
+// const item4 = document.querySelector("#reg-password");
+
+// const item6 = document.querySelector("#errors");
+// const item7 = document.querySelector("#success");
+
+//! Задачка 1: Інтерактивний список справ
+// Додавати нові задачі
+// Позначати як виконані (перекреслення)
+// Видаляти задачі
+
+const item1 = document.querySelector("#taskInput");
+
+const item2 = document.querySelector("#addBtn");
+
+const item3 = document.querySelector("#taskList");
+
+//* var1
+// item2.addEventListener("click", () => {
+//   item3.insertAdjacentHTML(
+//     "beforeend",
+//     `<li>${item1.value} - <button>X</button></li>`
+//   );
+
+//   item1.value = "";
+// });
+
+//* var2
+// item2.addEventListener("click", () => {
+//   const newLi = document.createElement("li");
+//   newLi.textContent = item1.value;
+//   item3.append(newLi);
+
+//   const newBtn = document.createElement("button");
+//   newBtn.textContent = "X";
+//   newLi.append(newBtn);
+
+//   newBtn.addEventListener("click", () => {
+//     newLi.remove();
+//   });
+
+//   item1.value = "";
+// });
+
+//! Задачка 2: Фільтр товарів
+// Створіть список товарів з можливістю фільтрації по
+// категорії та пошуку по назві.
