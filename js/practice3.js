@@ -128,12 +128,176 @@
 // •	При кліку на кнопку Edit виводити ім’я користувача (текст з першої клітинки рядка)
 // •	Додаючи нового користувача (через кнопку Add User), делегування все ще повинно працювати
 
-const item1 = document.querySelector("#user-table");
+// const item1 = document.querySelector("#user-table");
 
-item1.addEventListener("click", (event) => {
-  if (event.target.tagName === "BUTTON") {
-    const row = event.target.closest("tr");
-    const nameCell = row.querySelector("td");
-    console.log(nameCell.textContent);
+// item1.addEventListener("click", (event) => {
+//   if (event.target.tagName === "BUTTON") {
+//     const row = event.target.closest("tr");
+//     const nameCell = row.querySelector("td");
+//     console.log(nameCell.textContent);
+//   }
+// });
+
+//! Деструктуризація
+
+// const user = { name: "Dmytro", age: 30, city: "Kyiv" };
+
+// // Завдання:
+// // Використовуючи деструктуризацію, виведи змінні name та city
+
+// const { name, city } = user;
+
+// console.log(name); // "Dmytro"
+// console.log(city); // "Kyiv"
+
+// !
+// const numbers = [10, 20, 30, 40];
+
+// // Завдання:
+// // Використовуючи деструктуризацію, отримати перші два числа в змінні a та b
+
+// const [a, b] = numbers;
+
+// console.log(a);
+// console.log(b);
+
+// !
+
+// const product = { id: 1, title: "Laptop", price: 2500 };
+
+// // Завдання:
+// // Використовуючи деструктуризацію, отримати змінну productName замість title
+
+// const { title: productName } = product;
+
+// console.log(productName);
+
+// !
+
+// const settings = { theme: "dark" };
+
+// // Завдання:
+// // Використовуючи деструктуризацію, отримати змінні
+// // theme та fontSize (дефолтне значення 16)
+
+// const { theme, fontSize = 16 } = settings;
+
+// console.log(theme);
+// console.log(fontSize);
+
+// !
+
+// const data = { user: { name: "Anna", address: { city: "Lviv", zip: 79000 } } };
+
+// // Завдання:
+// // Використовуючи деструктуризацію, отримати змінну city
+
+// const {
+//   user: {
+//     address: { city },
+//   },
+// } = data;
+
+// console.log(city);
+
+// !
+
+// const colors = ["red", "green", "blue", "yellow", "purple"];
+
+// // Завдання:
+// // Отримати перший та третій кольори в змінні firstColor та thirdColor
+
+// const [firstColor, , thirdColor, ,] = colors;
+// console.log(firstColor);
+// console.log(thirdColor);
+
+// !
+
+// const employee = {
+//   name: "Oleg",
+//   position: "Developer",
+//   contact: { email: "oleg@mail.com", phone: "123456789" },
+// };
+
+// // Завдання:
+// // Отримати email та phone через деструктуризацію
+
+// const {
+//   contact: { email, phone },
+// } = employee;
+
+// console.log(email);
+// console.log(phone);
+
+// !
+
+// const scores = [10, 20, 30, 40, 50];
+
+// // Завдання:
+// // Отримати перше число в змінну first, а решту в масив rest
+
+// const [first, ...rest] = scores;
+
+// console.log(first);
+// console.log(rest);
+
+// ! модальне
+
+const images = [
+  {
+    preview:
+      "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg",
+    original:
+      "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg",
+    description: "Hokkaido Flower",
+  },
+  {
+    preview:
+      "https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677__340.jpg",
+    original:
+      "https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg",
+    description: "Container Haulage Freight",
+  },
+];
+
+// Завдання:
+// 	1.	Створи список <li> з картинками (<img>) у галереї .gallery з даного масиву.
+// 	2.	При кліку на картинку відкривається модальне вікно (.modal) з великим зображенням (original).
+// 	3.	Модальне вікно можна закрити:
+// 	•	натисканням на ×
+// 	•	натисканням на фон модального вікна
+// 	4.	Під час відкритого модального вікна змінюй src і alt для <img> всередині модалки на відповідні значення.
+
+// Додатково (опційно, якщо хочеш ускладнити):
+// 	•	Додай анімацію відкриття/закриття модального вікна через CSS.
+// 	•	Додай клавішу Escape, щоб закривати модалку через клавіатуру.
+
+const gall = document.querySelector(".gallery");
+const modal = document.querySelector(".modal");
+const modalImage = document.querySelector(".modal img");
+const closeBtn = document.querySelector(".close");
+
+const myGallery = images
+  .map(
+    (el) => `
+    <li class="item-img">
+      <img src="${el.preview}" data-source="${el.original}" alt="${el.description}">
+    </li>
+  `
+  )
+  .join("");
+
+gall.insertAdjacentHTML("beforeend", myGallery);
+
+gall.addEventListener("click", (event) => {
+  if (event.target.tagName === "IMG") {
+    modal.classList.remove("hidden");
+    modalImage.src = event.target.dataset.source;
+    modalImage.alt = event.target.alt;
   }
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+  modalImage.src = "";
 });

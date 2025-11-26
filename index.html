@@ -628,7 +628,7 @@
       </tr>
     </table> -->
 
-    <table id="user-table" border="1">
+    <!-- <table id="user-table" border="1">
       <tr>
         <td>Alice</td>
         <td><button class="edit-btn">Edit</button></td>
@@ -638,7 +638,48 @@
         <td><button class="edit-btn">Edit</button></td>
       </tr>
     </table>
-    <button id="add-user">Add User</button>
+    <button id="add-user">Add User</button> -->
+
+    <ul class="gallery"></ul>
+
+    <div class="modal hidden">
+      <span class="close">&times;</span>
+      <img class="modal-image" src="" alt="" />
+
+      <style>
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+        }
+
+        .modal.hidden {
+          display: none;
+        }
+
+        .modal img {
+          max-width: 90%;
+          max-height: 90%;
+        }
+
+        .close {
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          font-size: 40px;
+          color: white;
+          cursor: pointer;
+        }
+      </style>
+    </div>
+
     <!-- ! лекції Blanded -->
     <!-- <script type="module" src="./js/lesson-1.js"></script> -->
     <!-- <script type="module" src="./js/lesson-2.js"></script> -->
