@@ -2603,3 +2603,7 @@
 //   return accu;
 // });
 // console.log("🚀 ~ bigPrice:", bigPrice);
+
+// ! Детруктуризація
+
+const user = { name: "Anna", age: 25 };

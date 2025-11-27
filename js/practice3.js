@@ -272,32 +272,294 @@ const images = [
 // 	•	Додай анімацію відкриття/закриття модального вікна через CSS.
 // 	•	Додай клавішу Escape, щоб закривати модалку через клавіатуру.
 
-const gall = document.querySelector(".gallery");
-const modal = document.querySelector(".modal");
-const modalImage = document.querySelector(".modal img");
-const closeBtn = document.querySelector(".close");
+//! Деструктуризація Витягни name і age в окремі змінні.
 
-const myGallery = images
-  .map(
-    (el) => `
-    <li class="item-img">
-      <img src="${el.preview}" data-source="${el.original}" alt="${el.description}">
-    </li>
-  `
-  )
-  .join("");
+// ?
+// const user = { name: "Anna", age: 25 };
 
-gall.insertAdjacentHTML("beforeend", myGallery);
+// const { name: username, gender = "female" } = user;
 
-gall.addEventListener("click", (event) => {
-  if (event.target.tagName === "IMG") {
-    modal.classList.remove("hidden");
-    modalImage.src = event.target.dataset.source;
-    modalImage.alt = event.target.alt;
-  }
-});
+// const { age: userage } = user;
 
-closeBtn.addEventListener("click", () => {
-  modal.classList.add("hidden");
-  modalImage.src = "";
-});
+// console.log(username, gender);
+// console.log(userage);
+
+// ? Отримай перший та другий елемент у змінні first і second.
+
+// const colors = ["red", "green", "blue"];
+
+// const [first, second] = colors;
+
+// console.log(first, second);
+
+// ? Отримай theme і lang, при тому щоб lang мав значення "en" за замовчуванням.
+
+// const settings = { theme: "dark" };
+
+// const { theme, lang = "en" } = settings;
+
+// console.log(theme, lang);
+
+// ? Отримай city і country прямо в окремі змінні.
+
+// const profile = {
+//   user: {
+//     id: 1,
+//     info: { city: "Lviv", country: "Ukraine" },
+//   },
+// };
+
+// const {
+//   user: {
+//     info: { city },
+//   },
+// } = profile;
+
+// console.log(city);
+
+// const {
+//   user: {
+//     info: { country },
+//   },
+// } = profile;
+
+// console.log(country);
+
+// ? Отримай другий елемент масиву items
+
+// const response = {
+//   data: {
+//     items: ["item1", "item2", "item3", "item4", "item5", "item6", "item7"],
+//   },
+// };
+
+// const {
+//   data: {
+//     items: [, , , ...rest],
+//   },
+// } = response;
+
+// console.log(rest);
+
+// ? Отримай title другого об’єкта.
+
+// const items = [
+//   { id: 1, title: "Book" },
+//   { id: 2, title: "Pen" },
+// ];
+
+// const [, { title }] = items;
+
+// console.log(title);
+
+//? Отримай перший елемент у змінну first, а решту елементів — у масив rest.
+// const arr = [10, 20, 30, 40];
+
+// const [first] = arr;
+
+// const [, ...rest] = arr;
+
+// console.log(first);
+// console.log(rest);
+
+//! 🟢 Рівень 1: Базові операціїЗавдання 1: Зміна тексту
+//! Створи кнопку, при натисканні на яку текст параграфа змінюється на "Текст змінено!".
+
+// const btn = document.querySelector("#changeBtn");
+
+// const txt = document.querySelector("#text");
+
+// window.addEventListener("click", (event) => {
+//   if (event.target.tagName === "BUTTON") {
+//     txt.textContent = "Текст змінено";
+//     txt.style.background = "yellow";
+//     txt.style.color = "blue";
+//     txt.style.fontSize = "20px";
+//   }
+// });
+
+//* var2
+// btn.addEventListener("click", () => {
+//   txt.textContent = "Текст змінено";
+//   txt.style.background = "yellow";
+//   txt.style.color = "blue";
+//   txt.style.fontSize = "20px";
+// });
+
+//! Завдання 3: Додавання класів
+//! Створи кнопку, яка додає/видаляє клас active до елемента.
+
+// const box = document.querySelector("#toggleBox");
+// const spa = document.querySelector("#sp");
+
+// window.addEventListener("click", (event) => {
+//   if (event.target.tagName === "BUTTON") {
+//     box.classList.toggle("active");
+
+//     spa.textContent = "Privit";
+//   }
+// });
+
+//! Завдання 4: Лічильник
+//! Зроби простий лічильник з кнопками "+" і "-".
+
+const plus = document.querySelector("#increaseBtn");
+const minus = document.querySelector("#decreaseBtn");
+
+const monitor = document.querySelector("#counter");
+
+let counter = 0;
+
+// plus.addEventListener("click", () => {
+//   monitor.textContent = ++counter;
+// });
+
+// minus.addEventListener("click", () => {
+//   monitor.textContent = --counter;
+// });
+
+//* var 2
+// window.addEventListener("click", (event) => {
+//   if (event.target.id === "increaseBtn") {
+//     monitor.textContent = ++counter;
+//   } else if (event.target.id === "decreaseBtn") {
+//     monitor.textContent = --counter;
+//   } else if (event.target.id === "reset") {
+//     counter = 0;
+
+//     monitor.textContent = counter;
+//   }
+// });
+
+//!  Валідація форми
+//! Створи форму з полем для імені. При відправці перевір, чи заповнене поле.
+
+// const valid = document.querySelector("#nameForm");
+
+// const validInp = document.querySelector("#nameInput");
+
+// const textError = document.querySelector("#errorMsg");
+
+// valid.addEventListener("submit", (event) => {
+//   event.preventDefault(); // зупиняємо
+
+//   if (validInp.value.trim().length <= 5) {
+//     textError.textContent = "Напиши нормальне повідомлення";
+//   } else {
+//     textError.textContent = "";
+//     alert("Форма успішно відправлена!");
+//     valid.reset();
+//   }
+// });
+
+//! Завдання 6: Список справ (To-Do List)
+//! Зроби простий список справ.
+
+// const item1 = document.querySelector("#todoInput");
+
+// const item2 = document.querySelector("#addBtn");
+
+// const item3 = document.querySelector("#todoList");
+
+// const newUl = document.createElement("ul");
+// item3.append(newUl);
+
+// item2.addEventListener("click", () => {
+//   const newLi = document.createElement("li");
+//   newLi.textContent = item1.value;
+//   newUl.append(newLi);
+
+//   item1.value = "";
+
+//   const newBtn = document.createElement("button");
+//   newBtn.textContent = "X";
+//   newBtn.classList.add("close-btn");
+//   newLi.append(newBtn);
+
+//   newBtn.addEventListener("click", () => {
+//     newLi.remove();
+//   });
+// });
+
+//! Лічильник символів
+//! Порахуй кількість символів у тексті.
+
+// const item1 = document.querySelector("#textArea");
+
+// const item2 = document.querySelector("#charCount");
+
+// const item3 = document.querySelector("#wordCount");
+
+// item1.addEventListener("input", (event) => {
+//   item2.textContent = event.target.value.length;
+// });
+
+// item1.addEventListener("input", (event) => {
+//   item3.textContent = event.target.value.split(" ").length;
+// });
+
+//! Завдання 4: Генератор HTML списку
+// Створи список з масиву даних.
+
+// Використай innerHTML для додавання HTML розмітки
+// Створи красиві елементи списку
+
+// const item1 = document.querySelector("#itemInput");
+
+// const item2 = document.querySelector("#addBtn");
+
+// const item3 = document.querySelector("#clearBtn");
+
+// const item4 = document.querySelector("#list");
+
+// //* var1
+// const newUl = document.createElement("ul");
+// item4.append(newUl);
+
+// item2.addEventListener("click", (event) => {
+//   // Перевірка
+//   if (item1.value.length >= 5) {
+//     newUl.insertAdjacentHTML("beforeend", `<li>${item1.value}</li>`);
+//     item1.value = "";
+//   } else {
+//     alert(`Закоротко`);
+//   }
+// });
+
+// item3.addEventListener("click", () => {
+//   newUl.remove();
+// });
+
+//! element.style
+// Завдання 5: Динамічний слайдер розміру тексту
+// Зміни розмір тексту за допомогою слайдера.
+
+// const item1 = document.querySelector("#demoText");
+
+// const item2 = document.querySelector("#fontSize");
+// const item22 = document.querySelector("#fontSizeValue");
+
+// const item3 = document.querySelector("#textColor");
+
+// const item4 = document.querySelector("#bgColor");
+
+// const item5 = document.querySelector("#padding");
+// const item55 = document.querySelector("#paddingValue");
+
+// item2.addEventListener("input", (event) => {
+//   item1.style.fontSize = event.target.value + "px";
+//   item22.textContent = event.target.value + "px";
+// });
+
+// item3.addEventListener("change", (event) => {
+//   item1.style.color = event.target.value;
+// });
+
+// item4.addEventListener("change", (event) => {
+//   item1.style.background = event.target.value;
+// });
+
+// item5.addEventListener("input", (event) => {
+//   item1.style.padding = event.target.value + "px";
+//   item55.textContent = event.target.value + "px";
+// });
