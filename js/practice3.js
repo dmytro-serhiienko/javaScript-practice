@@ -1,5 +1,7 @@
 // ! Делегування подій простий список
 
+// const { createElement } = require("react");
+
 // 	•	Повісити одну подію click на <ul>, щоб при кліку на будь-який <li> виводити його текст у консоль.
 // 	•	Не додавати click на кожен <li> окремо.
 
@@ -243,22 +245,22 @@
 
 // ! модальне
 
-const images = [
-  {
-    preview:
-      "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg",
-    original:
-      "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg",
-    description: "Hokkaido Flower",
-  },
-  {
-    preview:
-      "https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677__340.jpg",
-    original:
-      "https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg",
-    description: "Container Haulage Freight",
-  },
-];
+// const images = [
+//   {
+//     preview:
+//       "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg",
+//     original:
+//       "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg",
+//     description: "Hokkaido Flower",
+//   },
+//   {
+//     preview:
+//       "https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677__340.jpg",
+//     original:
+//       "https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg",
+//     description: "Container Haulage Freight",
+//   },
+// ];
 
 // Завдання:
 // 	1.	Створи список <li> з картинками (<img>) у галереї .gallery з даного масиву.
@@ -403,12 +405,12 @@ const images = [
 //! Завдання 4: Лічильник
 //! Зроби простий лічильник з кнопками "+" і "-".
 
-const plus = document.querySelector("#increaseBtn");
-const minus = document.querySelector("#decreaseBtn");
+// const plus = document.querySelector("#increaseBtn");
+// const minus = document.querySelector("#decreaseBtn");
 
-const monitor = document.querySelector("#counter");
+// const monitor = document.querySelector("#counter");
 
-let counter = 0;
+// let counter = 0;
 
 // plus.addEventListener("click", () => {
 //   monitor.textContent = ++counter;
@@ -1516,19 +1518,688 @@ let counter = 0;
 // 	5.	В catch виведи щось типу:
 // ("⚠ JSON is not valid!");
 
-const team = [
-  { name: "Bob", age: 22 },
-  { name: "Tesla", age: 33 },
-  { name: "Rebeca", age: 24 },
-  { name: "Latina", age: 26 },
-];
+// const team = [
+//   { name: "Bob", age: 22 },
+//   { name: "Tesla", age: 33 },
+//   { name: "Rebeca", age: 24 },
+//   { name: "Latina", age: 26 },
+// ];
 
-const toJson = JSON.stringify(team, null, 1);
+// const toJson = JSON.stringify(team, null, 1);
+// // console.log("🚀 ~ toJson:", toJson);
+
+// try {
+//   const toJs = JSON.parse(toJson);
+// } catch (error) {
+//   console.log("⚠ JSON is not valid!");
+//   console.log(error.name);
+// }
+
+//! Перевірка замовлень
+
+// •	Розпарсь його через JSON.parse у try…catch.
+// •	Якщо JSON некоректний — виведи повідомлення про помилку.
+// •	Перевір кожен об’єкт, щоб price був числом.
+// •	Виведи у консоль тільки замовлення з валідними цінами.
+
+// const ordersJson = `
+// [
+//   { "id": 1, "product": "Laptop", "price": 1200 },
+//   { "id": 2, "product": "Phone", "price": "не число" },
+//   { "id": 3, "product": "Tablet", "price": 400 }
+// ]
+// `;
+
+// try {
+//   const toJs = JSON.parse(ordersJson);
+// } catch (error) {
+//   console.log(`error`);
+//   console.log(error.name);
+// }
+
+// !
+
+// •	Розпарсь JSON у try…catch.
+// •	Якщо рядок некоректний — виведи помилку.
+// •	Виведи у консоль тільки книги, де year — число.
+
+// const booksJson = `
+// [
+//   { "title": "Harry Potter", "year": 1997 },
+//   { "title": "1984", "year": "рік невідомий" },
+//   { "title": "Clean Code, "year": 2008 }
+// ]
+// `;
+
+// try {
+//   const toJs = JSON.parse(booksJson);
+// } catch (error) {
+//   console.log(error.name);
+//   console.log(error.message);
+// }
+
+//! Задача 1: Зберігання повідомлення
+// 	1.	Створи змінну message з будь-яким текстом.
+// 	2.	Запиши її у localStorage під ключем "userMessage".
+// 	3.	Потім отримай це повідомлення з localStorage і виведи в консоль.
+// 	4.	Очисти значення з localStorage.
+
+// const message = "text";
+
+// localStorage.setItem("userMessage", message);
+// console.log("🚀 ~ message:", message);
+
+// const balck = localStorage.getItem("userMessage");
+// console.log("🚀 ~ balck:", balck);
+
+//! Задача 1: Збереження і відображення імен
+// 	1.	Створи змінну name з будь-яким ім’ям.
+// 	2.	Збережи її у localStorage під ключем "userName".
+// 	3.	Потім отримай ім’я з localStorage і виведи у консоль.
+
+// const nameUser = "Dmytro";
+
+// // Зберігаємо під ключем "name"
+// localStorage.setItem("name", nameUser);
+
+// // Отримуємо під тим самим ключем
+// const resultName = localStorage.getItem("name");
+
+// console.log("🚀 ~ resultName:", resultName); // "Dmytro"
+
+//! Задача 2: Збереження числа
+// 	1.	Створи змінну age з будь-яким числом.
+// 	2.	Збережи її у localStorage під ключем "userAge".
+// 	3.	Потім отримай число з localStorage, перетвори його у число (якщо потрібно) і виведи у консоль.
+
+// const age = 33;
+
+// localStorage.setItem("ageUser", age);
+
+// const resAge = localStorage.getItem("ageUser");
+// console.log("🚀 ~ resAge:", resAge);
+
+// ! Задача 3: Очистка ключа
+// 	1.	Збережи будь-яке значення у localStorage під ключем "test".
+// 	2.	Потім видали цей ключ з localStorage.
+// 	3.	Спробуй отримати значення цього ключа і виведи результат у консоль (має бути null).
+
+// localStorage.setItem("brand", "apple");
+
+// const res = localStorage.getItem("brand");
+// console.log("🚀 ~ res:", res);
+
+// const rem = localStorage.removeItem("brand");
+// console.log("🚀 ~ rem:", rem);
+
+//! Пошук DOM-елементів
+//! Задача 1.1: Підрахунок параграфів
+
+// const counterEl = document.querySelectorAll("#content p ");
+// console.log("🚀 ~ counterEl:", counterEl);
+
+// const counterEl = [...document.querySelectorAll("#content p ")];
+// console.log("🚀 ~ counterEl:", counterEl);
+
+//! Задача 2.1: Зміна заголовка
+
+// const titleEl = document.querySelector("#title");
+
+// const btnEl = document.querySelector("#changeBtn");
+
+// btnEl.addEventListener("click", () => {
+//   titleEl.textContent = "Новий заголовок";
+//   titleEl.style.color = "yellow";
+//   titleEl.style.background = "blue";
+// });
+
+// titleEl.addEventListener("mouseover", () => {
+//   titleEl.textContent = "Новий заголовок";
+//   titleEl.style.color = "yellow";
+//   titleEl.style.background = "blue";
+// });
+
+// titleEl.addEventListener("mouseout", () => {
+//   titleEl.textContent = "Змінити заголовок";
+//   titleEl.style.color = "";
+//   titleEl.style.background = "";
+// });
+
+// !   Зміна стилю
+
+// const textEl = document.querySelector("#greeting");
+
+// const btnEl = document.querySelector("#colorBtn");
+
+// btnEl.addEventListener("click", () => {
+//   textEl.style.color = "red";
+// });
+
+//! CSS класи на DOM-елементах
+
+// const checkerEl = document.querySelector("#sidebar");
+
+// const res = checkerEl.classList.contains("hidden");
+// console.log("🚀 ~ res:", res);
+
+// !Додавання класу до всіх елементів
+
+// const ckeckEl = document.querySelectorAll("nav a");
+
+// ckeckEl.forEach((el) => {
+//   return el.classList.add("dima");
+// });
+// console.log("🚀 ~ ckeckEl:", ckeckEl);
+
+// ! Перемикач темної теми
+
+// const btnEl = document.querySelector("#themeToggle");
+
+// const textEl = document.querySelector(".content p");
+// console.log("🚀 ~ textEl:", textEl);
+
+// btnEl.addEventListener("click", () => {
+//   document.body.classList.toggle("dark-mode");
+// });
+
+//! Заміна класу
+// Заміни "old-style" на "new-style" для всіх .card
+
+// const divEl = document.querySelectorAll(".card");
+
+// divEl.forEach((el) => {
+//   el.classList.remove("old-style");
+//   el.classList.add("new-style");
+// });
+
+// console.log("🚀 ~ divEl:", divEl);
+
+//! Створи <div> з текстом "Привіт, світ!"
+// Додай його в кінець #container
+
+// const divEl = document.querySelector("#container");
+
+// const btnEl = document.querySelector("#btn");
+
+// const newUl = document.createElement("ul");
+// divEl.append(newUl);
+
+// btnEl.addEventListener("click", () => {
+//   const newLi = document.createElement("li");
+//   newLi.classList.add("my-li");
+//   newLi.textContent = "my new li";
+//   newUl.append(newLi);
+// });
+
+// ! Задача 4.2: Створення списку
+
+// Створи 3 нових <li> з текстом "Елемент 1", "Елемент 2", "Елемент 3"
+// Додай їх на початок списку
+
+// const ulEl = document.querySelector("#list");
+
+// const btnEl = document.querySelector("#addItems");
+
+// btnEl.addEventListener("click", () => {
+//   // const newLi = document.createElement("li");
+//   // newLi.classList.add("lishechka");
+//   // newLi.textContent = "Dima";
+//   // ulEl.append(newLi);
+
+//   ulEl.insertAdjacentHTML(
+//     "afterbegin",
+//     `   <li>Елемент 1</li>
+//         <li>Елемент 2</li>
+//         <li>Елемент 3</li>
+// `
+//   );
+// });
+
+// !При події input виводь поточне значення в #output
+
+// const inputEl = document.querySelector("#textInput");
+
+// const spanEl = document.querySelector("#output");
+
+// inputEl.addEventListener("input", (event) => {
+//   spanEl.textContent = event.target.value;
+// });
+
+//! Обробка форми
+// Додай обробник submit
+// Запобіжи стандартній поведінці
+// Виведи дані форми в консоль
+
+// const formEl = document.querySelector("#myForm");
+// const inputName = document.querySelector("#username");
+// const inputEmail = document.querySelector("#useremail");
+
+// formEl.addEventListener("submit", (event) => {
+//   event.preventDefault();
+
+//   console.log(inputName.value, inputEmail.value);
+// });
+
+// ! 📝 Задача 1: Збереження об’єкта у JSON
+// 	1.	Користувач вводить через prompt ім’я та вік.
+// 	2.	Створи об’єкт і перетвори його в JSON.
+// 	3.	Збережи цей JSON у localStorage під ключем "userData".
+// 	4.	Після збереження — дістань цей JSON зі сховища, розпарсь його і виведи об’єкт у консоль.
+
+// 📌 Використовуй try…catch при парсингу JSON.
+
+// const name = prompt("Введи ім'я:");
+// const age = prompt("Введи вік:");
+
+// const dataUser = {
+//   name,
+//   age: Number(age),
+// };
+// const toJson = JSON.stringify(dataUser);
+// localStorage.setItem("userData", toJson);
+
+// try {
+//   const toJs = JSON.parse(toJson);
+//   console.log(toJs);
+// } catch (error) {
+//   console.log(error.name);
+// }
+
+//! 🔥 Рівень 1 — Найлегші задачі (без localStorage)
+
+// 🟡 Завдання 1 — Один об’єкт
+// 	1.	Запитай у користувача ім’я
+// 	2.	Створи об’єкт із цим ім’ям
+// 	3.	Виведи об’єкт у консоль
+
+// 🧠 Підказка:
+// 	•	масив []
+// 	•	push або одразу [{}]
+
+// const nameEl = prompt(`Your name?`);
+
+// const myMasive = [];
+// myMasive.push({ name: nameEl });
+
+// console.log("🚀 ~ myMasive:", myMasive);
+
+//! 🟡 Завдання 2 — Два поля в об’єкті
+// 	1.	Запитай ім’я і вік
+// 	2.	Створи об’єкт { name, age }
+// 	3.	Перетвори його в JSON і виведи результат в консоль
+
+// 🧠 Підказка:
+// 	•	JSON.stringify(obj)
+
+// const nameEl = prompt(`Name`);
+// const ageEl = prompt(`Age`);
+
+// const myMassive = JSON.stringify({ name: nameEl, age: ageEl });
+// console.log("🚀 ~ myMassive:", myMassive);
+
+//! 🔥 Рівень 2 — Масиви об’єктів
+
+// 	1.	Запитай у користувача ім’я та номер телефону
+// 	2.	Додай цей контакт у масив contacts
+// 	3.	Виведи масив у консоль
+// 	4.	Ще не треба localStorage
+
+// 💡 Підказка:
+// 	•	масив спочатку порожній: let contacts = []
+// 	•	кожен контакт — об’єкт { name, phone }
+// 	•	використовуй push
+
+// const nameEl = prompt(`Name`);
+// const phoneEl = prompt(`Phone`);
+
+// let contactList = [];
+// contactList.push({ name: nameEl, phone: phoneEl });
+
+// // console.log("🚀 ~ contactList:", contactList);
+
+// //! 🟢 Завдання 2 — Перетворення у JSON
+// // 	1.	Візьми масив контактів із попередньої задачі
+// // 	2.	Перетвори його у JSON-рядок
+// // 	3.	Виведи JSON у консоль
+// // 	4.	Потім розпакуй JSON назад у масив і виведи його
+
+// // 💡 Підказка:
+// // 	•	JSON.stringify() → рядок
+// // 	•	JSON.parse() → назад у масив/об’єкт
+
+// const toJson = JSON.stringify(contactList);
 // console.log("🚀 ~ toJson:", toJson);
 
-try {
-  const toJs = JSON.parse(toJson);
-} catch (error) {
-  console.log("⚠ JSON is not valid!");
-  console.log(error.name);
-}
+// const toJs = JSON.parse(toJson);
+// console.log("🚀 ~ toJs:", toJs);
+
+//! 🔥 Рівень 3 — Масиви об’єктів + localStorage
+
+// 🔵 Завдання 1 — Книга контактів з localStorage (повна версія)
+// 	1.	Створи масив контактів із localStorage, якщо він уже існує, або порожній, якщо ні.
+// 	2.	Запитай користувача про ім’я та телефон.
+// 	3.	Додай новий контакт у масив.
+// 	4.	Збережи масив у localStorage у вигляді JSON.
+// 	5.	Виведи всі контакти в консоль.
+
+// 💡 Підказка:
+// 	•	Ключ у localStorage: "contactList"
+// 	•	Перевірка: let contacts = JSON.parse(localStorage.getItem("contactList")) || [];
+// 	•	Збереження: localStorage.setItem("contactList", JSON.stringify(contacts))
+
+// const contactsList = [];
+
+// const nameEl = prompt(`Name`);
+// const phoneEl = prompt(`Phone`);
+
+// contactsList.push({ name: nameEl, phone: phoneEl });
+
+// const toJson = JSON.stringify(contactsList);
+
+// localStorage.setItem("contactsList", toJson);
+
+// const show = localStorage.getItem("contactsList");
+// console.log("🚀 ~ show:", show);
+
+//!🔹 Рівень 1 — Просте зберігання даних
+
+// 	1.	Запитай у користувача його улюблений колір (prompt).
+// 	2.	Збережи цей колір у localStorage під ключем "favoriteColor".
+// 	3.	Прочитай його назад і виведи в консоль.
+
+// const prom = prompt(`color`);
+
+// localStorage.setItem("box", prom);
+
+// const lookGet = localStorage.getItem("box");
+// console.log("🚀 ~ lookGet:", lookGet);
+
+//! 🔹 Завдання — Список улюблених фруктів
+
+// Умова:
+// 	1.	Створи масив порожній: fruits = [].
+// 	2.	Запитай користувача через prompt, який фрукт він хоче додати.
+// 	3.	Додай фрукт у масив.
+
+// 	4.	Збережи масив у localStorage під ключем "fruits".
+
+// 	5.	Прочитай масив із localStorage і виведи в консоль весь список фруктів.
+// 	6.	Кожного разу, коли користувач додає новий фрукт, він повинен додаватися до списку, а не перезаписувати його.
+
+// // Отримуємо масив із localStorage або створюємо новий
+// let fruits = JSON.parse(localStorage.getItem("storage")) || [];
+// console.log("🚀 ~ fruits:", fruits);
+
+// // Запитуємо новий фрукт
+// const asK = prompt("What fruit add?");
+// fruits.push(asK);
+
+// // Зберігаємо масив у localStorage як JSON
+// localStorage.setItem("storage", JSON.stringify(fruits));
+
+// // Прочитуємо масив назад і виводимо
+// const lool = JSON.parse(localStorage.getItem("storage"));
+// console.log("🚀 ~ lool:", lool);
+
+//! 🔹 Завдання — Список улюблених книг
+// 	1.	Створи масив books (спочатку пустий або візьми зі сховища, якщо вже збережений).
+// 	2.	Запитай користувача через prompt, яку книгу він хоче додати.
+// 	3.	Додай книгу у масив.
+// 	4.	Збережи масив у localStorage під ключем "books".
+// 	5.	Прочитай масив із localStorage і виведи весь список у консоль.
+// 	6.	Кожного разу нова книга повинна додаватися до списку, а не перезаписувати старі книги.
+
+// let storageEl = JSON.parse(localStorage.getItem("storage1")) || [];
+
+// const asK = prompt("What book?");
+// storageEl.push(asK);
+
+// localStorage.setItem("storage1", JSON.stringify(storageEl));
+
+// const lookBook = JSON.parse(localStorage.getItem("storage1"));
+// console.log("🚀 ~ lookBook:", lookBook);
+
+//! 🔹 Завдання — Список контактів (ім’я + телефон)
+// 	1.	Створи масив contacts (спочатку порожній або візьми зі сховища, якщо він вже збережений).
+// 	2.	Запитай користувача через prompt:
+// 	•	ім’я контакту
+// 	•	телефон контакту
+
+// 3.	Додай новий контакт у масив у вигляді об’єкта:
+// { name: "ім’я", phone: "телефон" }
+
+// 	4.	Збережи масив у localStorage під ключем "contacts".
+// 	5.	Прочитай масив із localStorage і виведи всі контакти у консоль.
+// 	6.	Кожного разу новий контакт повинен додаватися до списку, а не перезаписувати старі контакти.
+
+// let myMassive = JSON.parse(localStorage.getItem("storage2")) || [];
+
+// const nameEl = prompt("What name?");
+// const phoneEl = prompt("What number?");
+
+// myMassive.push({ name: nameEl, phone: phoneEl });
+
+// localStorage.setItem("storage2", JSON.stringify(myMassive));
+
+// const look = JSON.parse(localStorage.getItem("storage2"));
+// console.log("🚀 ~ look:", look);
+
+//  прибираємо сторадж
+// localStorage.removeItem("storage1");
+
+// const look2 = localStorage.getItem("storage1");
+// console.log("🚀 ~ look2:", look2);
+
+//! 🔹 Частина 1 — Створення масиву контактів
+// 1.	Створи масив контактів (масив об’єктів { name, phone }) або візьми зі сховища, якщо він уже є.
+// 2.	Запитай користувача ім’я та номер телефону через prompt.
+// 3.	Додай контакт у масив.
+// 4.	Збережи масив у localStorage під ключем "contacts".
+// 5.	Виведи весь масив у консоль.
+
+// 🔹 Частина 2 — Видалення контакту
+// 	1.	Запитай у користувача ім’я контакту, який він хоче видалити.
+// 	2.	Видали контакт із масиву за допомогою filter.
+// 	3.	Збережи оновлений масив у localStorage.
+// 	4.	Виведи результат у консоль.
+
+// let storageEl = JSON.parse(localStorage.getItem("storage3")) || [];
+
+// // const nameEl = prompt("What your name?");
+// // const phoneEl = prompt("What your phone?");
+// // storageEl.push({ name: nameEl, phone: phoneEl });
+
+// // localStorage.setItem("storage3", JSON.stringify(storageEl));
+
+// const look = JSON.parse(localStorage.getItem("storage3"));
+// console.log("🚀 ~ look:", look);
+
+// const askDelete = prompt("What phone delete");
+
+// // Видаляємо контакт, номер якого ввів користувач
+// storageEl = storageEl.filter((el) => el.name !== askDelete);
+
+// // Зберігаємо оновлений масив у localStorage
+// localStorage.setItem("storage3", JSON.stringify(storageEl));
+
+//! 🔹 Задача 1 — Список улюблених фільмів
+// 	1.	Створи масив movies (порожній або візьми зі сховища).
+
+// 	2.	Запитай користувача через prompt, який фільм він хоче додати.
+// 	3.	Додай фільм у масив.
+
+// 	4.	Збережи масив у localStorage під ключем "movies".
+
+// 	5.	Виведи весь список у консоль.
+// 	6.	Додай можливість видалити фільм по назві.
+
+// let movies = JSON.parse(localStorage.getItem("storage")) || [];
+
+// const askFilm = prompt(`What film add?`);
+// movies.push(askFilm);
+
+// localStorage.setItem("storage", JSON.stringify(movies));
+
+// const look = JSON.parse(localStorage.getItem("storage"));
+// console.log("🚀 ~ look:", look);
+
+// const askDelete = prompt(`Delete?`);
+
+// movies = movies.filter((el) => el !== askDelete);
+// localStorage.setItem("storage", JSON.stringify(movies));
+
+//! 🔹 Завдання — Список контактів із видаленням
+// 	1.	Створи масив contacts (спочатку порожній або візьми зі сховища localStorage).
+// 	2.	Запитай користувача через prompt:
+// 	•	ім’я контакту (name)
+// 	•	номер телефону (phone)
+// 3.	Додай новий контакт у масив як об’єкт:
+// { name: "ім’я", phone: "номер" }
+//   	4.	Збережи масив у localStorage під ключем "contacts".
+// 	5.	Виведи весь список контактів у консоль.
+// 	6.	Потім запитай у користувача, який контакт він хоче видалити по імені.
+// 	7.	Видали контакт із масиву за допомогою filter.
+// 	8.	Збережи оновлений масив у localStorage та виведи його.
+
+let contactList = JSON.parse(localStorage.getItem("storage")) || [];
+
+//* Додавання
+// const askName = prompt(`Give your name`);
+// const askPhone = prompt(`Give your number`);
+// contactList.push({ name: askName, phone: askPhone });
+
+// localStorage.setItem("storage", JSON.stringify(contactList));
+
+// const look = JSON.parse(localStorage.getItem("storage"));
+// console.log("🚀 ~ look:", look);
+
+//! видалення
+// const askDelete = prompt(`Name phone for delete`);
+
+// contactList = contactList.filter((el) => el.name !== askDelete);
+
+// localStorage.setItem("storage", JSON.stringify(contactList));
+
+// const look2 = JSON.parse(localStorage.getItem("storage"));
+// console.log("🚀 ~ look2:", look2);
+
+//! 🔹 Завдання — Безпечне читання JSON
+// 	1.	Створи функцію safeParse(jsonString), яка:
+// 	•	Приймає рядок jsonString
+// 	•	Повертає об’єкт, якщо рядок валідний JSON
+// 	•	Якщо рядок невалідний, виводить помилку в консоль і повертає null
+// 	2.	Перевір функцію на таких прикладах:
+
+// function safeParse(jsonString) {
+//   try {
+//     return JSON.parse(jsonString);
+//   } catch (error) {
+//     // console.log(error.name);
+//     return null;
+//   }
+// }
+
+// console.log(safeParse('{"name":"Anna","age":25}')); // має повернути об’єкт
+// console.log(safeParse('{name:"Anna",age:25}')); // має вивести помилку і повернути null
+
+//! 🔹 Завдання — Безпечний список справ (todo list)
+// 	1.	Створи масив tasks у localStorage під ключем "tasks".
+// 	2.	Користувач вводить нове завдання через prompt і ми додаємо його у масив.
+// 	3.	Збережи масив у localStorage у вигляді JSON.
+// 	4.	При читанні списку з localStorage використай функцію safeParse, щоб уникнути помилок, якщо JSON некоректний.
+// 	5.	Виведи весь список справ у консоль.
+
+// let myMassive = JSON.parse(localStorage.getItem("storageKey")) || [];
+
+//* Додавання
+// const askEl = prompt("New Todo");
+// myMassive.push(askEl);
+
+// localStorage.setItem("storageKey", JSON.stringify(myMassive));
+
+// try {
+//   console.log(JSON.parse(localStorage.getItem("storageKey")));
+// } catch (error) {
+//   console.log(error.name);
+// }
+
+//! видалення
+// const askDelete = prompt(`Delete?`);
+
+// myMassive = myMassive.filter((el) => el !== askDelete);
+
+// localStorage.setItem("storageKey", JSON.stringify(myMassive));
+
+// const look2 = JSON.parse(localStorage.getItem("storageKey"));
+// console.log("🚀 ~ look2:", look2);
+
+// !Zadacha
+// Знайдіть перший елемент з класом highlight // та виведіть його текст у
+//   консоль  Ваш код тут:
+// const searchClas = document.querySelector(".highlight");
+// console.log(searchClas.textContent);
+
+// ! Zadacha 2
+// Підрахуйте кількість виконаних завдань (з класом completed)
+// та виведіть результат у елемент з id="count"
+
+// const searchClas = document.querySelectorAll(".completed");
+// const show = document.querySelector("#count");
+// show.textContent = searchClas.length;
+
+// //! Змініть текст кнопки на "Clicked!" при натисканні
+// const searchClas = document.querySelector("#myButton");
+// searchClas.textContent = "Clicked!";
+
+//! Задача 5 (середня)
+// Виведіть у консоль textContent та innerHTML елемента #content
+// Поясніть різницю між ними // Ваш код тут:
+
+// const item1 = document.querySelector("#content");
+// console.log(item1.textContent);
+
+// console.log(item1.innerHTML);
+
+// CSS класи на DOM-елементах
+
+// !
+// При натисканні на кнопку перемикайте класи // light-theme та dark-theme на
+// елементі #page
+
+// const item1 = document.querySelector("#themeToggle");
+
+// const item2 = document.querySelector("#page");
+
+// item1.addEventListener("click", () => {
+//   document.body.classList.toggle("dark-theme");
+
+//   item2.classList.toggle("dark-theme");
+// });
+
+// ! Список покупок із цінами
+// •	prompt: назва товару + ціна
+// •	Зберігати як масив об’єктів:
+// •	Видалення по title
+// // •	Показати загальну суму всіх товарів
+
+// // * Запис
+// let memory = JSON.parse(localStorage.getItem("storage")) || [];
+
+// // const ask1 = prompt(`Товар`);
+// // const ask2 = prompt(`Ціна`);
+// // memory.push({ Товар: ask1, Ціна: ask2 });
+
+// localStorage.setItem("storage", JSON.stringify(memory));
+
+// // const look = JSON.parse(localStorage.getItem("storage"));
+// // console.log("🚀 ~ look:", look);
+
+// // ? Видалення
+// const ask3 = prompt(`Назва для видалення?`);
+
+// memory = memory.filter((el) => el.Товар !== ask3);
+
+// localStorage.setItem("storage", JSON.stringify(memory));
+
+// const look2 = JSON.parse(localStorage.getItem("storage"));
+// console.log("🚀 ~ look2:", look2);
