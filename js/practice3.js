@@ -2203,3 +2203,433 @@ let contactList = JSON.parse(localStorage.getItem("storage")) || [];
 
 // const look2 = JSON.parse(localStorage.getItem("storage"));
 // console.log("🚀 ~ look2:", look2);
+
+// ! ✏️ Завдання 1: Список покупок
+// 	1.	Користувач вводить назву товару через prompt.
+// 	2.	Додай товар у масив (який зберігається в localStorage під ключем "shoppingList").
+// 	3.	Перетвори масив у JSON та збережи назад у localStorage.
+// 	4.	Виведи оновлений список у консоль.
+
+// let memory = JSON.parse(localStorage.getItem("storage")) || [];
+
+// const askPro = prompt(`Name product?`);
+// memory.push(askPro);
+
+// localStorage.setItem("storage", JSON.stringify(memory));
+
+// const look = JSON.parse(localStorage.getItem("storage"));
+// console.log("🚀 ~ look:", look);
+
+// Delete
+
+// const askDelete = prompt(`What delete?`);
+
+// memory = memory.filter((el) => el !== askDelete);
+// localStorage.setItem("storage", JSON.stringify(memory));
+
+// const look2 = JSON.parse(localStorage.getItem("storage"));
+// console.log("🚀 ~ look2:", look2);
+
+// !
+
+// const item1 = document.querySelector("#btn1");
+// const item2 = document.querySelector("#text1");
+
+// item1.addEventListener("click", () => {
+//   item2.textContent = `CinaZas`;
+// });
+
+// !
+
+// const item1 = document.querySelector("#input2");
+
+// item1.addEventListener("blur", (event) => {
+//   console.log(item1.value);
+//   item1.value = "";
+// });
+
+// ! 4️⃣ Submit → не перезавантажувати і вивести значення
+
+// const item1 = document.querySelector("#form4");
+
+// item1.addEventListener("submit", (event) => {
+//   event.preventDefault();
+
+//   const inputEl = event.target.elements.username.value;
+//   console.log(inputEl);
+// });
+
+//!
+
+// const item1 = document.querySelector("#box5");
+
+// item1.addEventListener("click", (event) => {
+//   event.target.style.background = "red";
+// });
+
+// ! 6️⃣ Лічильник кнопок
+
+// const item1 = document.querySelector("#minus6");
+// const item2 = document.querySelector("#counter6");
+// const item3 = document.querySelector("#plus6");
+// const item4 = document.querySelector("#reset6");
+
+// let counter = 0;
+
+// item1.addEventListener("click", () => {
+//   item2.textContent = --counter;
+// });
+
+// item3.addEventListener("click", () => {
+//   item2.textContent = ++counter;
+// });
+
+// item4.addEventListener("click", () => {
+//   counter = 0;
+//   item2.textContent = counter;
+// });
+
+// !
+// const item1 = document.querySelector("#list7");
+
+// item1.addEventListener("click", (event) => {
+//   if (event.target.tagName === "LI") {
+//     event.target.remove();
+//   }
+// });
+
+// !
+
+// const item1 = document.querySelector("#add9");
+// const item2 = document.querySelector("#list9");
+
+// item1.addEventListener("click", () => {
+//   //   const newLi = document.createElement("li");
+//   //   newLi.textContent = `New item`;
+//   //   item2.append(newLi);
+
+//     //! Var 2
+// //   item2.insertAdjacentHTML("beforeend", `<li>New Item</li>`);
+// });
+
+// !
+
+// document.addEventListener("keydown", (event) => {
+//   if (event.key === "ArrowUp") {
+//     console.log(`KeyUp`);
+//   }
+// });
+
+// document.addEventListener("keydown", (event) => {
+//   if (event.key === "ArrowDown") {
+//     console.log(`KeyDown`);
+//   }
+// });
+
+// !
+// const item1 = document.querySelector("#input11");
+// const item2 = document.querySelector("#warning11");
+
+// item1.addEventListener("input", (event) => {
+//   const value = event.target.value;
+
+//   if (/\b/.test(value)) {
+//     item2.textContent = `ЧИСЛО!`;
+//   } else {
+//     item2.textContent = `Все ок!!!`;
+//   }
+// });
+
+// !1️⃣ Зберегти список справ у localStorage
+
+// Умова:
+// Користувач вводить через prompt одну справу.
+// Додай її у масив у localStorage під ключем "todos".
+
+// Що потрібно зробити:
+// 	•	витягнути існуючий масив або створити новий
+// 	•	додати нову справу
+// 	•	перезаписати назад через JSON.stringify()
+
+//? add
+// let memory = JSON.parse(localStorage.getItem("storage")) || [];
+
+// const askTodo = prompt(`Todo-List`);
+// memory.push(askTodo);
+
+// localStorage.setItem("storage", JSON.stringify(memory));
+
+// const lookList1 = JSON.parse(localStorage.getItem("storage"));
+// console.log("🚀 ~ lookList1:", lookList1);
+
+// ? delete
+
+// const look2 = JSON.parse(localStorage.getItem("storage"));
+
+// const askDelete = prompt(`What you want delete?`);
+// memory = memory.filter((el) => el !== askDelete);
+
+// localStorage.setItem("storage", JSON.stringify(memory));
+
+// const look3 = JSON.parse(localStorage.getItem("storage"));
+// console.log("🚀 ~ look3:", look3);
+
+// ! Галерея
+// 1.	Створи масив із 3 об’єктами:
+//	2.	На сторінці має бути <ul class="gallery"></ul>.
+// 	3.	Джаваскриптом перебери масив і всередину <ul> додай 3 картинки у <li>:
+
+// const images = [
+//   {
+//     src: "https://images.unsplash.com/photo-1629897048514-3dd7414fe72a?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//     alt: "Картинка 1",
+//     full: "https://images.unsplash.com/photo-1604430096113-f3806ab7c810?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // велика картинка
+//   },
+//   {
+//     src: "https://images.unsplash.com/photo-1557323137-bd6bd20fe022?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//     alt: "Картинка 2",
+//     full: "https://images.unsplash.com/photo-1559246082-db96ed0eae0f?q=80&w=1072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//   },
+//   {
+//     src: "https://images.unsplash.com/photo-1506244856291-8910ea843e81?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//     alt: "Картинка 3",
+//     full: "https://images.unsplash.com/photo-1686914687902-e58579225e84?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//   },
+// ];
+
+// const galleryUl = document.querySelector(".gallery");
+
+// const organaize = images.map((el) => {
+//   galleryUl.insertAdjacentHTML(
+//     "beforeend",
+//     `<li><img src="${el.src}" alt="${el.alt}"></li>`
+//   );
+// });
+
+// images.forEach((el) => {
+//   galleryUl.insertAdjacentHTML(
+//     "beforeend",
+//     `<li><img src="${el.src}" alt="${el.alt}" data-full="${el.full}"></li>`
+//   );
+// });
+
+// Клік по картинці (просто логіка)
+// 	1.	Продовжуй попередню задачу.
+// 	2.	Додай слухача на .gallery (делегування).
+// 	3.	Якщо клікнули по <img> — в консоль виведи ALT картинки.
+// console.log(event.target.alt);
+
+// galleryUl.addEventListener("click", (event) => {
+//   if (event.target.tagName !== "IMG") return;
+
+//   // Створюємо і показуємо модалку
+//   const instance = basicLightbox.create(`
+//     <img src="${event.target.dataset.full}" alt="${event.target.alt}">
+//   `);
+//   instance.show();
+// });
+
+// ! Галерея 2
+
+// const galleryMassiv = [
+//   {
+//     preview:
+//       "https://images.unsplash.com/photo-1608506436795-af65d01305bf?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//     full: "https://images.unsplash.com/photo-1462396881884-de2c07cb95ed?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//     alt: "pic1",
+//   },
+//   {
+//     preview:
+//       "https://plus.unsplash.com/premium_photo-1664391794673-579cf6d65f79?q=80&w=935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//     full: "https://images.unsplash.com/photo-1614972973290-3b2f6f6cab49?q=80&w=921&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//     alt: "pic2",
+//   },
+//   {
+//     preview:
+//       "https://images.unsplash.com/photo-1705624843697-4461f9dce482?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//     full: "https://images.unsplash.com/photo-1635716983858-c061845471b6?q=80&w=827&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//     alt: "pic3",
+//   },
+// ];
+
+// const gallery = document.querySelector(".gallery");
+
+// galleryMassiv.forEach((el) => {
+//   gallery.insertAdjacentHTML(
+//     "beforeend",
+//     `    <li>
+//       <img src="${el.preview}" data-big="${el.full}" alt="${el.alt}"/>
+//     </li>`
+//   );
+// });
+
+// gallery.addEventListener("click", (event) => {
+//   if (event.target.tagName !== "IMG") return;
+
+//   const full = event.target.dataset.full;
+
+//   const biblioteca = basicLightbox.create(
+//     `<img src="${event.target.dataset.full}" alt="${event.target.alt}" />`
+//   );
+
+//   biblioteca.show();
+// });
+
+// !
+//  Умови задачі:
+//? 	1.	Під час вводу (input event):
+// 	•	якщо поле порожнє — під полем показувати червоне повідомлення: “Поле обов’язкове”
+// 	•	якщо поле заповнене — повідомлення зникати
+//? 	2.	Для email
+// Перевіряй валідність регуляркою:
+// /^\S+@\S+\.\S+$/
+// Якщо email неправильний — показувати помилку: “Некоректний email”
+//? 	3.	Для пароля
+// Під час вводу показувати підказку:
+// 	•	якщо < 6 символів → “Мінімум 6 символів”
+// 	•	якщо ок → помилки нема
+//? 	4.	Подія submit
+// 	•	Заборонити стандартну поведінку (event.preventDefault())
+// 	•	Якщо є хоча б одна помилка → під формою показати:
+//  “Форма містить помилки”
+// 	•	Якщо все валідно → під формою показати:
+//  “Успіх! Дані відправлено.”
+//? 	5.	Додатковий бонус (необовʼязково):
+// 	•	На focus підсвічувати рамку поля синім
+// 	•	На blur — повертати стандартну рамку
+
+// const form = document.querySelector("#registerForm");
+
+// const inputName = document.querySelector("#nameInput");
+// const inputEmail = document.querySelector("#emailInput");
+// const inputPass = document.querySelector("#passwordInput");
+
+// const errorName = document.querySelector("#nameError");
+// const errorEmail = document.querySelector("#emailError");
+// const errorPass = document.querySelector("#passwordError");
+
+// const formMessage = document.querySelector("#formMessage");
+
+// inputName.addEventListener("blur", (event) => {
+//   if (event.target.value.trim() === "") {
+//     errorName.textContent = `Заповни поле ім’я`;
+//     errorName.style.color = "red";
+//   } else {
+//     errorName.textContent = `correct`;
+//     errorName.style.color = "green";
+//   }
+// });
+
+// inputEmail.addEventListener("blur", (event) => {
+//   if (event.target.value.trim() === "") {
+//     errorEmail.textContent = `Заповни поле пошта`;
+//     errorEmail.style.color = "red";
+//   } else if (event.target.value.includes("@")) {
+//     errorEmail.textContent = `Емейл Ok`;
+//     errorEmail.style.color = "green";
+//   } else {
+//     errorEmail.textContent = `Помилка - напиши нормально`;
+//     errorEmail.style.color = "red";
+//   }
+// });
+
+// inputPass.addEventListener("blur", (event) => {
+//   if (event.target.value.length < 6) {
+//     errorPass.textContent = `Закороткий пароль`;
+//     errorPass.style.color = "red";
+//   } else {
+//     errorPass.textContent = `Norm пароль`;
+//     errorPass.style.color = "green";
+//   }
+// });
+
+//? 	4.	Подія submit
+// 	•	Заборонити стандартну поведінку (event.preventDefault())
+// 	•	Якщо є хоча б одна помилка → під формою показати:
+//  “Форма містить помилки”
+// 	•	Якщо все валідно → під формою показати:
+//  “Успіх! Дані відправлено.”
+
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault();
+
+//   let hasError = false;
+
+//   // Перевіряємо кожне поле на помилку
+//   if (errorName.style.color === "red") {
+//     hasError = true;
+//   }
+//   if (errorEmail.style.color === "red") {
+//     hasError = true;
+//   }
+//   if (errorPass.style.color === "red") {
+//     hasError = true;
+//   }
+
+//   // Виводимо повідомлення під формою
+//   const formMessage = document.querySelector("#formMessage");
+
+//   if (hasError) {
+//     formMessage.textContent = "Форма містить помилки";
+//     formMessage.style.color = "red";
+//   } else {
+//     formMessage.textContent = "Успіх! Дані відправлено.";
+//     formMessage.style.color = "green";
+//   }
+// });
+
+// !
+
+// const formEl = document.querySelector("#simpleForm");
+
+// const inputNameEl = document.querySelector("#nameInput");
+// const messageName = document.querySelector("#nameError");
+
+// const inputEmailEl = document.querySelector("#emailInput");
+// const messageEmail = document.querySelector("#emailError");
+
+// const messageGlobal = document.querySelector("#formMessage");
+
+// inputNameEl.addEventListener("blur", (event) => {
+//   if (event.target.value.trim() === "") {
+//     messageName.textContent = `Пустий рядок`;
+//     messageName.style.color = "red";
+//   } else {
+//     messageName.textContent = `Good`;
+//     messageName.style.color = "green";
+//   }
+// });
+
+// inputEmailEl.addEventListener("blur", (event) => {
+//   if (event.target.value.trim() === "") {
+//     messageEmail.textContent = `Пустий рядок`;
+//     messageEmail.style.color = "red";
+//   } else if (!event.target.value.includes("@")) {
+//     messageEmail.textContent = `Не знайдено @`;
+//     messageEmail.style.color = "red";
+//   } else {
+//     messageEmail.textContent = `Good`;
+//     messageEmail.style.color = "green";
+//   }
+// });
+
+// formEl.addEventListener("submit", (event) => {
+//   event.preventDefault();
+
+//   let hasError = false;
+
+//   if (messageName.style.color === "red") {
+//     hasError = true;
+//   } else if (messageEmail.style.color === "red") {
+//     hasError = true;
+//   }
+
+//   if (hasError) {
+//     messageGlobal.textContent = `Є помилка`;
+//     messageGlobal.style.color = "red";
+//   } else {
+//     messageGlobal.textContent = `Все добре`;
+//     messageGlobal.style.color = "green";
+//     formEl.reset();
+//   }
+// });
