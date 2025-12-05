@@ -2633,3 +2633,122 @@ let contactList = JSON.parse(localStorage.getItem("storage")) || [];
 //     formEl.reset();
 //   }
 // });
+
+// !🟦 Задачі на змінні, типи даних
+
+// // ? Створи змінну age. Якщо age < 18, виведи “Доступ заборонено”, інакше — “Ласкаво просимо”.
+// const age = 17;
+// if (age < 18) {
+//   console.log("Доступ заборонено");
+// } else {
+//   console.log("“Ласкаво просимо”");
+// }
+
+// // ? Є число x. Перевір, чи є воно парним.
+// function numChecker(num) {
+//   if (num % 2 !== 0) {
+//     return "Число не парне";
+//   } else {
+//     return "Парне";
+//   }
+// }
+// console.log(numChecker(2));
+// console.log(numChecker(1));
+
+// // ? Дано рядок. Перевір, чи містить він слово "hello" (нечутливо до регістру).
+// function wordChecker(word) {
+//   if (word.toLowerCase().includes("hello")) {
+//     return "Містить слово Хелоу";
+//   } else {
+//     return "Не містить слово Хелоу";
+//   }
+// }
+
+// console.log(wordChecker("I am Dima"));
+// console.log(wordChecker("Hello ,I am Dima"));
+
+// // ? Напиши код, який перевіряє, чи є змінна value числом.
+// function checker(numb) {
+//   if (typeof numb === "number") {
+//     return "Its Number";
+//   } else {
+//     return "NOT Number";
+//   }
+// }
+// console.log(checker(10));
+// console.log(checker("Hello!"));
+
+// // ? Є масив чисел. Знайди мінімальне і максимальне число.
+// const numberss = [0, 78, 23, 40, 12, 3, 8, 4, 44];
+
+// const one = numberss.reduce((accu, el) => {
+//   if (accu < el) {
+//     return accu + el;
+//   }
+//   return accu;
+// }, 0);
+// console.log("🚀 ~ one:", one);
+
+// const two = numberss.reduce((accu, el) => {
+//   if (accu > el) {
+//     return accu + el;
+//   }
+//   return accu;
+// }, 0);
+// console.log("🚀 ~ two:", two);
+
+//! 🟩 Задачі на цикли та масиви
+// // 	6.	Є масив. Виведи лише парні елементи.
+// const massiv = [2, 3, 4, 0, 1, 2, 9, 7, 6];
+
+// // prettier-ignore
+// const look = massiv
+//     .filter((el) => el % 2 === 0)
+//     .toSorted((a, b) => a - b);
+// console.log("🚀 ~ look:", look);
+
+//! 	7.	Є масив рядків. Зроби з нього масив їх довжин.
+// const word = ["Its my text"];
+// const res = word.map((el) => el.length);
+// console.log("🚀 ~ res:", res);
+
+//! 	8.	Напиши цикл, який виведе всі числа від 100 до 0 з кроком -5.
+// for (let i = 100; i >= 0; i -= 5) {
+//   console.log(i);
+// }
+
+//! 	9.	Є масив чисел. Обчисли суму всіх елементів.
+// const masiv = [8, 723, 434];
+
+// const result = masiv.reduce((accu, el) => {
+//   return accu + el;
+// }, 0);
+// console.log("🚀 ~ result:", result);
+
+//! 	10.	Розверни масив без використання reverse().
+// const word = ["Hello"];
+
+// const result = word.join("").split("").toReversed().join("");
+// console.log("🚀 ~ result:", result);
+
+//! 🟧 Задачі на функції
+
+//! 	11.	Функція приймає два числа. Поверни більше з них.
+// function numberChecker(a, b) {
+//   return Math.max(a, b);
+// }
+// console.log(numberChecker(4, 9));
+
+// !	12.	Функція приймає рядок і повертає такий самий, але з великої літери.
+// function textTransform(word) {
+//   if (!word) return ""; // на випадок пустого рядка
+
+//   return word[0].toUpperCase() + word.slice(1);
+// }
+
+// console.log(textTransform("hello")); // "Hello"
+// console.log(textTransform("world")); // "World"
+
+// 	!13.	Функція приймає масив і повертає новий масив без дублюючих значень.
+// 	!14.	Функція приймає рядок — перевір, чи він паліндром.
+// 	!15.	Функція приймає число — поверни суму цифр цього числа.
