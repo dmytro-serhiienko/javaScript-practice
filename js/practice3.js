@@ -2,6 +2,8 @@
 
 // const { createElement } = require("react");
 
+// const { createElement } = require("react");
+
 // 	•	Повісити одну подію click на <ul>, щоб при кліку на будь-який <li> виводити його текст у консоль.
 // 	•	Не додавати click на кожен <li> окремо.
 
@@ -3514,26 +3516,212 @@ let contactList = JSON.parse(localStorage.getItem("storage")) || [];
 // 	4.	.catch має зловити помилку
 // 	5.	.finally має вивести "Done"
 
-const pro = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(10);
-  }, 1000);
-})
-  .then((result) => {
-    return result / 2;
-  })
-  .then((result) => {
-    return result * 3;
-  })
-  .then((result) => {
-    return new Promise((resolve, reject) => {
-      if (result > 10) {
-        reject("Too big");
-      } else {
-        resolve(result);
-      }
-    });
-  })
-  .catch((error) => {
-    console.log("Error:", error);
-  });
+// const pro = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve(10);
+//   }, 1000);
+// })
+//   .then((result) => {
+//     return result / 2;
+//   })
+//   .then((result) => {
+//     return result * 3;
+//   })
+//   .then((result) => {
+//     return new Promise((resolve, reject) => {
+//       if (result > 10) {
+//         reject("Too big");
+//       } else {
+//         resolve(result);
+//       }
+//     });
+//   })
+//   .catch((error) => {
+//     console.log("Error:", error);
+//   });
+
+//! ✅ Задача 2: Reject всередині then
+// Створи Promise, який повертає "ok".
+// У першому .then зроби:
+// 	•	якщо значення === “ok” → виклич reject("bad value")
+
+// Потім .catch має вивести "bad value".
+
+// const pro = new Promise((resolve, reject) => {
+//   resolve("ok");
+// })
+//   .then((result) => {
+//     if (result === "ok") {
+//       return Promise.reject("bad value");
+//     }
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+
+//! ✅ Задача 3: Умовний ланцюжок
+// Створи Promise, який повертає число 7.
+
+// У .then:
+// 	•	якщо число парне → поверни "even"
+// 	•	якщо непарне → поверни "odd"
+
+// У наступному .then виведи результат ("odd").
+
+// const pro = new Promise((resolve, reject) => {
+//   resolve(3);
+// })
+//   .then((result) => {
+//     if (result % 2 === 0) {
+//       return "even";
+//     } else {
+//       return "odd";
+//     }
+//   })
+//   .then((result) => {
+//     console.log(result);
+//   });
+
+//! ✅ Задача 4: Імітація завантаження
+// Створи функцію:
+// Яка через 1 секунду повертає:
+// "Loaded: " + name
+
+// function loadFile(name) {
+//   const promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log(`Loaded: ${name}`);
+//     }, 1000);
+//   });
+// }
+
+// loadFile("Bob");
+
+//! ✅ Задача 5: Ланцюжок з setTimeout у середині
+// Створи Promise, який повертає число 3.
+
+// У наступному .then поверни новий Promise із setTimeout на 1 секунду, який повертає число * 4.
+
+// Потім у наступному .then виведи результат: 12.
+
+// const promise = new Promise((resolve, reject) => {
+//   resolve(3);
+// })
+//   .then((num) => {
+//     return new Promise((resolve) => {
+//       setTimeout(() => {
+//         resolve(num * 4);
+//       }, 1000);
+//     });
+//   })
+//   .then((result) => {
+//     console.log(result);
+//   });
+
+//! Задачки для практики (починай з №1):
+
+// Напиши функцію delay(ms), яка повертає проміс, що резолвиться через ms мілісекунд.
+// Потім виклич її так:
+
+// function delay(ms) {
+//   return new Promise((resolve) => {
+//     setTimeout(resolve, ms);
+//   });
+// }
+
+// delay(2000).then(() => console.log("пройшло 2 секунди"));
+
+// ! Зроби так, щоб спочатку вивелося «1», через 1 секунду — «2», ще через 1 секунду — «3».
+// Використовуй проміси + setTimeout (без async/await поки що).
+
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     console.log(1);
+//     resolve();
+//   }, 1000);
+// }).then(() => {
+//   return new Promise.resolve(() => {
+//     setTimeout(() => {
+//       console.log(2);
+//     }, 2000);
+//   });
+// });
+
+// *******
+// Promise.resolve()
+//   .then(() => {
+//     return new Promise((res) =>
+//       setTimeout(() => {
+//         console.log(1);
+//         res();
+//       }, 1000)
+//     );
+//   })
+//   .then(() => {
+//     return new Promise((res) =>
+//       setTimeout(() => {
+//         console.log(2);
+//         res();
+//       }, 2000)
+//     );
+//   });
+
+// ! DOM
+// const itemPlus = document.querySelector("#increment");
+// const itemMinus = document.querySelector("#decrement");
+// const resultShow = document.querySelector("#count");
+
+// let count = 0;
+
+// itemPlus.addEventListener("click", () => {
+//   count++;
+//   resultShow.textContent = count;
+// });
+
+// itemMinus.addEventListener("click", () => {
+//   if (resultShow.textContent <= 0) {
+//     resultShow.textContent = 0;
+//   } else {
+//     count--;
+//     resultShow.textContent = count;
+//   }
+// });
+
+//! Задача 2. Зміна кольору фону по кліку
+
+// const item1 = document.querySelector("#colorBox");
+
+// const btnEl = document.querySelector("#changeColor");
+
+// btnEl.addEventListener("click", () => {
+//   item1.style.background = "red";
+// });
+
+//! Задача 3. Список справ (додавання)
+
+// const item1 = document.querySelector("#taskInput");
+// const item2 = document.querySelector("#addTask");
+// const item3 = document.querySelector("#taskList");
+
+// !
+// item2.addEventListener("click", () => {
+//   item3.insertAdjacentHTML("beforeend", `<li>${item1.value}</li>`);
+// });
+
+// !
+
+// item2.addEventListener("click", () => {
+//   const newLi = document.createElement("li");
+//   newLi.textContent = item1.value;
+//   item3.append(newLi);
+// });
+
+//! Задача 4. Видалення елементів зі списку
+
+// const removeButtons = document.querySelectorAll(".remove");
+
+// removeButtons.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     button.parentElement.remove();
+//   });
+// });
