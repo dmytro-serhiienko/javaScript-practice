@@ -3725,3 +3725,503 @@ let contactList = JSON.parse(localStorage.getItem("storage")) || [];
 //     button.parentElement.remove();
 //   });
 // });
+
+//! Завдання: клік по .title відкриває/закриває .content тільки цього блоку.
+//! Відкриті блоки виділяти класом active.
+
+// Додай простий CSS для .modal {display:none} і .modal.active {display:block}.
+// Завдання: відкривати по кнопці, закривати по × і по кліку поза контентом.
+
+// const item1 = document.querySelector("#modal");
+
+// const item2 = document.querySelector("#openModal");
+
+// const item3 = document.querySelector(".close");
+
+// item2.addEventListener("click", () => {
+//   item1.classList.add("active");
+// });
+
+// item3.addEventListener("click", () => {
+//   item1.classList.remove("active");
+// });
+
+// !Завдання: при введенні тексту в інпут — показувати тільки ті
+//!  , які містять цей текст (регістронезалежно).
+
+// const item1 = document.querySelector("#search");
+
+// const item2 = document.querySelectorAll("#list > *");
+// console.log("🚀 ~ item2:", item2);
+
+// item1.addEventListener("input", (event) => {
+//   const toLower = event.target.value.toLowerCase().trim();
+
+//   item2.forEach((item) => {
+//     const itemText = item.textContent.toLowerCase();
+
+//     if (itemText.includes(toLower)) {
+//       item.style.display = ""; // показати (скинути стиль)
+//     } else {
+//       item.style.display = "none"; // сховати
+//     }
+//   });
+// });
+
+//! 🟢 Promise — базові
+// 1️⃣ Створення Promise
+
+// Створи Promise, який:
+// 	•	через 2 секунди виконується (resolve)
+// 	•	повертає рядок "Success"
+
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("Succes");
+//   }, 2000);
+// });
+
+// promise.then((result) => {
+//   console.log(result);
+// });
+
+//! 2️⃣ Reject
+// Створи Promise, який:
+// 	•	через 1 секунду відхиляється (reject)
+// 	•	повертає "Error occurred"
+// 	•	оброби помилку через .catch()
+
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject("Error occurred");
+//   }, 2000);
+// });
+
+// promise.catch((error) => {
+//   console.log(error);
+// });
+
+//! 3️⃣ then → then
+
+// Є Promise, що повертає число 5
+// 	•	у першому .then() помнож його на 2
+// 	•	у другому .then() додай 10
+// 	•	виведи результат
+
+// const promise = new Promise((resolve, reject) => {
+//   resolve("5");
+// })
+//   .then((num) => {
+//     return new Promise((resolve, reject) => {
+//       resolve(num * 2);
+//     });
+//   })
+//   .then((num) => {
+//     return new Promise((resolve, reject) => {
+//       resolve(num + 10);
+//     });
+//   });
+
+// promise.then((result) => {
+//   console.log(result);
+// });
+
+//! 🟡 Promise + умови
+// 4️⃣ Успіх або помилка
+
+// Створи функцію checkNumber(num):
+// 	•	якщо num > 10 → resolve("OK")
+// 	•	інакше → reject("Too small")
+
+// function checkNumber(num) {
+//   return new Promise((resolve, reject) => {
+//     if (num > 10) {
+//       resolve("OK");
+//     } else {
+//       reject("Too small");
+//     }
+//   });
+// }
+
+// checkNumber(15).then((resolve) => {
+//   console.log(resolve);
+// });
+
+// checkNumber(2).catch((reject) => {
+//   console.log(reject);
+// });
+
+// ⸻
+
+//! 5️⃣ Симуляція API
+
+// Функція :
+// 	•	через 1.5 сек повертає обʼєкт { name: "Alex", age: 25 }
+// 	•	виведи тільки name
+
+// function fetchUser() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve({ name: "Alex", age: 25 });
+//     }, 1500);
+//   });
+// }
+
+// fetchUser().then((user) => {
+//   console.log(user.name);
+// });
+
+// ⸻
+
+//! 🔵 Promise chaining
+// 6️⃣ Ланцюжок
+
+// Є Promise, який повертає 1
+// 	•	кожен .then() додає 1
+// 	•	зроби 3 then
+// 	•	виведи фінальне значення
+
+// ⸻
+
+// 7️⃣ Повернення Promise з then
+
+// Функція delay(ms) повертає Promise
+// 	•	зроби ланцюжок із 2 затримок
+// 	•	виведи "Done" після другої
+
+// ⸻
+
+// 🔴 Promise combinators
+
+// 8️⃣ Promise.all
+
+// Є 3 Promise:
+// 	•	повертають 1, 2, 3 з різною затримкою
+// 	•	зведи їх через Promise.all
+// 	•	порахуй суму
+
+// ⸻
+
+// 9️⃣ Promise.race
+
+// Є 2 Promise:
+// 	•	один виконується за 1с
+// 	•	другий за 2с
+// 	•	виведи результат того, хто перший
+
+// ⸻
+
+// 🔟 Promise.any
+
+// Є 3 Promise:
+// 	•	2 з них падають (reject)
+// 	•	1 виконується (resolve)
+// 	•	виведи успішний результат
+
+// ⸻
+
+// ⚫ Async / Await
+
+// 1️⃣1️⃣ async function
+
+// Перепиши задачу №5 з використанням async/await
+
+// ⸻
+
+// 1️⃣2️⃣ try / catch
+
+// Створи async функцію:
+// 	•	всередині Promise.reject("Fail")
+// 	•	оброби помилку через try/catch
+
+//! 🟢 1. Базові
+// 1️⃣ Сума чисел
+
+// Напиши функцію, яка приймає масив чисел і повертає їх суму.
+
+// function sum(num) {
+//   return num.reduce((accu, el) => {
+//     return accu + el;
+//   }, 0);
+// }
+
+// sum([1, 2, 3, 4]); // 10
+
+// ! 2️⃣ Найбільше число
+
+// Знайди найбільше число в масиві.
+
+// const max = [3, 7, 2, 9]; // 9
+// console.log(Math.max(...max));
+
+// const search = max.reduce((accum, el) => {
+//   if (el > accum) {
+//     return el;
+//   }
+//   return accum;
+// }, 0);
+// console.log("🚀 ~ search:", search);
+
+//! 3️⃣ Реверс рядка
+// reverse("hello"); // "olleh"
+
+// const word = "hello";
+
+// const reversedWord = word.split("").toReversed().join("");
+// console.log("🚀 ~ reversedWord:", reversedWord);
+
+//! 🟡 2. Масиви та обʼєкти
+// 4️⃣ Фільтрація
+// Залиши тільки парні числа.
+
+// function filterEven(numbers) {
+//   return numbers.filter((el) => {
+//     if (el % 2 === 0) {
+//       return el;
+//     }
+//   });
+// }
+
+// // filterEven([1, 2, 3, 4, 5, 6]); // [2,4,6]
+
+// console.log(filterEven([1, 2, 3, 4, 5, 6]));
+
+//! 6️⃣ Обʼєкти з масиву
+
+// const users = [
+//   { name: "Alex", age: 20 },
+//   { name: "Bob", age: 30 },
+// ];
+// // ["Alex", "Bob"]
+
+// const serch = users.map(({ name }) => name);
+// console.log(serch);
+
+//! Завдання: Створити просту програму, яка бере текст із поля вводу і при натисканні на кнопку виводить його в іншому блоці, але великими літерами.
+
+// const inputEl = document.querySelector("#userInput");
+
+// const buttonEl = document.querySelector("#convertBtn");
+
+// const resultEl = document.querySelector("#result");
+
+// buttonEl.addEventListener("click", () => {
+//   resultEl.textContent = inputEl.value;
+//   inputEl.value = "";
+// });
+
+//! Завдання: Створити кнопку, яка при кожному натисканні змінює фоновий колір сторінки на випадковий. Також потрібно виводити код кольору на екран.
+
+// const colorCode = document.querySelector("#colorCode");
+// const button = document.querySelector("#changeColorBtn");
+
+// const bodyEl = document.querySelector("body");
+
+// button.addEventListener("click", () => {
+//   const color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${
+//     Math.random() * 255
+//   })`;
+
+//   bodyEl.style.backgroundColor = color;
+// });
+
+//! Завдання: Створити список справ, де можна додавати нові пункти та видаляти їх при кліку на них.
+
+// const inputEl = document.querySelector("#taskInput");
+// const buttonEl = document.querySelector("#addTaskBtn");
+// const listEl = document.querySelector("#taskList");
+
+// buttonEl.addEventListener("click", () => {
+//   const value = inputEl.value.trim();
+
+//   if (value) {
+//     const newLi = document.createElement("li");
+//     listEl.append(newLi);
+//     newLi.textContent = value;
+//   } else {
+//     return;
+//   }
+
+//   inputEl.value = "";
+// });
+
+//! Завдання: Створити простий лічильник із двома кнопками: одна збільшує число, інша — зменшує.
+
+// const plus = document.querySelector("#increaseBtn");
+// const minus = document.querySelector("#decreaseBtn");
+// const res = document.querySelector("#counterValue");
+
+// let count = 0;
+
+// plus.addEventListener("click", () => {
+//   count++;
+
+//   res.textContent = count;
+// });
+
+// minus.addEventListener("click", () => {
+//   count--;
+
+//   res.textContent = count;
+// });
+
+//! Завдання: У тебе є JSON-рядок з даними користувача. Тобі потрібно розпарсити його і відобразити дані на сторінці.
+
+// const nameEl = document.querySelector("#userName");
+// const ageEl = document.querySelector("#userAge");
+// const jobEl = document.querySelector("#userJob");
+
+// const jsonString =
+//   '{"name": "Олексій", "age": 28, "job": "Frontend Developer"}';
+
+// const parseJson = JSON.parse(jsonString);
+
+// try {
+//   const { name, age, job } = parseJson;
+
+//   nameEl.textContent = name;
+//   ageEl.textContent = age;
+//   jobEl.textContent = job;
+// } catch (error) {
+//   console.log(`Data error`);
+// }
+
+//! Завдання: У тебе є масив об'єктів (імітація бази даних товарів). Потрібно отримати лише назви товарів, ціна яких менша за 1000.
+
+// const products = [
+//   { name: "Phone", price: 1500 },
+//   { name: "Headphones", price: 500 },
+//   { name: "Mouse", price: 300 },
+//   { name: "Monitor", price: 2000 },
+// ];
+
+// const finderPrice = products.filter((el) => el.price < 1000);
+
+// const normalaizer = finderPrice.map((names) => names.name);
+// console.log("🚀 ~ normalaizer:", normalaizer);
+
+//! Завдання: Користувач додав товари в кошик.
+//! Потрібно порахувати загальну суму замовлення, враховуючи кількість кожного товару.
+
+// const cart = [
+//   { title: "Apple", price: 40, quantity: 3 },
+//   { title: "Banana", price: 20, quantity: 5 },
+//   { title: "Milk", price: 35, quantity: 2 },
+// ];
+
+// const count = cart.reduce((accum, el) => {
+//   accum = accum + el.price * el.quantity;
+//   return accum;
+// }, 0);
+// console.log("🚀 ~ count:", count);
+
+//! Завдання: Знайти користувача за його ID у списку, який прийшов у форматі JSON, і вивести його дані у зручному форматі.
+
+// const usersJSON =
+//   '[{"id": 1, "name": "Ivan"}, {"id": 2, "name": "Maria"}, {"id": 3, "name": "Oleg"}]';
+
+// const searchId = 2;
+
+// const fromJson = JSON.parse(usersJSON);
+
+// const searchUser = fromJson.find((el) => {
+//   if (el.id === searchId) {
+//     console.log(`Hello: ${el.name}`);
+//   }
+// });
+
+//! Що треба зробити в JS:
+//! Повісити слухач події mousemove на блок #box.
+// !В об'єкті події (event) знайти властивості offsetX та offsetY (або clientX/Y).
+//! Записувати ці значення у відповідні span.
+
+// const items = {
+//   boxEl: document.querySelector("#box"),
+//   poXEl: document.querySelector("#posX"),
+//   poYEl: document.querySelector("#posY"),
+// };
+
+// items.boxEl.addEventListener("mousemove", (event) => {
+//   items.poXEl.textContent = event.offsetX;
+//   items.poYEl.textContent = event.offsetY;
+// });
+
+//! Завдання: Створити поле для введення пароля. Якщо пароль коротший за 8 символів — рамка інпуту має бути червоною, якщо 8 або більше — зеленою. Також динамічно виводити кількість введених символів.
+
+// const items = {
+//   inputEl: document.querySelector("#passwordInput"),
+//   spanText: document.querySelector("#charCount"),
+// };
+
+// items.inputEl.addEventListener("input", (event) => {
+//   const value = event.target.value.length;
+
+//   items.spanText.textContent = value;
+
+//   if (value < 8) {
+//     items.spanText.style.color = "tomato";
+//     items.inputEl.style.borderColor = "tomato";
+//   } else {
+//     items.spanText.style.color = "green";
+//     items.inputEl.style.borderColor = "green";
+//   }
+// });
+
+//! Завдання: Реалізувати модальне вікно, яке відкривається кнопкою, але закривається при натисканні на клавішу Escape.
+
+// const openButton = document.querySelector("#openBtn");
+// const divModal = document.querySelector("#modal");
+// const closeButton = document.querySelector("#closeBtn");
+
+// openButton.addEventListener("click", () => {
+//   divModal.style.display = "block";
+// });
+
+// closeButton.addEventListener("click", () => {
+//   divModal.style.display = "none";
+// });
+
+// window.addEventListener("keydown", (event) => {
+//   if (event.key === "Escape") {
+//     divModal.style.display = "none";
+//   }
+// });
+
+//! Використай метод масиву .sort().
+//! Усередині колбек-функції використай (a, b) => a.localeCompare(b).
+// Виведи результат у консоль.
+// Питання для роздумів: Чому звичайний .sort() (без параметрів) може поставити "Ігор" після "Ярослав", а localeCompare зробить це правильно?
+
+// const names = ["Юрій", "Андрій", "Ігор", "Євген", "Богдан"];
+
+// const normalaizerName = names.sort((a, b) => a.localeCompare(b));
+// console.log("🚀 ~ normalaizerName:", normalaizerName);
+
+//! Рівень "Новачок": "Запам'ятай моє ім'я"
+// Завдання: Створити поле вводу, де користувач пише своє ім'я. При натисканні "Зберегти" ім'я записується в localStorage. При оновленні сторінки ім'я має автоматично з'являтися в заголовку.
+
+// Що треба зробити в JS:
+// При кліку на saveBtn брати значення з інпуту і зберігати в localStorage під ключем "userName".
+// Одразу оновлювати текст у h1.
+// Головне: При завантаженні скрипта (на самому початку) перевірити localStorage.getItem('userName'). Якщо там щось є — підставити це в заголовок.
+// При кліку на clearBtn видаляти запис через .removeItem().
+
+// const checker = localStorage.getItem("userName") || [];
+// console.log("🚀 ~ checker:", checker);
+
+// const items = {
+//   titleEl: document.querySelector("#greeting"),
+//   nameInputEl: document.querySelector("#nameInput"),
+//   buttonSave: document.querySelector("#saveBtn"),
+//   buttonDelete: document.querySelector("#clearBtn"),
+// };
+
+// items.buttonSave.addEventListener("click", () => {
+//   const value = items.nameInputEl.value.trim();
+
+//   const save = localStorage.setItem("userName", value);
+
+//   items.titleEl.textContent = `Hello ${value}`;
+
+//   localStorage.clear();
+// });
