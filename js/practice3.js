@@ -4225,3 +4225,95 @@ let contactList = JSON.parse(localStorage.getItem("storage")) || [];
 
 //   localStorage.clear();
 // });
+
+//! FizzBuzz: Напиши цикл від 1 до 50. Якщо число ділиться на 3, виводь "Fizz", якщо на 5 — "Buzz", а якщо на обидва (і на 3, і на 5) — "FizzBuzz". В інших випадках виводь просто число.
+
+// function foo() {
+//   for (let i = 0; i < 50; i++) {
+//     if (i % 3 === 0 && i % 5 === 0) {
+//       console.log("FIZZ BUZZ");
+//     } else if (i % 5 === 0) {
+//       console.log("Buzz");
+//     } else if (i % 3 === 0) {
+//       console.log("Fizz");
+//     } else {
+//       console.log(i);
+//     }
+//   }
+// }
+
+// foo();
+
+//! Пошук максимуму: Напиши функцію, яка приймає масив чисел і повертає найбільше з них (не використовуючи Math.max()).
+
+// function checker(nums) {
+//   return nums.reduce((accum, el) => {
+//     if (el > accum) {
+//       return el;
+//     }
+//     return accum;
+//   }, nums[0]);
+// }
+
+// const numbers = [23, 4, 6, 78];
+// console.log(checker(numbers));
+
+// !Фільтрація та трансформація (Easy)
+// У тебе є масив об'єктів, які представляють товари.
+// Відфільтруй товари, ціна яких більша за 100.
+// Створи новий масив, що містить лише назви цих товарів у верхньому регістрі (UPPERCASE).
+
+// const products = [
+//   { name: "apple", price: 50 },
+//   { name: "laptop", price: 1200 },
+//   { name: "phone", price: 500 },
+//   { name: "pen", price: 10 },
+// ];
+
+// const filteredItems = products
+//   .filter((el) => {
+//     if (el.price > 100) {
+//       return el;
+//     }
+//   })
+//   .map((el) => el.name.toUpperCase());
+// console.log("🚀 ~ filteredItems:", filteredItems);
+
+//! Знайди першого користувача, якому менше 18 років
+// Перевір, чи всі користувачі в масиві мають поле email.
+
+// const users = [
+//   { id: 1, name: "John", age: 25, email: "john@example.com" },
+//   { id: 2, name: "Jane", age: 17, email: "jane@example.com" },
+//   { id: 3, name: "Bob", age: 30 },
+// ];
+
+// const finder = users.find((el) => {
+//   if (el.age < 18) {
+//     return el;
+//   }
+// });
+// console.log("🚀 ~ finder:", finder);
+
+//! Напиши функцію, яка приймає рядок (наприклад, список тегів через кому) і:
+//! Розбиває його на масив.
+//! Видаляє зайві пробіли на початку та в кінці кожного слова.
+//! Видаляє дублікати (якщо тег повторюється).
+
+// const rawTags = "  js, react,  html, js, css , react  ";
+
+// const normalaizer = rawTags.split(",").join(",");
+// console.log("🚀 ~ normalaizer:", normalaizer);
+
+//! Обчислення через reduce (Medium)
+//! Потрібно порахувати загальну суму замовлення, враховуючи кількість кожного товару.
+const cart = [
+  { title: "Item 1", price: 10, quantity: 2 },
+  { title: "Item 2", price: 50, quantity: 1 },
+  { title: "Item 3", price: 20, quantity: 4 },
+];
+
+const sum = cart.reduce((accum, el) => {
+  return accum + el.price * el.quantity;
+}, 0);
+console.log("🚀 ~ sum:", sum);
