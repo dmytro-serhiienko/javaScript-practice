@@ -1,5 +1,4 @@
-common
-* {
+common * {
   box-sizing: border-box;
 }
 
@@ -109,4 +108,62 @@ span {
   height: 50px;
   border: 2px dashed red;
   margin: 10px;
+}
+
+/* ! */
+
+body {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+}
+input {
+  padding: 10px;
+  width: 60%;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+}
+#weather {
+  margin-top: 30px;
+  font-size: 24px;
+}
+.error {
+  color: red;
+}
+
+/* !!!!!!!!! */
+
+.gallery {
+  display: grid;
+  /* Створюємо 3 рівні колонки */
+  grid-template-columns: repeat(3, 1fr);
+  /* Створюємо 2 рядки по 300px (висоту можна змінити) */
+  grid-template-rows: repeat(2, 300px);
+  /* Відстань між фото */
+  gap: 10px;
+}
+
+.gallery__link {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  display: block; /* Важливо, щоб посилання займало всю клітинку */
+}
+
+.gallery__img {
+  width: 100%;
+  height: 100%;
+  /* Щоб картинки не розтягувались, а заповнювали простір */
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease; /* Додамо трохи ефекту при наведенні */
+}
+
+.gallery__img:hover {
+  transform: scale(1.02); /* Легке збільшення при наведенні */
 }
