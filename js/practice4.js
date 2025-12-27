@@ -1294,33 +1294,164 @@
 //     •	після відповіді — "Done"
 //     •	при помилці — "Error"
 
-const btnEl = document.querySelector("#btn");
-const statusEl = document.querySelector("#status");
+// const btnEl = document.querySelector("#btn");
+// const statusEl = document.querySelector("#status");
 
-const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+// const BASE_URL = "https://jsonplaceholder.typicode.com/users";
 
-btnEl.addEventListener("click", () => {
-  statusEl.innerHTML = "";
-  statusEl.textContent = "Loading...";
+// btnEl.addEventListener("click", () => {
+//   statusEl.innerHTML = "";
+//   statusEl.textContent = "Loading...";
 
-  axios
-    .get(BASE_URL)
-    .then((response) => {
-      setTimeout(() => {
-        statusEl.textContent = "Done ✅";
+//   axios
+//     .get(BASE_URL)
+//     .then((response) => {
+//       setTimeout(() => {
+//         statusEl.textContent = "Done ✅";
 
-        response.data.forEach((el) => {
-          console.log(el.name);
-        });
-      }, 1500);
-    })
-    .catch((error) => {
-      console.error(error.message);
-      statusEl.textContent = "Error ❗️";
-    })
-    .finally((fin) => {
-      console.log(fin);
-    });
-});
+//         response.data.forEach((el) => {
+//           console.log(el.name);
+//         });
+//       }, 1500);
+//     })
+//     .catch((error) => {
+//       console.error(error.message);
+//       statusEl.textContent = "Error ❗️";
+//     })
+//     .finally((fin) => {
+//       console.log(fin);
+//     });
+// });
 
-// =)
+//? 5️⃣ Disable button
+
+// ➡️ Поки запит не завершився:
+// 	•	кнопка disabled
+// 	•	після — знову активна
+
+// const btnEl = document.querySelector("#send");
+// btnEl.disabled = true;
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+
+// axios
+//   .get(BASE_URL)
+//   .then((response) => {
+//     response.data.forEach((el) => {
+//       setTimeout(() => {
+//         console.log(el.email);
+//       }, 1500);
+//     });
+//   })
+//   .catch((error) => {
+//     console.error(error.message);
+//   })
+//   .finally(() => {
+//     setTimeout(() => {
+//       btnEl.disabled = false;
+//     }, 1550);
+//   });
+
+//? 6️⃣ Filter data (без async)
+
+// ➡️ Завантаж /users
+// ➡️ Залиш тільки користувачів:
+//   •	email закінчується на .org
+// ➡️ Виведи результат у консоль
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+
+// axios
+//   .get(BASE_URL)
+//   .then((response) => {
+//     const filtered = response.data.filter((el) => el.email.endsWith(".org"));
+//     console.log("🚀 ~ filtered:", filtered);
+//   })
+//   .catch((error) => {
+//     console.error(error.message);
+//   });
+
+//? 7️⃣ Map + Axios
+
+// ➡️ Завантаж /posts
+// ➡️ Створи масив тільки заголовків (title)
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+
+// axios.get(BASE_URL).then((response) => {
+//   const filteredTitle = response.data.map((el) => {
+//     return el.title;
+//   });
+//   console.log("🚀 ~ filteredTitle:", filteredTitle);
+// });
+
+//? 8️⃣ Chain then
+
+// ➡️ Зроби запит /users
+// ➡️ У наступному .then:
+// 	•	порахуй кількість користувачів
+// 	•	виведи число в консоль
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+
+// axios.get(BASE_URL).then((response) => {
+//   const res = response.data.length;
+//   console.log("🚀 ~ res:", res);
+// });
+
+//🟢 МАСИВИ (БАЗА)
+//? 	1.	Є масив чисел.
+// ➡️ Знайди максимальне і мінімальне значення.
+
+// const numbers = [12, 3, 9, 87, 3, 45];
+
+// const max = Math.max(...numbers);
+// console.log("🚀 ~ max:", max);
+
+// const min = Math.min(...numbers);
+// console.log("🚀 ~ min:", min);
+
+// const resMax = numbers.reduce((acc, el) => {
+//   if (el > acc) {
+//     return el;
+//   }
+//   return acc;
+// }, 0);
+// console.log("🚀 ~ resMax:", resMax);
+
+// const resMin = numbers.reduce((acc, el) => {
+//   if (el < acc) {
+//     return el;
+//   }
+//   return acc;
+// }, 12);
+// console.log("🚀 ~ resMin:", resMin);
+
+//? 	2.	Є масив рядків.
+// ➡️ Поверни новий масив без порожніх рядків.
+// const words = ["word", "", "good"];
+
+// const norm = words.filter((el) => {
+//   if (el.length > 0) {
+//     return el;
+//   }
+// });
+// console.log("🚀 ~ norm:", norm);
+
+//? 	3.	Є масив чисел.
+// ➡️ Переверни масив без reverse().
+// const perev = ["apple"];
+
+// const res = perev.join("").split("").toReversed().join("");
+// console.log("🚀 ~ res:", res);
+
+//? 	4.	Є масив.
+// ➡️ Перевір, чи є в ньому однакові елементи.
+// const words = ["word", "apple", "apple", "good"];
+// const numbers = [12, 3, 9, 9, 12, 45];
+
+// const resWords = new Set(words);
+// console.log("🚀 ~ resWords:", resWords);
+
+// const resNumb = new Set(numbers);
+// console.log("🚀 ~ resNumb:", resNumb);
