@@ -1455,3 +1455,79 @@
 
 // const resNumb = new Set(numbers);
 // console.log("🚀 ~ resNumb:", resNumb);
+
+//? 	8.	Є масив чисел.
+// ➡️ Залиш додатні → піднеси до квадрату → відсортуй за спаданням.
+
+// const num = [12, -4, 6, 2, 78, 3, -3, 45];
+
+// const res = num
+//   .filter((el) => el > 0)
+//   .map((el) => el ** 2)
+//   .toSorted((a, b) => b - a);
+// console.log("🚀 ~ res:", res);
+
+//? 	9.	Є масив обʼєктів { name, age }.
+// ➡️ Отримай імена повнолітніх, відсортовані за віком.
+
+// const mas = [
+//   { name: "Dima", age: 33 },
+//   { name: "Hordii", age: 5 },
+//   { name: "Lana", age: 32 },
+//   { name: "Onix", age: 10 },
+// ];
+
+// const res = mas.filter((el) => el.age > 18).toSorted((a, b) => a.age - b.age);
+// console.table(res);
+
+//? 🔵 ОБʼЄКТИ
+// 	10.	Є обʼєкт.
+// ➡️ Поверни масив його ключів.
+
+// const ajustes = { name: "Lana", age: 32, sex: "Female", humor: true };
+
+// const res = Object.keys(ajustes);
+// console.log("🚀 ~ res:", res);
+
+// const val = Object.values(ajustes);
+// console.log("🚀 ~ val:", val);
+
+// * Витягнемо деструктуризацію
+// const { name, age } = ajustes;
+// console.log(name);
+// console.log(age);
+
+//? 	11.	Є вкладений обʼєкт.
+// ➡️ Дістань значення на 3 рівні вкладеності.
+
+// const ajustes = {
+//   name: "Lana",
+//   age: 32,
+//   sex: "Female",
+//   hobby: {
+//     humor: true,
+//     fisique: { dance: "RnB" },
+//   },
+// };
+
+// const {
+//   hobby: {
+//     fisique: { dance },
+//   },
+// } = ajustes;
+// console.log("🚀 ~ dance:", dance);
+
+//? 	12.	Є обʼєкт.
+// ➡️ Перевір, чи існує властивість без помилки.
+
+// const ajustes = {
+//   name: "Lana",
+//   age: 32,
+//   sex: "Female",
+// };
+
+// const { hobby } = ajustes;
+// console.log("🚀 ~ hobby:", hobby);
+
+//? 	14.	Є масив товарів { price, quantity }.
+// ➡️ Порахуй загальну вартість.
