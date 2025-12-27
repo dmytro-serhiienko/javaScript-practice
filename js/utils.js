@@ -4,10 +4,10 @@
 // Створи константу CURRENCY, яка дорівнює рядку '$'.
 // Експортуй їх обидва окремо.
 
-export const CURRENCY = "$";
+// export const CURRENCY = "$";
 
-export function calculateDiscount(price, percent) {
-  return price - (percent * price) / 100;
-}
+// export function calculateDiscount(price, percent) {
+//   return price - (percent * price) / 100;
+// }
 
 // console.log(calculateDiscount(500, 10) + CURRENCY);
