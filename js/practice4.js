@@ -1532,19 +1532,92 @@
 //? 	14.	Є масив товарів { price, quantity }.
 // ➡️ Порахуй загальну вартість.
 
-const products = [
-  { name: "Jeans", category: "Close", quantity: 2, price: 100 },
-  { name: "Sandals", category: "Close", quantity: 4, price: 50 },
-  { name: "Wallet", category: "Accessory", quantity: 1, price: 50 },
-];
+// const products = [
+//   { name: "Jeans", category: "Close", quantity: 2, price: 100 },
+//   { name: "Sandals", category: "Close", quantity: 4, price: 50 },
+//   { name: "Wallet", category: "Accessory", quantity: 1, price: 50 },
+// ];
 
-const sum = products.reduce((acc, el) => {
-  //   return (acc = acc + el.price * el.quantity);
+// const sum = products.reduce((acc, el) => {
+//   //   return (acc = acc + el.price * el.quantity);
 
-  if (!acc.includes(el.category)) {
-    acc.push(el.category);
-    return acc;
-  }
-  return acc;
-}, []);
-console.log("🚀 ~ sum:", sum);
+//   if (!acc.includes(el.category)) {
+//     acc.push(el.category);
+//     return acc;
+//   }
+//   return acc;
+// }, []);
+// console.log("🚀 ~ sum:", sum);
+
+// 🔴 ФУНКЦІЇ
+//? 	15.	Напиши функцію, яка:
+// ➡️ приймає масив
+// ➡️ повертає середнє значення.
+
+// function foo(arr) {
+//   return (
+//     arr.reduce((acc, el) => {
+//       return acc + el;
+//     }, 0) / arr.length
+//   );
+// }
+
+// console.log(foo([2, 6, 3, 5, 9, 1]));
+
+// Напиши функцію, яка приймає цей масив.
+// Функція має повернути новий масив, що містить лише імена користувачів, яким виповнилося 18 років.
+
+//? Задача 1: "Отримати та вивести"
+// Умова: Напиши функцію getPosts, яка за допомогою axios.get робить запит на URL https://jsonplaceholder.typicode.com/posts.
+// У разі успіху виведи в консоль масив назв (title) перших 5 постів.
+// Якщо сталася помилка (наприклад, неправильний URL), виведи повідомлення: "Помилка запиту".
+
+// function getPosts() {
+//   const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+
+//   axios
+//     .get(BASE_URL, {
+//       params: {
+//         _limit: 5,
+//       },
+//     })
+//     .then((response) => {
+//       response.data.forEach((el) => {
+//         console.log(el.title);
+//       });
+//     })
+//     .catch((error) => {
+//       console.error(error.message);
+//     });
+// }
+
+// getPosts();
+
+//? Задача 2: "Створення нового ресурсу"
+// Умова: Напиши функцію createUser, яка приймає об'єкт з даними користувача (ім'я та місто).
+// Використай axios.post для відправки цих даних на https://jsonplaceholder.typicode.com/users.
+// Після успішної відповіді виведи в консоль статус відповіді (201) та ID створеного користувача, який повернув сервер.
+
+// function createUser(name, city) {
+//   const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+
+//   const userDima = {
+//     name: "Dimitro",
+//     username: "SsS",
+//     address: {
+//       city: "San-Andreas",
+//     },
+//   };
+
+//   axios
+//     .post(BASE_URL, userDima)
+//     .then((response) => {
+//       console.log(response.data);
+//       console.log(response.status);
+//     })
+//     .catch((error) => {
+//       console.log("Помилка при створенні користувача");
+//     });
+// }
+
+// createUser();
