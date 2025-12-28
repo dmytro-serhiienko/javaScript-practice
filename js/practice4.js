@@ -1531,3 +1531,20 @@
 
 //? 	14.	Є масив товарів { price, quantity }.
 // ➡️ Порахуй загальну вартість.
+
+const products = [
+  { name: "Jeans", category: "Close", quantity: 2, price: 100 },
+  { name: "Sandals", category: "Close", quantity: 4, price: 50 },
+  { name: "Wallet", category: "Accessory", quantity: 1, price: 50 },
+];
+
+const sum = products.reduce((acc, el) => {
+  //   return (acc = acc + el.price * el.quantity);
+
+  if (!acc.includes(el.category)) {
+    acc.push(el.category);
+    return acc;
+  }
+  return acc;
+}, []);
+console.log("🚀 ~ sum:", sum);
