@@ -1621,3 +1621,113 @@
 // }
 
 // createUser();
+
+//! Парне чи непарне число
+// Напиши функцію isEven(num), яка повертає true, якщо число парне, і false — якщо непарне.
+
+// function isEven(num) {
+//   if (num % 2 === 0) {
+//     console.log(`Парне число`);
+//   } else {
+//     console.log(`Odd`);
+//   }
+// }
+
+// isEven(3);
+
+//! Найбільше число в масиві
+// Напиши функцію findMax(arr), яка повертає найбільше число в масиві чисел.
+
+// function findMax(arr) {
+//   console.log(Math.max(...arr));
+// }
+
+// findMax([1, 2, 3, 4]);
+
+//! Фільтрація масиву
+// Напиши функцію filterPositive(arr), яка приймає масив чисел і повертає новий масив тільки з позитивними числами.
+
+// const arr = [-1, 1, -2, 2];
+
+// const newArr = [];
+
+// function filterPositive(arr) {
+//   arr.forEach((el) => {
+//     if (el > 0) {
+//       return newArr.push(el);
+//     }
+//   });
+//   return newArr;
+// }
+
+// const result = filterPositive(arr);
+// console.log(result);
+
+//! Простий GET-запит
+// Виконай GET-запит до https://jsonplaceholder.typicode.com/posts і
+// виведи в консоль масив усіх постів (title та body перших 5
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+
+// axios
+//   .get(BASE_URL, {
+//     params: {
+//       _limit: 5,
+//     },
+//   })
+//   .then((response) => {
+//     response.data.forEach((el) => {
+//       console.log(el.title);
+//       console.log(el.body);
+//     });
+//   })
+//   .catch((error) => {
+//     console.log(error.name);
+//   })
+//   .finally(() => {
+//     console.log(`Код виконано конкретно!`);
+//   });
+
+//! GET одного ресурсу
+// Виконай GET-запит до https://jsonplaceholder.typicode.com/posts/1 і виведи об’єкт поста.
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/posts/1";
+
+// axios.get(BASE_URL).then((response) => {
+//   console.log(response.data);
+// });
+
+//! GET з параметрами
+// Виконай GET-запит до https://jsonplaceholder.typicode.com/posts з параметром
+// userId=5. Виведи тільки пости цього користувача.
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+
+// axios
+//   .get(BASE_URL, {
+//     params: {
+//       userId: 5,
+//     },
+//   })
+//   .then((response) => {
+//     response.data.forEach((el) => {
+//       console.log(el.body);
+//     });
+//   })
+//   .catch((error) => {
+//     console.error(error.message);
+//   });
+
+//! POST-запит
+// Створи новий пост за допомогою POST на https://jsonplaceholder.typicode.com/posts з даними:
+// { title: 'Мій новий пост', body: 'Це контент', userId: 1 }
+// Виведи відповідь сервера (повернеться об’єкт з id: 101).
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+
+// const newPost = { title: "Мій новий пост", body: "Це контент", userId: 1 };
+
+// axios.post(BASE_URL, newPost).then((response) => {
+//   console.log(response.status);
+//   console.log(response.data);
+// });
