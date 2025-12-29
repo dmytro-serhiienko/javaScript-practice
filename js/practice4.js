@@ -1735,34 +1735,86 @@
 //! Завдання: Використай .then() щоб завантажити користувачів
 // з https://jsonplaceholder.typicode.com/users та відобразити їх імена у вигляді списку.
 
-const btnEl = document.querySelector("#loadUsers");
-const showEl = document.querySelector("#usersList");
+// const btnEl = document.querySelector("#loadUsers");
+// const showEl = document.querySelector("#usersList");
 
-const newUl = document.createElement("ol");
-showEl.append(newUl);
+// const newUl = document.createElement("ol");
+// showEl.append(newUl);
 
-const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+// const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+
+// btnEl.addEventListener("click", () => {
+//   newUl.textContent = "...Loading";
+
+//   axios
+//     .get(BASE_URL)
+//     .then((response) => {
+//       newUl.innerHTML = "";
+//       response.data.forEach((el) => {
+//         setTimeout(() => {
+//           const newLi = document.createElement("li");
+//           newLi.textContent = el.name;
+//           newUl.append(newLi);
+//         }, 1500);
+//       });
+//       console.log(response.status);
+//     })
+//     .catch((error) => {
+//       console.error(error.message);
+//     })
+//     .finally(() => {
+//       console.log(`Код реалізовано ✅`);
+//     });
+// });
+
+//! Задача 2: Пошук постів за ID
+// HTML:
+// Завдання: При натисканні на кнопку, завантаж пост з
+// https://jsonplaceholder.typicode.com/posts/{id} та покажи його заголовок і текст.
+// Обробляй помилки якщо ID не існує.
+
+// <div id="app">
+//   <input type="number" id="postId" placeholder="Введи ID поста (1-100)" min="1" max="100">
+//   <button id="searchPost">Знайти пост</button>
+//   <div id="postResult"></div>
+// </div>
+
+const inputEl = document.querySelector("#postId");
+const btnEl = document.querySelector("#searchPost");
+const resultEl = document.querySelector("#postResult");
+
+const newOl = document.createElement("ol");
+resultEl.append(newOl);
 
 btnEl.addEventListener("click", () => {
-  newUl.textContent = "...Loading";
+  newOl.innerHTML = "";
+  const value = inputEl.value.trim();
+
+  if (!value) {
+    alert(`Введіть корректний ID`);
+    return;
+  }
+
+  newOl.innerHTML = "<li>...Loading</li>";
+
+  const BASE_URL = `https://jsonplaceholder.typicode.com/posts/${value}`;
 
   axios
     .get(BASE_URL)
     .then((response) => {
-      newUl.innerHTML = "";
-      response.data.forEach((el) => {
-        setTimeout(() => {
-          const newLi = document.createElement("li");
-          newLi.textContent = el.name;
-          newUl.append(newLi);
-        }, 1500);
-      });
-      console.log(response.status);
+      newOl.innerHTML = "";
+
+      const newLi = document.createElement("li");
+      newLi.textContent = response.data.title;
+      newOl.append(newLi);
+
+      inputEl.value = "";
     })
     .catch((error) => {
-      console.error(error.message);
+      newOl.innerHTML = `<li style="color: red;">Пост №${value} не знайдено!</li>`;
+      console.error(`Вийшла помилка: ${error.message}`);
     })
     .finally(() => {
-      console.log(`Код реалізовано ✅`);
+      console.log(`Код виканано ✅`);
     });
 });
