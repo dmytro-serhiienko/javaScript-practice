@@ -1731,3 +1731,38 @@
 //   console.log(response.status);
 //   console.log(response.data);
 // });
+
+//! Завдання: Використай .then() щоб завантажити користувачів
+// з https://jsonplaceholder.typicode.com/users та відобразити їх імена у вигляді списку.
+
+const btnEl = document.querySelector("#loadUsers");
+const showEl = document.querySelector("#usersList");
+
+const newUl = document.createElement("ol");
+showEl.append(newUl);
+
+const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+
+btnEl.addEventListener("click", () => {
+  newUl.textContent = "...Loading";
+
+  axios
+    .get(BASE_URL)
+    .then((response) => {
+      newUl.innerHTML = "";
+      response.data.forEach((el) => {
+        setTimeout(() => {
+          const newLi = document.createElement("li");
+          newLi.textContent = el.name;
+          newUl.append(newLi);
+        }, 1500);
+      });
+      console.log(response.status);
+    })
+    .catch((error) => {
+      console.error(error.message);
+    })
+    .finally(() => {
+      console.log(`Код реалізовано ✅`);
+    });
+});
