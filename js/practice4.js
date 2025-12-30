@@ -1858,39 +1858,57 @@
 //   galleryEl.innerHTML = "";
 // });
 
-// ? Завдання: При виборі поста зі списку, завантаж коментарі з
-// https://jsonplaceholder.typicode.com/posts/{id}/comments та відобрази їх (ім'я автора та текст коментаря).
+// !
+
+//! Завдання: Напиши async функцію, яка завантажує дані з
+// https://jsonplaceholder.typicode.com/users/1 та виводить ім'я користувача в #result.
+
+/* <div id="app">
+  <button id="btn">Завантажити дані</button>
+  <div id="result"></div>
+</div>; */
+
+// const btnEl = document.querySelector("#btn");
+// const resEl = document.querySelector("#result");
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/users/1";
+
+// btnEl.addEventListener("click", async () => {
+//   try {
+//     const response = await axios.get(BASE_URL);
+//     const nameFirst = response.data.name;
+
+//     resEl.textContent = `Імя користувача: ${nameFirst}`;
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// });
+
+// ? Задача 2: Очікування відповіді
+// Завдання: Створи async функцію, яка отримує пост
+// з https://jsonplaceholder.typicode.com/posts/1. Виведи заголовок у #title, а текст у #body.
 
 // <div id="app">
-//   <select id="postSelect">
-//     <option value="">Обери пост</option>
-//     <option value="1">Пост 1</option>
-//     <option value="2">Пост 2</option>
-//     <option value="3">Пост 3</option>
-//   </select>
-//   <div id="comments"></div>
-// </div>
+//   <button id="btn">Отримати пост</button>
+//   <p id="title"></p>
+//   <p id="body"></p>
+// </div>;
 
-const selectEl = document.querySelector("#postSelect");
-const showEl = document.querySelector("#comments");
+const btnEl = document.querySelector("#btn");
+const titleEl = document.querySelector("#title");
+const bodyEl = document.querySelector("#body");
 
-selectEl.addEventListener("change", () => {
-  const idEl = selectEl.value;
+const BASE_URL = "https://jsonplaceholder.typicode.com/posts/1";
 
-    const BASE_URL = `https://jsonplaceholder.typicode.com/posts/${idEl}/comments`;
-    
+btnEl.addEventListener("click", async () => {
+  try {
+    const response = await axios.get(BASE_URL);
+    const title = response.data.title;
+    const body = response.data.body;
 
-    axios.get(BASE_URL).then((response) => {
-        
-response.data.forEach((el) => {
-    
-showEl.textContent = 
-
-
-
-})
-
-
-
-    })
+    titleEl.textContent = title;
+    bodyEl.textContent = body;
+  } catch (error) {
+    console.error(error.message);
+  }
 });
