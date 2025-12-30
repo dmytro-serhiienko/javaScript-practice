@@ -1773,48 +1773,124 @@
 // https://jsonplaceholder.typicode.com/posts/{id} та покажи його заголовок і текст.
 // Обробляй помилки якщо ID не існує.
 
+// const inputEl = document.querySelector("#postId");
+// const btnEl = document.querySelector("#searchPost");
+// const resultEl = document.querySelector("#postResult");
+
+// const newOl = document.createElement("ol");
+// resultEl.append(newOl);
+
+// btnEl.addEventListener("click", () => {
+//   newOl.innerHTML = "";
+//   const value = inputEl.value.trim();
+
+//   if (!value) {
+//     alert(`Введіть корректний ID`);
+//     return;
+//   }
+
+//   newOl.innerHTML = "<li>...Loading</li>";
+
+//   const BASE_URL = `https://jsonplaceholder.typicode.com/posts/${value}`;
+
+//   axios
+//     .get(BASE_URL)
+//     .then((response) => {
+//       newOl.innerHTML = "";
+
+//       const newLi = document.createElement("li");
+//       newLi.textContent = response.data.title;
+//       newOl.append(newLi);
+
+//       inputEl.value = "";
+//     })
+//     .catch((error) => {
+//       newOl.innerHTML = `<li style="color: red;">Пост №${value} не знайдено!</li>`;
+//       console.error(`Вийшла помилка: ${error.message}`);
+//     })
+//     .finally(() => {
+//       console.log(`Код виканано ✅`);
+//     });
+// });
+
+//! Задача 3: Галерея фото з прелоадером
+
+// Завдання: Завантаж перші 10 фото з https://jsonplaceholder.typicode.com/photos?_limit=10. Покажи лоадер під час завантаження. Відобрази фото у вигляді карток з thumbnailUrl.
+
+// {
+/* <div id="app">
+  <button id="loadPhotos">Завантажити фото</button>
+  <div id="loader" style="display:none;">Завантаження...</div>
+  <div id="gallery"></div>
+</div> */
+// }
+
+// const btnEl = document.querySelector("#loadPhotos");
+// const loadEl = document.querySelector("#loader");
+// const galleryEl = document.querySelector("#gallery");
+
+// btnEl.addEventListener("click", () => {
+//   loadEl.style.display = "block";
+
+//   const BASE_URL = "https://jsonplaceholder.typicode.com/photos?_limit=10";
+
+//   axios
+//     .get(BASE_URL)
+//     .then((response) => {
+//       loadEl.style.display = "none";
+
+//       response.data.forEach((el) => {
+//         const imgEl = document.createElement("img");
+//         imgEl.src = el.thumbnailUrl;
+//         imgEl.style.width = "150px";
+//         imgEl.style.height = "150px";
+//         imgEl.style.border = "1px solid black";
+//         galleryEl.append(imgEl);
+//       });
+//     })
+//     .catch((error) => {
+//       console.error(error.message);
+//     })
+//     .finally(() => {
+//       console.log(`Code Done`);
+//     });
+
+//   galleryEl.innerHTML = "";
+// });
+
+// ? Завдання: При виборі поста зі списку, завантаж коментарі з
+// https://jsonplaceholder.typicode.com/posts/{id}/comments та відобрази їх (ім'я автора та текст коментаря).
+
 // <div id="app">
-//   <input type="number" id="postId" placeholder="Введи ID поста (1-100)" min="1" max="100">
-//   <button id="searchPost">Знайти пост</button>
-//   <div id="postResult"></div>
+//   <select id="postSelect">
+//     <option value="">Обери пост</option>
+//     <option value="1">Пост 1</option>
+//     <option value="2">Пост 2</option>
+//     <option value="3">Пост 3</option>
+//   </select>
+//   <div id="comments"></div>
 // </div>
 
-const inputEl = document.querySelector("#postId");
-const btnEl = document.querySelector("#searchPost");
-const resultEl = document.querySelector("#postResult");
+const selectEl = document.querySelector("#postSelect");
+const showEl = document.querySelector("#comments");
 
-const newOl = document.createElement("ol");
-resultEl.append(newOl);
+selectEl.addEventListener("change", () => {
+  const idEl = selectEl.value;
 
-btnEl.addEventListener("click", () => {
-  newOl.innerHTML = "";
-  const value = inputEl.value.trim();
+    const BASE_URL = `https://jsonplaceholder.typicode.com/posts/${idEl}/comments`;
+    
 
-  if (!value) {
-    alert(`Введіть корректний ID`);
-    return;
-  }
+    axios.get(BASE_URL).then((response) => {
+        
+response.data.forEach((el) => {
+    
+showEl.textContent = 
 
-  newOl.innerHTML = "<li>...Loading</li>";
 
-  const BASE_URL = `https://jsonplaceholder.typicode.com/posts/${value}`;
 
-  axios
-    .get(BASE_URL)
-    .then((response) => {
-      newOl.innerHTML = "";
+})
 
-      const newLi = document.createElement("li");
-      newLi.textContent = response.data.title;
-      newOl.append(newLi);
 
-      inputEl.value = "";
+
     })
-    .catch((error) => {
-      newOl.innerHTML = `<li style="color: red;">Пост №${value} не знайдено!</li>`;
-      console.error(`Вийшла помилка: ${error.message}`);
-    })
-    .finally(() => {
-      console.log(`Код виканано ✅`);
-    });
 });
