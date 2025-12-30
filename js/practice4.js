@@ -1894,20 +1894,83 @@
 //   <p id="body"></p>
 // </div>;
 
-const btnEl = document.querySelector("#btn");
-const titleEl = document.querySelector("#title");
-const bodyEl = document.querySelector("#body");
+// const btnEl = document.querySelector("#btn");
+// const titleEl = document.querySelector("#title");
+// const bodyEl = document.querySelector("#body");
 
-const BASE_URL = "https://jsonplaceholder.typicode.com/posts/1";
+// const BASE_URL = "https://jsonplaceholder.typicode.com/posts/1";
+
+// btnEl.addEventListener("click", async () => {
+//   try {
+//     const response = await axios.get(BASE_URL);
+//     const title = response.data.title;
+//     const body = response.data.body;
+
+//     titleEl.textContent = title;
+//     bodyEl.textContent = body;
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// });
+
+// ? Завдання: Напиши async функцію, яка робить запит на
+// https://jsonplaceholder.typicode.com/invalid.
+// Обгорни запит у try-catch і виведи повідомлення про помилку в #message.
+
+//  <div id="app">
+//    <button id="btn">Спробувати запит</button>
+//    <div id="message"></div>
+//  </div>;
+
+// const btnEl = document.querySelector("#btn");
+// const showEl = document.querySelector("#message");
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/invalid";
+
+// btnEl.addEventListener("click", async () => {
+//   try {
+//     const response = await axios.get(BASE_URL);
+//     console.log(response.status);
+//   } catch (error) {
+//     console.error(error.message);
+
+//     showEl.textContent = `Сталась помилка: ${error.name}`;
+//   }
+// });
+
+//? Задача 4: Два послідовні запити
+
+// <div id="app">
+//   <button id="btn">Завантажити</button>
+//   <div id="result"></div>
+// </div>
+
+// Завдання: Створи async функцію:
+
+// Завантаж користувача /users/1
+// Використай його id щоб завантажити його пости /posts?userId=1
+// Виведи ім'я користувача та кількість постів
+
+const btnEl = document.querySelector("#btn");
+const showEl = document.querySelector("#result");
+
+const USER_URL = "https://jsonplaceholder.typicode.com/users";
+const POST_URL = "https://jsonplaceholder.typicode.com/posts";
 
 btnEl.addEventListener("click", async () => {
   try {
-    const response = await axios.get(BASE_URL);
-    const title = response.data.title;
-    const body = response.data.body;
+    const response = await axios.get(USER_URL, {
+      params: {
+        id: 1,
+      },
+    });
+    const nameEl = response.data.name;
 
-    titleEl.textContent = title;
-    bodyEl.textContent = body;
+    const postResponse = await axios.get(POST_URL, response);
+
+    const result = postResponse.title;
+
+    showEl.textContent = result;
   } catch (error) {
     console.error(error.message);
   }
