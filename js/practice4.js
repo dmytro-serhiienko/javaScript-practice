@@ -1951,26 +1951,53 @@
 // Використай його id щоб завантажити його пости /posts?userId=1
 // Виведи ім'я користувача та кількість постів
 
-const btnEl = document.querySelector("#btn");
-const showEl = document.querySelector("#result");
+// const btnEl = document.querySelector("#btn");
+// const showEl = document.querySelector("#result");
 
-const USER_URL = "https://jsonplaceholder.typicode.com/users";
-const POST_URL = "https://jsonplaceholder.typicode.com/posts";
+// const USER_URL = "https://jsonplaceholder.typicode.com/users";
+// const POST_URL = "https://jsonplaceholder.typicode.com/posts";
+
+// btnEl.addEventListener("click", async () => {
+//   try {
+//     const response = await axios.get(USER_URL, {
+//       params: {
+//         id: 1,
+//       },
+//     });
+//     const nameEl = response.data.name;
+
+//     const postResponse = await axios.get(POST_URL, response);
+
+//     const result = postResponse.title;
+
+//     showEl.textContent = result;
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// });
+
+//? Умова задачі
+// Використовуючи API https://jsonplaceholder.typicode.com/todos?_limit=5,
+// потрібно завантажити дані та відобразити їх у вигляді списку на сторінці.
+
+const btnEl = document.querySelector("#js-btn");
+const listEl = document.querySelector("#list");
+
+const BASE_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";
 
 btnEl.addEventListener("click", async () => {
   try {
-    const response = await axios.get(USER_URL, {
-      params: {
-        id: 1,
-      },
+    listEl.textContent = "...Loading";
+
+    const response = await axios.get(BASE_URL);
+
+    listEl.innerHTML = "";
+
+    response.data.forEach((el) => {
+      const newLi = document.createElement("li");
+      newLi.textContent = el.title;
+      listEl.append(newLi);
     });
-    const nameEl = response.data.name;
-
-    const postResponse = await axios.get(POST_URL, response);
-
-    const result = postResponse.title;
-
-    showEl.textContent = result;
   } catch (error) {
     console.error(error.message);
   }
