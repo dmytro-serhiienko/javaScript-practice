@@ -1982,8 +1982,19 @@
 
 const btnEl = document.querySelector("#js-btn");
 const listEl = document.querySelector("#list");
+const checkEl = document.querySelector("#checkbox");
 
 const BASE_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";
+
+btnEl.disabled = true;
+
+checkEl.addEventListener("change", () => {
+  if (checkEl.checked) {
+    btnEl.disabled = false;
+  } else {
+    btnEl.disabled = true;
+  }
+});
 
 btnEl.addEventListener("click", async () => {
   try {
