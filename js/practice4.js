@@ -2083,3 +2083,96 @@
 // }
 
 // manageUsers();
+
+//! Ці завдання допоможуть "набити руку" на синтаксисі та базових методах масивів.
+
+//? FizzBuzz: Напиши функцію, яка виводить числа від 1 до 100. Але для кратних трьом виводь "Fizz", для кратних п'яти — "Buzz", а для кратних і трьом, і п'яти одночасно — "FizzBuzz".
+// for (let i = 0; i < 100; i++) {
+//   if (i % 3 === 0 && i % 5 === 0) {
+//     console.log("FizzBuzz");
+//   } else if (i % 3 === 0) {
+//     console.log("Fizz");
+//   } else if (i % 5 === 0) {
+//     console.log("Buzz");
+//   }
+// }
+
+//? Паліндром: Створи функцію, яка перевіряє, чи є рядок паліндромом (читається однаково в обох напрямках, наприклад, "шалаш"), ігноруючи регістр та пробіли.
+
+// function palin(word) {
+//   const rev = word.split("").reverse().join("");
+
+//   if (word === rev) {
+//     console.log("Паліндром ✅");
+//   } else {
+//     console.log("Паліндром ❗️");
+//   }
+// }
+
+// palin("шалаш");
+
+//? Аналізатор масиву: Напиши функцію, яка приймає масив чисел і повертає об'єкт із такими даними: максимальне число, мінімальне, середнє значення та сума всіх елементів.
+
+// function checker(array) {
+//   const checkerMax = Math.max(...array);
+//   const checkerMin = Math.min(...array);
+//   const aver =
+//     array.reduce((acc, el) => {
+//       return acc + el;
+//     }, 0) / array.length;
+
+//   const sum = array.reduce((acc, el) => acc + el);
+
+//   return {
+//     max: checkerMax,
+//     min: checkerMin,
+//     average: aver,
+//     total: sum,
+//   };
+// }
+
+// console.log(checker([1, 2, 3]));
+
+//? 2. Рівень: Робота з DOM (Інтерфейс)
+
+//? Конвертер валют: Створи просту форму з інпутом (сума в гривнях) та випадаючим списком (курс USD, EUR). При натисканні на кнопку результат має з'являтися на екрані без перезавантаження сторінки.
+
+// <form class="form" action="" id="js-form">
+//   <input class="input" type="text" id="js-input" />
+//   <select class="select" name="" id="js-select">
+//     <option value="">Оберіть валюту</option>
+//     <option value="">HRN</option>
+//     <option value="">USD</option>
+//   </select>
+//   <button class="btn" type="submit" id="js-btn">Конвертувати</button>
+//   <div class="result" id="js-result"></div>
+// </form>
+
+const fomrEl = document.querySelector("#js-form");
+const inputEl = document.querySelector("#js-input");
+const selectEl = document.querySelector("#js-select");
+const btnEl = document.querySelector("#js-btn");
+const resEl = document.querySelector("#js-result");
+
+btnEl.addEventListener("click", () => {
+  const currencyHrn = 40;
+  const currencyUsd = 45;
+
+  const amount = Number(inputEl.value);
+
+  if (selectEl.value === "usd") {
+    resEl.textContent = amount * currencyUsd;
+
+    return;
+  }
+});
+
+// Список справ (To-Do List):
+
+// Поле для введення тексту.
+
+// Кнопка "Додати".
+
+// Можливість видалити конкретну справу або відмітити її як виконану (змінити колір тексту).
+
+// Темна тема: Додай на сторінку перемикач (Toggle), який змінює колір фону сайту з білого на темний і навпаки, зберігаючи стан у localStorage (щоб після оновлення сторінки вибір не зникав).
