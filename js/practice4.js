@@ -1980,36 +1980,106 @@
 // Використовуючи API https://jsonplaceholder.typicode.com/todos?_limit=5,
 // потрібно завантажити дані та відобразити їх у вигляді списку на сторінці.
 
-const btnEl = document.querySelector("#js-btn");
-const listEl = document.querySelector("#list");
-const checkEl = document.querySelector("#checkbox");
+// const btnEl = document.querySelector("#js-btn");
+// const listEl = document.querySelector("#list");
+// const checkEl = document.querySelector("#checkbox");
 
-const BASE_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";
+// const BASE_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";
 
-btnEl.disabled = true;
+// btnEl.disabled = true;
 
-checkEl.addEventListener("change", () => {
-  if (checkEl.checked) {
-    btnEl.disabled = false;
-  } else {
-    btnEl.disabled = true;
-  }
-});
+// checkEl.addEventListener("change", () => {
+//   if (checkEl.checked) {
+//     btnEl.disabled = false;
+//   } else {
+//     btnEl.disabled = true;
+//   }
+// });
 
-btnEl.addEventListener("click", async () => {
-  try {
-    listEl.textContent = "...Loading";
+// btnEl.addEventListener("click", async () => {
+//   try {
+//     listEl.textContent = "...Loading";
 
-    const response = await axios.get(BASE_URL);
+//     const response = await axios.get(BASE_URL);
 
-    listEl.innerHTML = "";
+//     listEl.innerHTML = "";
 
-    response.data.forEach((el) => {
-      const newLi = document.createElement("li");
-      newLi.textContent = el.title;
-      listEl.append(newLi);
-    });
-  } catch (error) {
-    console.error(error.message);
-  }
-});
+//     response.data.forEach((el) => {
+//       const newLi = document.createElement("li");
+//       newLi.textContent = el.title;
+//       listEl.append(newLi);
+//     });
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// });
+
+// ?1. Задача: "Привітання із затримкою"
+// Умова: Напишіть асинхронну функцію sayHello(), яка чекає 2 секунди, а потім виводить у консоль рядок "Привіт через 2 секунди!".
+
+// Підказка: Використовуйте setTimeout, загорнутий у new Promise, щоб створити затримку.
+
+// async function sayHello() {
+//   await new Promise((resolve) => {
+//     setTimeout(() => {
+//       console.log("Привіт через 2 секунди!");
+//       resolve();
+//     }, 2000);
+//   });
+// }
+
+// sayHello();
+
+//! Варіант 1: Базовий (Симуляція завантаження даних)
+// Створи функцію fetchUserData(userId), яка повертає Promise.
+// Використай setTimeout, щоб затримка тривала 2 секунди.
+// Якщо userId позитивний — "повертай" об'єкт {id: userId, name: "Admin", role: "Editor"}.
+// Виклич цю функцію за допомогою async/await та виведи результат у консоль.
+// Додай обробку помилок (try/catch), якщо userId від'ємний.
+
+// async function fetchUserData(userId) {
+//   try {
+//     await new Promise((resolve) => {
+//       setTimeout(() => {
+//         if (userId) {
+//           return { id: userId, name: "Admin", role: "Editor" };
+//         }
+//       }, 2000);
+//     });
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// ! Технічне завдання
+// Використовуючи бібліотеку Axios та синтаксис async/await, реалізуйте функцію manageUsers(), яка виконує наступні кроки:
+// Отримання даних: Зробіть GET-запит до ресурсу: https://jsonplaceholder.typicode.com/users.
+// Фільтрація: З отриманого масиву виберіть лише тих користувачів, чий id парний (2, 4, 6...).
+// Додатковий запит: Візьміть першого користувача з вашого відфільтрованого списку та зробіть ще один запит, щоб отримати його пости за адресою: https://jsonplaceholder.typicode.com/posts?userId=ID_КОРИСТУВАЧА.
+// Вивід результату: Виведіть у консоль об'єкт, який містить:
+// userName: ім'я обраного користувача.
+// postsCount: кількість постів, які ви отримали у кроці №3.
+// Обробка помилок: Весь блок коду має бути загорнутий у try...catch. Якщо запит не вдасться (наприклад, помилка в URL), виведіть у консоль повідомлення: "Помилка при завантаженні даних: [текст помилки]".
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+
+// async function manageUsers() {
+//   try {
+//     const response = await axios.get(BASE_URL);
+//     const evenUsers = response.data.filter((el) => el.id % 2 === 0);
+
+//     // first user
+//     const firstUser = evenUsers[0];
+
+//     const first = await axios.get(
+//       `https://jsonplaceholder.typicode.com/posts?userId=${firstUser.id}`
+//     );
+
+//     console.log(firstUser.name);
+//     console.log(first.data.length);
+//   } catch (error) {
+//     console.error(`Помилка при завантаженні даних: ${error.message}`);
+//   }
+// }
+
+// manageUsers();
