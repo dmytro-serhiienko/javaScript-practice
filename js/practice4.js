@@ -2134,19 +2134,7 @@
 // console.log(checker([1, 2, 3]));
 
 //? 2. Рівень: Робота з DOM (Інтерфейс)
-
 //? Конвертер валют: Створи просту форму з інпутом (сума в гривнях) та випадаючим списком (курс USD, EUR). При натисканні на кнопку результат має з'являтися на екрані без перезавантаження сторінки.
-
-// <form class="form" action="" id="js-form">
-//   <input class="input" type="text" id="js-input" />
-//   <select class="select" name="" id="js-select">
-//     <option value="">Оберіть валюту</option>
-//     <option value="">HRN</option>
-//     <option value="">USD</option>
-//   </select>
-//   <button class="btn" type="submit" id="js-btn">Конвертувати</button>
-//   <div class="result" id="js-result"></div>
-// </form>
 
 const fomrEl = document.querySelector("#js-form");
 const inputEl = document.querySelector("#js-input");
@@ -2154,25 +2142,29 @@ const selectEl = document.querySelector("#js-select");
 const btnEl = document.querySelector("#js-btn");
 const resEl = document.querySelector("#js-result");
 
-btnEl.addEventListener("click", () => {
-  const currencyHrn = 40;
+btnEl.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const currencyEur = 40;
   const currencyUsd = 45;
 
   const amount = Number(inputEl.value);
 
-  if (selectEl.value === "usd") {
-    resEl.textContent = amount * currencyUsd;
-
+  if (amount <= 0) {
+    alert(`Введіть будь ласка корректну цифру`);
     return;
+  } else if (selectEl.value === "usd") {
+    resEl.textContent = amount * currencyUsd;
+    return;
+  } else if (selectEl.value === "eur") {
+    resEl.textContent = amount * currencyEur;
   }
+
+  inputEl.value = "";
 });
 
 // Список справ (To-Do List):
-
 // Поле для введення тексту.
-
 // Кнопка "Додати".
-
 // Можливість видалити конкретну справу або відмітити її як виконану (змінити колір тексту).
-
 // Темна тема: Додай на сторінку перемикач (Toggle), який змінює колір фону сайту з білого на темний і навпаки, зберігаючи стан у localStorage (щоб після оновлення сторінки вибір не зникав).
