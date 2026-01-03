@@ -2136,35 +2136,74 @@
 //? 2. Рівень: Робота з DOM (Інтерфейс)
 //? Конвертер валют: Створи просту форму з інпутом (сума в гривнях) та випадаючим списком (курс USD, EUR). При натисканні на кнопку результат має з'являтися на екрані без перезавантаження сторінки.
 
-const fomrEl = document.querySelector("#js-form");
-const inputEl = document.querySelector("#js-input");
-const selectEl = document.querySelector("#js-select");
-const btnEl = document.querySelector("#js-btn");
-const resEl = document.querySelector("#js-result");
+// const fomrEl = document.querySelector("#js-form");
+// const inputEl = document.querySelector("#js-input");
+// const selectEl = document.querySelector("#js-select");
+// const btnEl = document.querySelector("#js-btn");
+// const resEl = document.querySelector("#js-result");
 
-btnEl.addEventListener("click", (event) => {
-  event.preventDefault();
+// btnEl.addEventListener("click", (event) => {
+//   event.preventDefault();
 
-  const currencyEur = 40;
-  const currencyUsd = 45;
+//   const currencyEur = 40;
+//   const currencyUsd = 45;
 
-  const amount = Number(inputEl.value);
+//   const amount = Number(inputEl.value);
 
-  if (amount <= 0) {
-    alert(`Введіть будь ласка корректну цифру`);
-    return;
-  } else if (selectEl.value === "usd") {
-    resEl.textContent = amount * currencyUsd;
-    return;
-  } else if (selectEl.value === "eur") {
-    resEl.textContent = amount * currencyEur;
-  }
+//   if (amount <= 0) {
+//     alert(`Введіть будь ласка корректну цифру`);
+//     return;
+//   } else if (selectEl.value === "usd") {
+//     resEl.textContent = amount * currencyUsd;
+//     return;
+//   } else if (selectEl.value === "eur") {
+//     resEl.textContent = amount * currencyEur;
+//   }
 
-  inputEl.value = "";
-});
+//   inputEl.value = "";
+// });
 
-// Список справ (To-Do List):
+//? Список справ (To-Do List):
 // Поле для введення тексту.
 // Кнопка "Додати".
 // Можливість видалити конкретну справу або відмітити її як виконану (змінити колір тексту).
 // Темна тема: Додай на сторінку перемикач (Toggle), який змінює колір фону сайту з білого на темний і навпаки, зберігаючи стан у localStorage (щоб після оновлення сторінки вибір не зникав).
+
+const items = {
+  themeBtn: document.querySelector("#js-theme"),
+  iconEl: document.querySelector(".icon"),
+  inputEl: document.querySelector("#js-input"),
+  btnEl: document.querySelector("#js-btn"),
+  listEl: document.querySelector("#js-list"),
+};
+
+items.btnEl.addEventListener("click", () => {
+  if (!items.inputEl.value) {
+    alert("Введіть свою таску!");
+    return;
+  }
+
+  items.listEl.insertAdjacentHTML(
+    "beforeend",
+    `<li>${items.inputEl.value}<button>X</button></li>`
+  );
+
+  //! var 2
+  // const newLi = document.createElement("li");
+  // newLi.textContent = items.inputEl.value;
+  // items.listEl.append(newLi);
+
+  items.inputEl.value = "";
+});
+
+items.listEl.addEventListener("click", (event) => {
+  if (event.target.tagName === "BUTTON") {
+    event.target.closest("li").remove();
+  }
+});
+
+items.themeBtn.addEventListener("click", (event) => {
+  if (event.target) {
+    document.body.classList.toggle("dark");
+  }
+});

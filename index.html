@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <!-- <link rel="stylesheet" href="./css/styles.css" /> -->
-
     <!-- <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/basiclightbox@5/dist/basicLightbox.min.css"
@@ -19,13 +17,35 @@
     <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.3/simple-lightbox.min.css"
+
+      
     /> -->
+
+    <!-- !remixicon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <!-- ? -->
-    <form class="form" action="" id="js-form">
+
+    <div class="task">
+      <button class="theme" id="js-theme">
+        <i class="ri-sun-fill icon"></i>
+      </button>
+      <div class="wrap">
+        <input class="input" id="js-input" type="text" />
+        <button class="btn" id="js-btn">Add Task</button>
+      </div>
+
+      <ol class="list" id="js-list"></ol>
+    </div>
+
+    <!-- ? -->
+    <!-- <form class="form" action="" id="js-form">
       <h1>Конвертер валют</h1>
       <p>введіть кількість гривень на обмін</p>
       <input class="input" type="text" id="js-input" />
@@ -36,7 +56,7 @@
       </select>
       <button class="btn" type="submit" id="js-btn">Конвертувати</button>
       <div class="result" id="js-result"></div>
-    </form>
+    </form> -->
 
     <!-- ? -->
     <!-- <div id="app">
