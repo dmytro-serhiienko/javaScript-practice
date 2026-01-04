@@ -2169,41 +2169,73 @@
 // Можливість видалити конкретну справу або відмітити її як виконану (змінити колір тексту).
 // Темна тема: Додай на сторінку перемикач (Toggle), який змінює колір фону сайту з білого на темний і навпаки, зберігаючи стан у localStorage (щоб після оновлення сторінки вибір не зникав).
 
-const items = {
-  themeBtn: document.querySelector("#js-theme"),
-  iconEl: document.querySelector(".icon"),
-  inputEl: document.querySelector("#js-input"),
-  btnEl: document.querySelector("#js-btn"),
-  listEl: document.querySelector("#js-list"),
-};
+// const items = {
+//   themeBtn: document.querySelector("#js-theme"),
+//   iconEl: document.querySelector(".icon"),
+//   inputEl: document.querySelector("#js-input"),
+//   btnEl: document.querySelector("#js-btn"),
+//   listEl: document.querySelector("#js-list"),
+// };
 
-items.btnEl.addEventListener("click", () => {
-  if (!items.inputEl.value) {
-    alert("Введіть свою таску!");
-    return;
-  }
+// items.btnEl.addEventListener("click", () => {
+//   if (!items.inputEl.value) {
+//     alert("Введіть свою таску!");
+//     return;
+//   }
 
-  items.listEl.insertAdjacentHTML(
-    "beforeend",
-    `<li>${items.inputEl.value}<button>X</button></li>`
-  );
+//   items.listEl.insertAdjacentHTML(
+//     "beforeend",
+//     `<li>${items.inputEl.value}<button>X</button></li>`
+//   );
 
-  //! var 2
-  // const newLi = document.createElement("li");
-  // newLi.textContent = items.inputEl.value;
-  // items.listEl.append(newLi);
+//! var 2
+// const newLi = document.createElement("li");
+// newLi.textContent = items.inputEl.value;
+// items.listEl.append(newLi);
 
-  items.inputEl.value = "";
-});
+//   items.inputEl.value = "";
+// });
 
-items.listEl.addEventListener("click", (event) => {
-  if (event.target.tagName === "BUTTON") {
-    event.target.closest("li").remove();
-  }
-});
+// items.listEl.addEventListener("click", (event) => {
+//   if (event.target.tagName === "BUTTON") {
+//     event.target.closest("li").remove();
+//   }
+// });
 
-items.themeBtn.addEventListener("click", (event) => {
-  if (event.target) {
-    document.body.classList.toggle("dark");
-  }
-});
+// items.themeBtn.addEventListener("click", (event) => {
+//   if (event.target) {
+//     document.body.classList.toggle("dark");
+//   }
+// });
+
+//? 3. Рівень: Робота з API (Асинхронність)
+// Це наблизить тебе до реальної розробки, де дані беруться із сервера.
+
+// Генератор випадкових цитат: Використовуй безкоштовне API (наприклад, JSONPlaceholder або Advice Slip API), щоб при натисканні на кнопку отримувати нову цитату та виводити її на екран.
+
+// const resEl = document.querySelector(".result");
+// const btnEl = document.querySelector(".btn");
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/todos";
+
+// btnEl.addEventListener("click", async () => {
+//   resEl.innerHTML = "";
+
+//   try {
+//     const response = await axios.get(BASE_URL, {
+//       params: {
+//         _limit: 5,
+//       },
+//     });
+
+//     response.data.forEach((el) => {
+//       const newLi = document.createElement("li");
+//       newLi.textContent = el.title;
+//       resEl.append(newLi);
+//     });
+//   } catch (error) {
+//     console.error(`Name of error: ${error.message}`);
+//   }
+// });
+
+//? Пошук профілів GitHub: Створи інпут, куди користувач вводить логін. Після натискання кнопки "Знайти" додаток має робити запит до GitHub API та показувати аватар користувача, його ім'я та кількість репозиторіїв.
