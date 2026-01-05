@@ -2238,4 +2238,79 @@
 //   }
 // });
 
-//? Пошук профілів GitHub: Створи інпут, куди користувач вводить логін. Після натискання кнопки "Знайти" додаток має робити запит до GitHub API та показувати аватар користувача, його ім'я та кількість репозиторіїв.
+//?
+
+// const inputEl = document.querySelector("#js-input");
+// const btnEl = document.querySelector("#btn");
+// const listEl = document.querySelector("#items");
+
+// додавання видалення таски
+// btnEl.addEventListener("click", (event) => {
+//   event.preventDefault();
+
+//   if (!inputEl.value) {
+//     alert("Введіть таску!");
+//   } else {
+//     const valueEl = inputEl.value;
+
+//     const newLi = document.createElement("li");
+//     newLi.textContent = valueEl;
+//     listEl.append(newLi);
+//   }
+
+//   inputEl.value = "";
+// });
+
+// document.body.addEventListener("click", (event) => {
+//   if (event.target.tagName === "LI") {
+//     event.target.closest("li").remove();
+//   }
+// });
+
+// ?
+
+// <input type="password" name="" id="js-pass" />
+//   <input type="checkbox" name="" id="js-check" />
+//   <button id="js-btn">Show users name</button>
+
+const inPass = document.querySelector("#js-pass");
+const inCheck = document.querySelector("#js-check");
+const btnEl = document.querySelector("#js-btn");
+const listEl = document.querySelector("#js-list");
+
+btnEl.disabled = true;
+
+inCheck.addEventListener("change", (event) => {
+  if (event.target.checked) {
+    btnEl.disabled = false;
+  } else {
+    btnEl.disabled = true;
+  }
+});
+
+const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+
+btnEl.addEventListener("click", async () => {
+  listEl.innerHTML = "";
+
+  try {
+    if (inPass.value === "Dima123") {
+      const response = await axios.get(BASE_URL);
+
+      response.data.forEach((el) => {
+        const newLi = document.createElement("li");
+        newLi.textContent = el.name;
+        listEl.append(newLi);
+
+        console.log(response.status);
+      });
+      inCheck.checked = false;
+      btnEl.disabled = true;
+      inPass.value = "";
+    } else {
+      alert(`Please check your password`);
+    }
+  } catch (error) {
+    console.error(`Problem name: ${error.message}`);
+  }
+});
