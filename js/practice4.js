@@ -2273,44 +2273,121 @@
 //   <input type="checkbox" name="" id="js-check" />
 //   <button id="js-btn">Show users name</button>
 
-const inPass = document.querySelector("#js-pass");
-const inCheck = document.querySelector("#js-check");
-const btnEl = document.querySelector("#js-btn");
-const listEl = document.querySelector("#js-list");
+// const inPass = document.querySelector("#js-pass");
+// const inCheck = document.querySelector("#js-check");
+// const btnEl = document.querySelector("#js-btn");
+// const listEl = document.querySelector("#js-list");
 
-btnEl.disabled = true;
+// btnEl.disabled = true;
 
-inCheck.addEventListener("change", (event) => {
-  if (event.target.checked) {
-    btnEl.disabled = false;
+// inCheck.addEventListener("change", (event) => {
+//   if (event.target.checked) {
+//     btnEl.disabled = false;
+//   } else {
+//     btnEl.disabled = true;
+//   }
+// });
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+
+// btnEl.addEventListener("click", async () => {
+//   listEl.innerHTML = "";
+
+//   try {
+//     if (inPass.value === "Dima123") {
+//       const response = await axios.get(BASE_URL);
+
+//       response.data.forEach((el) => {
+//         const newLi = document.createElement("li");
+//         newLi.textContent = el.name;
+//         listEl.append(newLi);
+
+//         console.log(response.status);
+//       });
+//       inCheck.checked = false;
+//       btnEl.disabled = true;
+//       inPass.value = "";
+//     } else {
+//       alert(`Please check your password`);
+//     }
+//   } catch (error) {
+//     console.error(`Problem name: ${error.message}`);
+//   }
+// });
+
+//? Завдання №1: "Розумний список справ" (To-Do List)
+
+//* Інтерфейс: Поле вводу (input) та кнопка "Додати".
+const items = {
+  inputEl: document.querySelector("#js-input"),
+  btnEl: document.querySelector("#js-btn"),
+  listEl: document.querySelector("#js-list"),
+};
+
+const { inputEl, btnEl, listEl } = items;
+
+//* Функціонал додавання: При натисканні на кнопку (або клавішу Enter) текст із поля стає новим пунктом списку (li).
+//* на клік
+btnEl.addEventListener("click", () => {
+  const nornalaizTask = inputEl.value;
+
+  if (nornalaizTask.length > 2) {
+    //! li
+    const newLi = document.createElement("li");
+    newLi.textContent = nornalaizTask;
+    newLi.style.display = "flex";
+
+    listEl.append(newLi);
+
+    //! btn
+    const btnClose = document.createElement("button");
+    btnClose.textContent = "X";
+    newLi.append(btnClose);
   } else {
-    btnEl.disabled = true;
+    alert("Напишіть таску більше 2 символів =)");
+  }
+
+  inputEl.value = "";
+});
+
+//* на Ентер
+inputEl.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    const nornalaizTask = event.target.value;
+
+    if (nornalaizTask.length > 2) {
+      // !li
+      const newLi = document.createElement("li");
+      newLi.textContent = nornalaizTask;
+      listEl.append(newLi);
+
+      //! btn
+      const btnClose = document.createElement("button");
+      btnClose.textContent = "X";
+      newLi.append(btnClose);
+    } else {
+      alert("Напишіть таску більше 2 символів =)");
+    }
+
+    inputEl.value = "";
   }
 });
 
-const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+//* Статус виконання: При кліку на текст завдання воно має закреслюватися (використовуй CSS клас, наприклад text-decoration: line-through).
+listEl.addEventListener("click", (event) => {
+  const liElem = event.target.closest("li");
 
-btnEl.addEventListener("click", async () => {
-  listEl.innerHTML = "";
+  if (liElem) {
+    liElem.classList.toggle("done");
+  }
+});
 
-  try {
-    if (inPass.value === "Dima123") {
-      const response = await axios.get(BASE_URL);
+//* Видалення: Біля кожного завдання має бути кнопка "Видалити", яка прибирає саме цей елемент.
+listEl.addEventListener("click", (event) => {
+  const buttonClose = event.target.closest("button");
 
-      response.data.forEach((el) => {
-        const newLi = document.createElement("li");
-        newLi.textContent = el.name;
-        listEl.append(newLi);
-
-        console.log(response.status);
-      });
-      inCheck.checked = false;
-      btnEl.disabled = true;
-      inPass.value = "";
-    } else {
-      alert(`Please check your password`);
-    }
-  } catch (error) {
-    console.error(`Problem name: ${error.message}`);
+  if (buttonClose) {
+    const nasheLi = buttonClose.closest("li");
+    nasheLi.remove();
   }
 });
