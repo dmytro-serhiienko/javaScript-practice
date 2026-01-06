@@ -4,7 +4,6 @@ common * {
 
 body {
   background-color: #ffffff;
-  color: #292929;
   font: 1.2em / 1.5 Helvetica Neue, Helvetica, Arial, sans-serif;
   padding: 0;
   margin: 0;
@@ -81,6 +80,62 @@ ul {
   color: #f1f1f1;
 } */
 
-.done {
+/* .done {
   text-decoration: line-through;
+} */
+
+/* ! */
+
+body {
+  background: #98cdff;
+}
+
+.disp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@keyframes animBtn {
+  0% {
+    transform: scale(1);
+    color: #73fca3;
+  }
+  50% {
+    transform: scale(0.8);
+    color: #ffffff;
+  }
+  100% {
+    transform: scale(1);
+    color: #73fca3;
+  }
+}
+
+.random-btn {
+  background-color: #4d9ce5; /* Green */
+  border: none;
+  border-radius: 10px;
+  color: #73fca3;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+  transition: color 0.3s ease;
+
+  &:hover {
+    animation: animBtn 0.8s ease-in-out;
+  }
+}
+
+.user-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 }

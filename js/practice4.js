@@ -2318,76 +2318,128 @@
 //? Завдання №1: "Розумний список справ" (To-Do List)
 
 //* Інтерфейс: Поле вводу (input) та кнопка "Додати".
-const items = {
-  inputEl: document.querySelector("#js-input"),
-  btnEl: document.querySelector("#js-btn"),
-  listEl: document.querySelector("#js-list"),
-};
+// const items = {
+//   inputEl: document.querySelector("#js-input"),
+//   btnEl: document.querySelector("#js-btn"),
+//   listEl: document.querySelector("#js-list"),
+// };
 
-const { inputEl, btnEl, listEl } = items;
+// const { inputEl, btnEl, listEl } = items;
 
 //* Функціонал додавання: При натисканні на кнопку (або клавішу Enter) текст із поля стає новим пунктом списку (li).
 //* на клік
-btnEl.addEventListener("click", () => {
-  const nornalaizTask = inputEl.value;
+// btnEl.addEventListener("click", () => {
+//   const nornalaizTask = inputEl.value;
 
-  if (nornalaizTask.length > 2) {
-    //! li
-    const newLi = document.createElement("li");
-    newLi.textContent = nornalaizTask;
-    newLi.style.display = "flex";
+//   if (nornalaizTask.length > 2) {
+//     //! li
+//     const newLi = document.createElement("li");
+//     newLi.textContent = nornalaizTask;
+//     newLi.style.display = "flex";
 
-    listEl.append(newLi);
+//     listEl.append(newLi);
 
-    //! btn
-    const btnClose = document.createElement("button");
-    btnClose.textContent = "X";
-    newLi.append(btnClose);
-  } else {
-    alert("Напишіть таску більше 2 символів =)");
-  }
+//     //! btn
+//     const btnClose = document.createElement("button");
+//     btnClose.textContent = "X";
+//     newLi.append(btnClose);
+//   } else {
+//     alert("Напишіть таску більше 2 символів =)");
+//   }
 
-  inputEl.value = "";
-});
+//   inputEl.value = "";
+// });
 
 //* на Ентер
-inputEl.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    const nornalaizTask = event.target.value;
+// inputEl.addEventListener("keydown", (event) => {
+//   if (event.key === "Enter") {
+//     const nornalaizTask = event.target.value;
 
-    if (nornalaizTask.length > 2) {
-      // !li
-      const newLi = document.createElement("li");
-      newLi.textContent = nornalaizTask;
-      listEl.append(newLi);
+//     if (nornalaizTask.length > 2) {
+//       // !li
+//       const newLi = document.createElement("li");
+//       newLi.textContent = nornalaizTask;
+//       listEl.append(newLi);
 
-      //! btn
-      const btnClose = document.createElement("button");
-      btnClose.textContent = "X";
-      newLi.append(btnClose);
-    } else {
-      alert("Напишіть таску більше 2 символів =)");
-    }
+//       //! btn
+//       const btnClose = document.createElement("button");
+//       btnClose.textContent = "X";
+//       newLi.append(btnClose);
+//     } else {
+//       alert("Напишіть таску більше 2 символів =)");
+//     }
 
-    inputEl.value = "";
-  }
-});
+//     inputEl.value = "";
+//   }
+// });
 
 //* Статус виконання: При кліку на текст завдання воно має закреслюватися (використовуй CSS клас, наприклад text-decoration: line-through).
-listEl.addEventListener("click", (event) => {
-  const liElem = event.target.closest("li");
+// listEl.addEventListener("click", (event) => {
+//   const liElem = event.target.closest("li");
 
-  if (liElem) {
-    liElem.classList.toggle("done");
-  }
-});
+//   if (liElem) {
+//     liElem.classList.toggle("done");
+//   }
+// });
 
 //* Видалення: Біля кожного завдання має бути кнопка "Видалити", яка прибирає саме цей елемент.
-listEl.addEventListener("click", (event) => {
-  const buttonClose = event.target.closest("button");
+// listEl.addEventListener("click", (event) => {
+//   const buttonClose = event.target.closest("button");
 
-  if (buttonClose) {
-    const nasheLi = buttonClose.closest("li");
-    nasheLi.remove();
+//   if (buttonClose) {
+//     const nasheLi = buttonClose.closest("li");
+//     nasheLi.remove();
+//   }
+// });
+
+//? Завдання №2: "Генератор карток персонажів"
+// Умова:
+// Джерело даних: Використовуй безкоштовне API: https://randomuser.me/api/.
+
+// Кнопка дії: Створи кнопку "Згенерувати героя".
+
+const items = {
+  showEl: document.querySelector("#js-result"),
+  btnEl: document.querySelector("#js-button"),
+};
+
+const { showEl, btnEl } = items;
+
+// Візуалізація: При натисканні на кнопку роби запит до API та виводь на екран картку з:
+const BASE_URL = "https://randomuser.me/api/";
+
+// Фотографією користувача (picture.large).
+// Ім'ям та прізвищем.
+// Електронною поштою.
+// Містом та країною.
+
+// Ініціалізація Notiflix
+Notiflix.Loading.init({
+  backgroundColor: "rgba(0,0,0,0.9)",
+  svgColor: "#fff",
+  clickToClose: false,
+});
+
+btnEl.addEventListener("click", async () => {
+  try {
+    // Показуємо завантажувач перед запитом
+    Notiflix.Loading.standard("Завантаження...");
+
+    const response = await axios.get(BASE_URL);
+    const data = response.data;
+
+    showEl.insertAdjacentHTML(
+      "beforeend",
+      `<li class="user-item"><p><img src="${data.results[0].picture.large}"/>User: ${data.results[0].name.first} ${data.results[0].name.last}</p><p>Email: ${data.results[0].email}</p>${data.results[0].location.country} ${data.results[0].location.city}<p></p></li>`
+    );
+
+    // Приховуємо завантажувач після отримання даних
+    Notiflix.Loading.remove();
+  } catch (error) {
+    // Приховуємо завантажувач у разі помилки
+    Notiflix.Loading.remove();
+    console.error(`Сталась помилкa: ${error.message}`);
   }
 });
+
+// Обробка очікування: Поки дані завантажуються, кнопка має ставати неактивною (disabled), а на місці картки має з'являтися текст "Завантаження..." (або простий лоадер).
