@@ -2398,15 +2398,15 @@
 
 // Кнопка дії: Створи кнопку "Згенерувати героя".
 
-const items = {
-  showEl: document.querySelector("#js-result"),
-  btnEl: document.querySelector("#js-button"),
-};
+// const items = {
+//   showEl: document.querySelector("#js-result"),
+//   btnEl: document.querySelector("#js-button"),
+// };
 
-const { showEl, btnEl } = items;
+// const { showEl, btnEl } = items;
 
 // Візуалізація: При натисканні на кнопку роби запит до API та виводь на екран картку з:
-const BASE_URL = "https://randomuser.me/api/";
+// const BASE_URL = "https://randomuser.me/api/";
 
 // Фотографією користувача (picture.large).
 // Ім'ям та прізвищем.
@@ -2414,32 +2414,264 @@ const BASE_URL = "https://randomuser.me/api/";
 // Містом та країною.
 
 // Ініціалізація Notiflix
-Notiflix.Loading.init({
-  backgroundColor: "rgba(0,0,0,0.9)",
-  svgColor: "#fff",
-  clickToClose: false,
-});
+// Notiflix.Loading.init({
+//   backgroundColor: "rgba(0,0,0,0.9)",
+//   svgColor: "#fff",
+//   clickToClose: false,
+// });
 
-btnEl.addEventListener("click", async () => {
-  try {
-    // Показуємо завантажувач перед запитом
-    Notiflix.Loading.standard("Завантаження...");
+// btnEl.addEventListener("click", async () => {
+//   try {
+// Показуємо завантажувач перед запитом
+// Notiflix.Loading.standard("Завантаження...");
 
-    const response = await axios.get(BASE_URL);
-    const data = response.data;
+// const response = await axios.get(BASE_URL);
+// const data = response.data;
 
-    showEl.insertAdjacentHTML(
-      "beforeend",
-      `<li class="user-item"><p><img src="${data.results[0].picture.large}"/>User: ${data.results[0].name.first} ${data.results[0].name.last}</p><p>Email: ${data.results[0].email}</p>${data.results[0].location.country} ${data.results[0].location.city}<p></p></li>`
-    );
+// showEl.insertAdjacentHTML(
+//   "beforeend",
+//   `<li class="user-item"><p><img src="${data.results[0].picture.large}"/>User: ${data.results[0].name.first} ${data.results[0].name.last}</p><p>Email: ${data.results[0].email}</p>${data.results[0].location.country} ${data.results[0].location.city}<p></p></li>`
+// );
 
-    // Приховуємо завантажувач після отримання даних
-    Notiflix.Loading.remove();
-  } catch (error) {
-    // Приховуємо завантажувач у разі помилки
-    Notiflix.Loading.remove();
-    console.error(`Сталась помилкa: ${error.message}`);
-  }
-});
+// Приховуємо завантажувач після отримання даних
+// Notiflix.Loading.remove();
+// } catch (error) {
+// Приховуємо завантажувач у разі помилки
+// Notiflix.Loading.remove();
+// console.error(`Сталась помилкa: ${error.message}`);
+// }
+// });
 
 // Обробка очікування: Поки дані завантажуються, кнопка має ставати неактивною (disabled), а на місці картки має з'являтися текст "Завантаження..." (або простий лоадер).
+
+// ? 1. Задача "Кавовий автомат"
+// Умова: Напишіть функцію makeCoffee(type), яка повертає проміс. Проміс має виконуватися через 2 секунди і повертати рядок: "Ваша кава {type} готова!". Використайте async/await, щоб викликати цю функцію та вивести результат у консоль.
+
+// Що це тренує: Базову роботу з await та затримкою часу (setTimeout).
+
+// async function makeCoffee(type) {
+//   const promise = await new Promise((resolve) => {
+//     setTimeout(() => {
+//       console.log(`Ваша кава ${type} готова!`);
+//       resolve();
+//     }, 2000);
+//   });
+// }
+
+// makeCoffee("capuccino");
+
+//? Задача 1: "Профіль користувача з обробкою 404"
+// Сценарій: Тобі потрібно завантажити дані користувача за ID.
+
+// Виконай запит до https://jsonplaceholder.typicode.com/users/1.
+
+// У блоці try:
+
+// Отримай дані та виведи в консоль повідомлення: "Користувач: [name], Email: [email]".
+
+// Додай перевірку: якщо response.ok дорівнює false, кидай помилку через throw new Error().
+
+// У блоці catch:
+
+// Виведи в консоль: "Помилка завантаження: користувача не знайдено".
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/users/1";
+
+// try {
+//   const response = await axios.get(BASE_URL);
+
+//   console.log(`Користувач: ${response.data.name}`);
+//   console.log(`Email: ${response.data.email}`);
+// } catch (error) {
+//   console.error("Помилка завантаження: користувача не знайдено");
+// }
+
+//? Задача 2: "Пошук коментарів (Ланцюжок з ризиком)"
+// Сценарій: Тобі потрібно отримати перший пост, а потім — коментарі до нього. Але сервер може бути нестабільним.
+
+// У блоці try:
+
+// Спочатку завантаж пост: https://jsonplaceholder.typicode.com/posts/1.
+
+// Витягни з нього id.
+
+// Використай цей id, щоб зробити другий запит за адресою: https://jsonplaceholder.typicode.com/posts/[ID]/comments.
+
+// Виведи кількість коментарів.
+
+// У блоці catch:
+
+// Перехопи будь-яку помилку (мережеву або помилку парсингу JSON) і виведи: "Не вдалося отримати дані для обговорення".
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/posts/1";
+
+// try {
+//   const response = await axios.get(BASE_URL);
+//   const idEl = response.data.userId;
+
+//   const searchPost = await axios.get(
+//     `https://jsonplaceholder.typicode.com/posts/${idEl}/comments`
+//   );
+
+//   console.log(searchPost.data.length);
+// } catch (error) {
+//   console.error("Не вдалося отримати дані для обговорення");
+// }
+
+//? Задача 3: "Система валідації відповіді"
+// Сценарій: Іноді API повертає пустий об'єкт, і це теж треба обробляти як помилку.
+
+// Зроби запит до https://jsonplaceholder.typicode.com/todos/999 (такого ID не існує, сервер поверне 404).
+
+// У блоці try:
+
+// Після await response.json() перевір, чи об'єкт не пустий (наприклад, перевір наявність поля id).
+
+// Якщо даних немає — вручну згенеруй помилку через throw.
+
+// У блоці catch:
+
+// Виведи в консоль текст помилки, який ти передав у throw.
+
+// const BASE_URL = "https://jsonplaceholder.typicode.com/todos/999";
+
+// try {
+//   const response = await axios.get(BASE_URL);
+
+//   if (!response.data.id) {
+//     throw new Error("такого ID не існує");
+//   }
+// } catch (error) {
+//   console.error(`Помилка: ${error.message}`);
+// }
+
+//? Задача 1: Характеристики персонажа
+// Умова: Отримай дані про покемона ditto.
+
+// Зроби запит до https://pokeapi.co/api/v2/pokemon/ditto.
+
+// У блоці try:
+
+// Виведи в консоль його базовий досвід (base_experience).
+
+// Виведи назву його першої здібності (шлях у JSON: abilities[0].ability.name).
+
+// Додай catch для обробки помилок мережі.
+
+// const BASE_URL = "https://pokeapi.co/api/v2/pokemon/ditto";
+
+// try {
+//   const response = await axios.get(BASE_URL);
+
+//   console.log(`Base experience: ${response.data.base_experience}`);
+//   console.log(`Abilities: ${response.data.abilities[0].ability.name}`);
+// } catch (error) {
+//   console.error(`Помилка: ${error.message}`);
+// }
+
+//? Задачі на Async/Await, Try/Catch та роботу з API
+//? Задача 1: Отримання даних користувача
+// Створи функцію getUserData(userId), яка:
+
+// Робить запит до API https://jsonplaceholder.typicode.com/users/${userId}
+// Повертає ім'я та email користувача
+// Обробляє помилки (наприклад, якщо користувача не існує)
+// Виводить результат у консоль
+
+// const refs = {
+//   buttonEl: document.querySelector("#js-button"),
+//   listEl: document.querySelector("#js-list"),
+// };
+
+// const { buttonEl, listEl } = refs;
+
+// async function getUserData(userId) {
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/users/${userId}`;
+
+//     const response = await axios.get(BASE_URL);
+//     listEl.insertAdjacentHTML(
+//       "beforeend",
+//       `<li>Name: ${response.data.name}, Email: ${response.data.email}</li>`
+//     );
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// buttonEl.addEventListener("click", () => {
+//   listEl.innerHTML = "";
+
+//   getUserData(1);
+// });
+
+//? Задача 2: Список постів
+// Напиши async функцію getAllPosts(), яка:
+
+// Отримує всі пости з https://jsonplaceholder.typicode.com/posts
+// Повертає тільки перші 5 постів
+// Якщо запит не вдався, повертає порожній масив
+// Використай try/catch для обробки помилок
+
+// const refs = {
+//   buttonEl: document.querySelector("#js-button"),
+//   listEl: document.querySelector("#js-list"),
+// };
+
+// const { buttonEl, listEl } = refs;
+
+// async function getAllPosts() {
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+
+//     const response = await axios.get(BASE_URL, {
+//       params: {
+//         _limit: 5,
+//       },
+//     });
+
+//     response.data.forEach((el) => {
+//       listEl.insertAdjacentHTML("beforeend", `<li>${el.title}</li>`);
+//     });
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// buttonEl.addEventListener("click", () => {
+//   listEl.innerHTML = "";
+
+//   getAllPosts(1);
+// });
+
+//? Задача 3: Пошук поста за ID
+// Створи функцію findPostById(postId), яка:
+
+// Шукає пост за ID через API https://jsonplaceholder.typicode.com/posts/${postId}
+// Якщо пост знайдено, виводить його title
+// Якщо пост не знайдено (404), виводить "Пост не знайдено"
+// Обробляє інші помилки окремо
+
+const refs = {
+  buttonEl: document.querySelector("#js-button"),
+  listEl: document.querySelector("#js-list"),
+};
+
+const { buttonEl, listEl } = refs;
+
+async function findPostById(postId) {
+  try {
+    if (id) {
+      const BASE_URL = `https://jsonplaceholder.typicode.com/posts/${postId}`;
+
+      const { data } = await axios.get(BASE_URL);
+      const { id } = data;
+
+      listEl.insertAdjacentHTML("beforeend", `<li></li>`);
+    }
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+// work in progres!

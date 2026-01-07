@@ -86,7 +86,7 @@ ul {
 
 /* ! */
 
-body {
+/* body {
   background: #98cdff;
 }
 
@@ -113,8 +113,8 @@ body {
 }
 
 .random-btn {
-  background-color: #4d9ce5; /* Green */
-  border: none;
+  background-color: #4d9ce5; 
+  /* border: none;
   border-radius: 10px;
   color: #73fca3;
   padding: 10px 24px;
@@ -125,17 +125,111 @@ body {
   margin: 4px 2px;
   cursor: pointer;
 
-  transition: color 0.3s ease;
+  transition: color 0.3s ease; */
 
-  &:hover {
+/* &:hover {
     animation: animBtn 0.8s ease-in-out;
   }
-}
+} */
 
-.user-item {
+/* .user-item {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 10px;
+} */
+
+/* ? */
+/* .container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.sing-btn {
+  background-color: #e0e0e0;
+  border-radius: 50px;
+  box-shadow: inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff;
+  color: #4d4d4d;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 15px 40px;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid rgb(206, 206, 206);
+
+  &:hover,
+  &:focus {
+    box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff,
+      2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
+  }
+} */
+
+/* modal */
+/* .wrap__modal {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+} */
+
+/* .modal-content {
+  padding: 40px;
+
+  border-radius: 30px;
+  background: lightgrey;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+} */
+/* 
+.title__form {
+  color: #ffffff;
+  text-align: center;
+}
+
+.form__modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.input__modal {
+  width: 200px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  padding: 8px 12px;
+  outline: none;
+}
+
+.check-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.check__text {
+  font-size: 16px;
+  color: #676767;
+}
+
+.check__modal {
+}
+
+.btn__modal {
+  background-color: #e0e0e0;
+  border-radius: 50px;
+  box-shadow: inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff;
+  color: #4d4d4d;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 15px 40px;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid rgb(206, 206, 206);
+} */
