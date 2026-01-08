@@ -2644,34 +2644,206 @@
 //   getAllPosts(1);
 // });
 
-//? Задача 3: Пошук поста за ID
-// Створи функцію findPostById(postId), яка:
+//? Напиши функцію, яка отримує один пост з API
+// URL: https://jsonplaceholder.typicode.com/posts/1
 
-// Шукає пост за ID через API https://jsonplaceholder.typicode.com/posts/${postId}
-// Якщо пост знайдено, виводить його title
-// Якщо пост не знайдено (404), виводить "Пост не знайдено"
-// Обробляє інші помилки окремо
+// const refs = {
+//   buttonEl: document.querySelector("#js-button"),
+//   listEl: document.querySelector("#js-list"),
+// };
 
-const refs = {
-  buttonEl: document.querySelector("#js-button"),
-  listEl: document.querySelector("#js-list"),
-};
+// const { buttonEl, listEl } = refs;
 
-const { buttonEl, listEl } = refs;
+// async function getOnePost() {
+//   const BASE_URL = "https://jsonplaceholder.typicode.com/posts/";
+//   const params = { params: { _limit: 1 } };
 
-async function findPostById(postId) {
-  try {
-    if (id) {
-      const BASE_URL = `https://jsonplaceholder.typicode.com/posts/${postId}`;
+//   const response = await axios.get(BASE_URL, params);
 
-      const { data } = await axios.get(BASE_URL);
-      const { id } = data;
+//   return response.data[0];
+// }
 
-      listEl.insertAdjacentHTML("beforeend", `<li></li>`);
-    }
-  } catch (error) {
-    console.error(error.message);
-  }
-}
+// buttonEl.addEventListener("click", async () => {
+//   listEl.innerHTML = "";
 
-// work in progres!
+//   const show = await getOnePost();
+//   listEl.insertAdjacentHTML("beforeend", `<li>${show.title}</li>`);
+// });
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Задача 4: З параметром
+// Що зробити:
+
+// Додай в HTML <input> для введення ID поста
+// Зроби функцію getPost(postId), яка отримує пост за ID
+// URL: https://jsonplaceholder.typicode.com/posts/${postId}
+// Додай try/catch
+// При кліку - бери значення з input і викликай функцію
+// Виводь title поста в список
+
+// Бонус:
+
+// Перевіряй чи користувач ввів ID
+// Обробляй помилку 404 (пост не знайдено) окремо від інших помилок
+
+// const refs = {
+//   inputEl: document.querySelector("#js-input"),
+//   btnEl: document.querySelector("#js-button"),
+//   listEl: document.querySelector("#js-list"),
+// };
+
+// const { inputEl, btnEl, listEl } = refs;
+
+// async function getPost(postId) {
+//   const BASE_URL = `https://jsonplaceholder.typicode.com/posts/${postId}`;
+//   const response = await axios.get(BASE_URL);
+
+//   return response.data;
+// }
+
+// btnEl.addEventListener("click", async () => {
+//   listEl.innerHTML = "";
+//   const postId = inputEl.value.trim();
+
+//   if (!postId) {
+//     listEl.textContent = `Напишіть номер посту`;
+//     return;
+//   }
+
+//   const post = await getPost(postId);
+
+//   listEl.insertAdjacentHTML("beforeend", `<li>${post.title}</li>`);
+
+//   inputEl.value = "";
+// });
+
+// * Витягни name та city в окремі змінні через деструктуризацію
+
+// const user = {
+//   name: "Олексій",
+//   age: 25,
+//   city: "Київ",
+//   email: "alex@gmail.com",
+// };
+// const { name, city } = user;
+// console.log(name);
+// console.log(city);
+
+//* Витягни title як productName, а price як productPrice
+// const product = {
+//   title: "Ноутбук",
+//   price: 25000,
+//   available: true,
+// };
+
+// const { title: productName, price: productPrice } = product;
+
+// console.log(productName);
+// console.log(productPrice);
+
+//* Витягни перший колір як main, другий як secondary
+//* Решту зберіть в масив others
+
+// const colors = ["червоний", "синій", "зелений", "жовтий"];
+
+// const [main, secondary, ...rest] = colors;
+
+// console.log(main);
+// console.log(secondary);
+// console.log(rest);
+
+//* Витягни name та math в окремі змінні
+// const student = {
+//   name: "Марія",
+//   grades: {
+//     math: 95,
+//     english: 88,
+//     history: 92,
+//   },
+// };
+
+// const {
+//   name,
+//   grades: { math },
+// } = student;
+
+// console.log(name);
+// console.log(math);
+
+//* Напиши функцію, яка приймає об'єкт користувача і виводить "Привіт, [name]! Тобі [age] років"
+// Використай деструктуризацію прямо в параметрах
+
+// function greetUser({ name, age }) {
+//   console.log(`Привіт, ${name}! Тобі ${age} років`);
+// }
+
+// greetUser({ name: "Іван", age: 30 });
+
+//* Відфільтруй тільки числа більше 10
+// const numbers = [5, 12, 8, 130, 44, 3, 18];
+
+// var 1
+// const max = Math.max(...numbers);
+// console.log("🚀 ~ max:", max);
+
+// var 2
+// const max = numbers.reduce((acc, el) => {
+//   if (el > acc) {
+//     acc = el;
+//   }
+//   return acc;
+// }, 0);
+// console.log("🚀 ~ max:", max);
+
+//* Створи новий масив, де всі ціни зі знижкою 20%
+// const prices = [100, 250, 50, 300];
+
+// const newPrice = prices.map((el) => {
+//   return el * 0.8;
+// });
+// console.log("🚀 ~ newPrice:", newPrice);
+
+//* Знайди першого активного користувача
+// const users = [
+//   { id: 1, name: "Олег", active: false },
+//   { id: 2, name: "Ніна", active: true },
+//   { id: 3, name: "Петро", active: true },
+// ];
+
+// const finder = users.find((el) => el.active === true);
+// console.log("🚀 ~ finder:", finder);
+
+//* Порахуй загальну суму витрат
+// const expenses = [120, 50, 200, 80, 150];
+
+// const sum = expenses.reduce((acc, el) => (acc += el));
+// console.log("🚀 ~ sum:", sum);
+
+//* Відсортуй вік від меншого до більшого
+// const ages = [32, 18, 45, 23, 67, 29];
+
+// const sortEl = ages.toSorted((a, b) => a - b);
+// console.log("🚀 ~ sortEl:", sortEl);
+
+//* Відфільтруй товари в наявності
+// Потім створи масив тільки з їх назв
+// const products = [
+//   { name: "Телефон", price: 15000, inStock: true },
+//   { name: "Планшет", price: 20000, inStock: false },
+//   { name: "Ноутбук", price: 30000, inStock: true },
+//   { name: "Навушники", price: 2000, inStock: true },
+// ];
+
+// const filtered = products.filter((el) => {
+//   if (el.inStock === true) {
+//     console.log(el.name);
+//   }
+// });
+
+//* Створи масив рядків: "Анна Коваленко - 90 балів"
+// Використай деструктуризацію в callback функції map
+
+const students = [
+  { firstName: "Анна", lastName: "Коваленко", grade: 90 },
+  { firstName: "Іван", lastName: "Петренко", grade: 85 },
+  { firstName: "Марія", lastName: "Сидоренко", grade: 95 },
+];
