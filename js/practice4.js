@@ -2839,11 +2839,192 @@
 //   }
 // });
 
+//* Відфільтруй товари в наявності
+// Потім створи масив тільки з їх назв
+
+// const products = [
+//   { name: "Телефон", price: 15000, inStock: true },
+//   { name: "Планшет", price: 20000, inStock: false },
+//   { name: "Ноутбук", price: 30000, inStock: true },
+//   { name: "Навушники", price: 2000, inStock: true },
+// ];
+
+// const inStock = products.filter((el) => {
+//   if (el.inStock === true) {
+//     return el;
+//   }
+// });
+// console.log("🚀 ~ inStock:", inStock);
+
+// const justName = inStock.map((el) => el.name);
+// console.log("🚀 ~ justName:", justName);
+
 //* Створи масив рядків: "Анна Коваленко - 90 балів"
 // Використай деструктуризацію в callback функції map
 
-const students = [
-  { firstName: "Анна", lastName: "Коваленко", grade: 90 },
-  { firstName: "Іван", lastName: "Петренко", grade: 85 },
-  { firstName: "Марія", lastName: "Сидоренко", grade: 95 },
-];
+// const students = [
+//   { firstName: "Анна", lastName: "Коваленко", grade: 90 },
+//   { firstName: "Іван", lastName: "Петренко", grade: 85 },
+//   { firstName: "Марія", lastName: "Сидоренко", grade: 95 },
+// ];
+
+// const change = students.map(({ firstName, lastName, grade }) => {
+//   console.log(`${firstName} ${lastName} - ${grade}`);
+// });
+
+//* Відфільтруй тільки income
+// Порахуй загальний дохід
+
+// const transactions = [
+//   { type: "income", amount: 5000 },
+//   { type: "expense", amount: 1200 },
+//   { type: "income", amount: 3000 },
+//   { type: "expense", amount: 800 },
+//   { type: "income", amount: 2000 },
+// ];
+
+// const res = transactions.filter((el) => {
+//   if (el.type === "income") {
+//     return el;
+//   }
+// });
+// console.log("🚀 ~ res:", res);
+
+// const sum = res.reduce((acc, el) => {
+//   return (acc += el.amount);
+// }, 0);
+// console.log("🚀 ~ sum:", sum);
+
+//* Виведи в консоль для кожного замовлення:
+// "Замовлення 101: Олексій - 1500 грн"
+
+// const orders = [
+//   { orderId: 101, customer: "Олексій", total: 1500 },
+//   { orderId: 102, customer: "Марина", total: 2200 },
+//   { orderId: 103, customer: "Дмитро", total: 950 },
+// ];
+
+// orders.forEach(({ orderId, customer, total }) => {
+//   console.log(`Замовлення ${orderId}: ${customer} - ${total}`);
+// });
+
+//* Перевір чи всі користувачі повнолітні (>= 18)
+// Перевір чи є хоч один повнолітній
+
+// const users = [
+//   { name: "Олег", age: 17 },
+//   { name: "Ніна", age: 22 },
+//   { name: "Петро", age: 19 },
+// ];
+
+// const checkerEvery = users.every((el) => el.age > 18);
+// console.log("🚀 ~ checkerEvery:", checkerEvery);
+
+// const checkerSome = users.some((el) => el.age > 18);
+// console.log("🚀 ~ checkerSome:", checkerSome);
+
+//* Отримай пост з ID = 1
+// Виведи в консоль весь об'єкт
+
+// async function getPost() {
+//   const BASE_URL = "https://jsonplaceholder.typicode.com/posts/1";
+
+//   const response = await axios.get(BASE_URL);
+//   console.log(response);
+// }
+
+// getPost();
+
+//* Отримай пост з ID = 5
+// Виведи в консоль ТІЛЬКИ title цього поста
+
+// async function getPostTitle() {
+//   const BASE_URL = "https://jsonplaceholder.typicode.com/posts/1";
+
+//   const response = await axios.get(BASE_URL);
+//   console.log(response.data.title);
+// }
+
+// getPostTitle();
+
+//* Отримай пост з ID = 1
+// Додай обробку помилок
+// Якщо помилка - виведи "Щось пішло не так"
+
+// async function getPostSafe() {
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/posts/";
+//     const params = { params: { id: 1 } };
+
+//     const response = await axios.get(BASE_URL, params);
+
+//     response.data.forEach((el) => console.log(el));
+//   } catch (error) {
+//     console.error("Щось пішло не так");
+//   }
+// }
+
+// getPostSafe();
+
+//* Отримай пост з ID = 5
+// Виведи в консоль ТІЛЬКИ title цього поста
+
+// async function getPostTitle() {
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/posts/";
+//     const params = { params: { id: 5 } };
+//     const response = await axios.get(BASE_URL, params);
+
+//     response.data.forEach((el) => {
+//       console.log(el.title);
+//     });
+
+//     console.log(response.status);
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// getPostTitle();
+
+//* Отримай пост з ID = 1
+// Додай обробку помилок
+// Якщо помилка - виведи "Щось пішло не так"
+
+// async function getPostSafe() {
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/posts/";
+//     const params = { params: { id: 1 } };
+//     const response = await axios.get(BASE_URL, params);
+
+//     response.data.forEach((el) => {
+//       console.log(el.body);
+//     });
+//   } catch (error) {
+//     console.error("Щось пішло не так");
+//   }
+// }
+
+// getPostSafe();
+
+//* Напиши функцію, яка приймає postId
+// І виводить title цього поста
+
+async function showPostTitle(postId) {
+  try {
+    const BASE_URL = "https://jsonplaceholder.typicode.com/posts/";
+    const response = await axios.get(`${BASE_URL}${postId}`);
+
+    console.log(response.data.title);
+  } catch (error) {
+    if (error.response && error.response.status === 404) {
+      console.log("Пост не знайдено");
+    } else {
+      console.error(error.message);
+    }
+  }
+}
+
+showPostTitle(3);
+showPostTitle(7);
+showPostTitle(10);
