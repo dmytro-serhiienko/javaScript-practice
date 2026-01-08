@@ -3010,21 +3010,92 @@
 //* Напиши функцію, яка приймає postId
 // І виводить title цього поста
 
-async function showPostTitle(postId) {
-  try {
-    const BASE_URL = "https://jsonplaceholder.typicode.com/posts/";
-    const response = await axios.get(`${BASE_URL}${postId}`);
+// async function showPostTitle(postId) {
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/posts/";
+//     const response = await axios.get(`${BASE_URL}${postId}`);
 
-    console.log(response.data.title);
-  } catch (error) {
-    if (error.response && error.response.status === 404) {
-      console.log("Пост не знайдено");
-    } else {
-      console.error(error.message);
-    }
-  }
-}
+//     console.log(response.data.title);
+//   } catch (error) {
+//     if (error.response && error.response.status === 404) {
+//       console.log("Пост не знайдено");
+//     } else {
+//       console.error(error.message);
+//     }
+//   }
+// }
 
-showPostTitle(3);
-showPostTitle(7);
-showPostTitle(10);
+// showPostTitle(3);
+// showPostTitle(7);
+// showPostTitle(10);
+
+//* Отримай перші 5 постів
+// Виведи масив у консоль
+
+// async function getFirstFivePosts() {
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/posts?_limit=5";
+//     const response = await axios.get(BASE_URL);
+
+//     response.data.forEach((el) => {
+//       console.log(el.title);
+//     });
+//   } catch (error) {}
+// }
+
+// getFirstFivePosts();
+
+//* Отримай перші 3 пости
+// Виведи в консоль тільки їх titles (кожен з нового рядка)
+
+// async function showThreeTitles() {
+//   const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+//   const params = { params: { _limit: 3 } };
+//   const response = await axios.get(BASE_URL, params);
+
+//   response.data.forEach((el) => {
+//     console.log(el.title);
+//   });
+// }
+
+// showThreeTitles();
+
+//* Отримай пост з ID = 1
+// Потім отримай пост з ID = 2
+// Виведи обидва titles
+
+// async function getTwoPosts() {
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+
+//     const response1 = await axios.get(`${BASE_URL}/1`);
+//     const response2 = await axios.get(`${BASE_URL}/2`);
+
+//     console.log(response1.data.title);
+//     console.log(response2.data.title);
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// getTwoPosts();
+
+//* Отримай користувача з ID = 1
+// Виведи його name та email
+
+// async function getUser(userId) {
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+//     const params = { params: { id: 1 } };
+//     const response = await axios.get(BASE_URL, params);
+
+//     response.data.forEach((el) => {
+//       console.log(el.name);
+//       console.log(el.email);
+//     });
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// getUser();
