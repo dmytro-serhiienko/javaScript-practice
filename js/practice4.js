@@ -3217,3 +3217,130 @@
 // Знайди всі пости цього користувача
 // Виведи titles у список
 // URL: https://jsonplaceholder.typicode.com/posts?userId=${userId}
+
+//? Створи клас User з властивостями name та age
+// Додай метод introduce(), який виводить: "Привіт, я [name], мені [age] років"
+
+// Створи 2-3 користувачі та викликай метод introduce()
+
+// class User {
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+
+//   introduce() {
+//     console.log(`Привіт, я ${this.name}, мені ${this.age} років`);
+//   }
+// }
+
+// const dima = new User("Dima", 33);
+// console.log("🚀 ~ dima:", dima);
+
+//? Створи клас BankAccount
+// Властивості: #balance (приватна), owner
+// Методи:
+// - deposit(amount) - додає гроші
+// - withdraw(amount) - знімає гроші (якщо достатньо)
+// - getBalance() - повертає баланс
+
+// Створи акаунт і протестуй методи
+
+// class BankAccount {
+//   #balance;
+
+//   constructor(balance) {
+//     this.#balance = balance;
+//   }
+
+//   set deposit(amount) {
+//     return (this.#balance = this.#balance + amount);
+//   }
+
+//   set widraw(amount) {
+//     return (this.#balance = this.#balance - amount);
+//   }
+
+//   get balance() {
+//     console.log(this.#balance);
+//   }
+// }
+
+// const account1 = new BankAccount(100);
+// account1.deposit = 100;
+// account1.deposit = 800;
+// account1.widraw = 500;
+// account1.deposit = 500;
+// account1.balance;
+
+// console.log("🚀 ~ account1:", account1);
+
+//? Відфільтруй парні числа
+// Помнож кожне на 2
+// Виведи результат
+
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// const result = numbers.filter((el) => el % 2 === 0).map((el) => el * 2);
+// console.log("🚀 ~ result:", result);
+
+//? Перетвори всі слова на великі літери
+// Залиш тільки ті, що довші за 5 символів
+
+// const words = ["apple", "banana", "kiwi", "strawberry", "orange", "grape"];
+
+// const checker = words
+//   .map((el) => el.toUpperCase())
+//   .filter((el) => el.length > 5);
+// console.log("🚀 ~ checker:", checker);
+
+//? Залиш тільки повнолітніх (>= 18)
+// Візьми їх імена
+// З'єднай через кому в один рядок
+// Результат: "Ніна, Петро"
+
+// const users = [
+//   { name: "Олег", age: 17 },
+//   { name: "Ніна", age: 22 },
+//   { name: "Петро", age: 19 },
+//   { name: "Марія", age: 16 },
+// ];
+
+// const result = users
+//   .filter((el) => el.age >= 18)
+//   .map((el) => el.name)
+//   .join(", ");
+
+// console.log("🚀 ~ result:", result);
+
+//? Порахуй ціну зі знижкою для кожного товару
+// Залиш товари дешевші за 20000
+// Порахуй загальну суму
+
+// const products = [
+//   { name: "Телефон", price: 15000, discount: 10 },
+//   { name: "Ноутбук", price: 30000, discount: 15 },
+//   { name: "Планшет", price: 20000, discount: 5 },
+//   { name: "Навушники", price: 2000, discount: 20 },
+// ];
+
+// const discount = products.map((el) => el.price * 0.9);
+// console.log("🚀 ~ discount:", discount);
+
+// const filter = discount.filter((el) => {
+//   return el < 20000;
+// });
+// console.log("🚀 ~ filter:", filter);
+
+// const sum = filter.reduce((acc, el) => {
+//   return acc + el;
+// }, 0);
+// console.log("🚀 ~ sum:", sum);
+
+// const sum = products
+//   .map((el) => el.price * 0.9)
+//   .filter((el) => el < 20000)
+//   .reduce((acc, el) => {
+//     return acc + el;
+//   }, 0);
+// console.log("🚀 ~ sum:", sum);
