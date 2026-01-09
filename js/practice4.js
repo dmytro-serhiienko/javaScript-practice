@@ -3099,3 +3099,121 @@
 // }
 
 // getUser();
+
+//? Отримай користувача за ID з input
+// Виведи його name, email та phone в div
+// URL: https://jsonplaceholder.typicode.com/users/${userId}
+
+// const refs = {
+//   inputEl: document.querySelector("#user-input"),
+//   btnEl: document.querySelector("#user-btn"),
+//   showEl: document.querySelector("#user-info"),
+// };
+
+// const { inputEl, btnEl, showEl } = refs;
+
+// btnEl.addEventListener("click", async () => {
+//   showEl.innerHTML = "";
+
+//   const value = inputEl.value.trim();
+
+//   if (!value || /\D/.test(value)) {
+//     alert("Рядок пустий або знайдена буква");
+//     return;
+//   }
+
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/users/${value}`;
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     showEl.insertAdjacentHTML(
+//       "beforeend",
+//       `<p>${data.name}, ${data.email}, ${data.phone}</p>`
+//     );
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     inputEl.value = "";
+//   }
+// });
+
+//! HTML:
+
+// const refs = {
+//   inputEl: document.querySelector("#limit-input"),
+//   btnEl: document.querySelector("#posts-btn"),
+//   showEl: document.querySelector("#posts-list"),
+// };
+
+// const { inputEl, btnEl, showEl } = refs;
+
+// btnEl.addEventListener("click", async () => {
+//   showEl.innerHTML = "";
+//   const limitValue = inputEl.value.trim();
+
+//   if (!limitValue || /\D/.test(inputEl.value)) {
+//     alert("Некоректні значення");
+//     return;
+//   }
+
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/posts?_limit=${limitValue}`;
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     data.forEach((el) => {
+//       showEl.insertAdjacentHTML("beforeend", `<li>${el.title}</li>`);
+//     });
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     inputEl.value = "";
+//   }
+// });
+
+// Користувач вводить число (наприклад 7)
+// Отримай стільки постів
+// Виведи їх titles в список
+// URL: https://jsonplaceholder.typicode.com/posts?_limit=${limit}
+
+//? ЗАДАЧА:
+// const refs = {
+//   inputEl: document.querySelector("#userid-input"),
+//   btnEl: document.querySelector("#search-btn"),
+//   listEl: document.querySelector("#results"),
+// };
+
+// const { inputEl, btnEl, listEl } = refs;
+
+// btnEl.addEventListener("click", async () => {
+//   listEl.innerHTML = "";
+
+//   const inputValue = inputEl.value.trim();
+
+//   if (!inputValue) {
+//     alert("Не зазначена цифра");
+//     return;
+//   }
+
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/posts?userId=${inputValue}`;
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     data.forEach((el) => {
+//       listEl.insertAdjacentHTML("beforeend", `<li>${el.title}</li>`);
+//     });
+
+//     console.log(response.status);
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     inputEl.value = "";
+//   }
+// });
+
+// Користувач вводить userId
+// Знайди всі пости цього користувача
+// Виведи titles у список
+// URL: https://jsonplaceholder.typicode.com/posts?userId=${userId}
