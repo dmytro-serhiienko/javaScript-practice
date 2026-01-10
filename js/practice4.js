@@ -3344,3 +3344,57 @@
 //     return acc + el;
 //   }, 0);
 // console.log("🚀 ~ sum:", sum);
+
+//? Задача 5: filter + map + sort
+
+// const students = [
+//   { name: "Анна", grade: 85, passed: true },
+//   { name: "Іван", grade: 92, passed: true },
+//   { name: "Марія", grade: 78, passed: true },
+//   { name: "Петро", grade: 95, passed: true },
+//   { name: "Ольга", grade: 88, passed: true },
+// ];
+
+// Залиш тільки тих хто склав (passed: true)
+// Візьми їх імена та оцінки у форматі "Ім'я: оцінка"
+// Відсортуй за оцінкою від більшої до меншої
+
+// const result = students
+//   .filter((el) => el.passed === true)
+//   .sort((a, b) => b.grade - a.grade)
+//   .map((el) => `${el.name}: ${el.grade}`);
+// console.log("🚀 ~ result:", result);
+
+//? Додай 20% до кожної ціни
+// Залиш тільки ціни більше 100
+// Візьми перші 3
+// const [first, second, third] = prices;
+
+// const prices = [100, 250, 50, 300, 150, 80, 200, 400, 90, 180];
+
+// const res = prices.slice(0, 3);
+// const change = res.map((el) => {
+//   return el * 1.2;
+// });
+// console.log("🚀 ~ change:", change);
+
+//? Залиш тільки доходи (income)
+// Візьми тільки суми (amount)
+// Порахуй загальний дохід
+// Округли до 2 знаків після коми
+
+// const transactions = [
+//   { type: "income", amount: 5000.55 },
+//   { type: "expense", amount: 1200.3 },
+//   { type: "income", amount: 3000.75 },
+//   { type: "expense", amount: 800.2 },
+//   { type: "income", amount: 2000.4 },
+// ];
+
+// const filtered = transactions
+//   .filter((el) => el.type === "income")
+//   .reduce((acc, el) => {
+//     return (acc = acc + el.amount);
+//   }, 0)
+//   .toFixed(2);
+// console.log("🚀 ~ filtered:", filtered);

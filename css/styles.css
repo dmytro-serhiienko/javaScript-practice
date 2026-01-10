@@ -233,3 +233,9 @@ ul {
   transition: all 0.2s ease-in-out;
   border: 2px solid rgb(206, 206, 206);
 } */
+
+#js-result {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333333;
+}
