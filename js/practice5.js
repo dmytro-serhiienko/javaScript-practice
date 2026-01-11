@@ -472,3 +472,19 @@
 //   return acc;
 // }, {});
 // console.log("🚀 ~ res:", res);
+
+//? При кліку на кнопку змінюй колір box на випадковий
+//! Підказка: Math.random() для RGB
+
+// <div id="box" style="width: 200px; height: 200px; background: red;"></div>
+// <button id="change-color">Змінити колір</button>
+
+// const refs = {
+//   boxEl: document.querySelector("#box"),
+//   btnEl: document.querySelector("#change-color"),
+// };
+
+// const { boxEl, btnEl } = refs;
+
+const id = nanoid();
+console.log(id);
