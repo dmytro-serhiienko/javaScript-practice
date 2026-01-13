@@ -31,12 +31,46 @@
   </head>
   <body>
     <!-- ? -->
+    <form id="todo-form">
+      <input
+        type="text"
+        name="task"
+        placeholder="Що потрібно зробити?"
+        required
+      />
+      <select name="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button type="submit">Додати</button>
+    </form>
 
-    <!-- ! Бібліотека nano ID -->
-    <script src="https://cdn.jsdelivr.net/npm/nanoid@5.0.7/dist/nanoid.umd.js"></script>
+    <ul id="todo-list"></ul>
+    <!-- ? -->
+    <!-- <div class="container">
+      <div class="stats-board">
+        <p>Всього друзів: <span id="total-count">0</span></p>
+        <p>Чоловіків: <span id="male-count">0</span></p>
+        <p>Жінок: <span id="female-count">0</span></p>
+      </div>
 
-    <div id="box" style="width: 200px; height: 200px; background: red"></div>
-    <button id="change-color">Змінити колір</button>
+      <hr />
+
+      <button type="button" id="add-friend">Додати друга</button>
+
+      <ul id="friend-list"></ul>
+    </div> -->
+
+    <!-- ? -->
+    <!-- <button id="add-friend">Додати друга</button>
+    <ul id="friend-list"></ul> -->
+    <!-- ? -->
+    <!-- <button id="load-user">Завантажити користувача</button>
+    <div id="user-card"></div> -->
+    <!-- ? -->
+    <!-- <button id="toggle-btn">Показати</button>
+    <p id="text" style="display: none">Це прихований текст!</p> -->
     <!-- ? -->
     <!-- <button id="add-user">Додати користувача</button>
     <div id="users-container"></div> -->
@@ -1992,9 +2026,6 @@
 https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js
 "></script> -->
     <!-- <script type="module" src="./js/practice4.js"></script> -->
-
-    <!-- ! Бібл NANO ID -->
-    <script src="https://cdn.jsdelivr.net/npm/nanoid@5.0.7/dist/nanoid.umd.js"></script>
 
     <script type="module" src="./js/practice5.js"></script>
     <!-- <script type="module" src="./js/practice3.js"></script> -->

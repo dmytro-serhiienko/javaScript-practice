@@ -1,3 +1,8 @@
+// import { nanoid } from "nanoid";
+
+// const id = nanoid();
+// console.log(id);
+
 //? API: https://randomuser.me/api/
 //! Отримай випадкового користувача
 // Виведи: фото, ім'я, email, країну
@@ -473,18 +478,197 @@
 // }, {});
 // console.log("🚀 ~ res:", res);
 
-//? При кліку на кнопку змінюй колір box на випадковий
-//! Підказка: Math.random() для RGB
-
-// <div id="box" style="width: 200px; height: 200px; background: red;"></div>
-// <button id="change-color">Змінити колір</button>
+//! При кліку переключай видимість тексту
+//! Змінюй текст кнопки: "Показати" ↔ "Сховати"
 
 // const refs = {
-//   boxEl: document.querySelector("#box"),
-//   btnEl: document.querySelector("#change-color"),
+//   btnEl: document.querySelector("#toggle-btn"),
+//   showEl: document.querySelector("#text"),
 // };
 
-// const { boxEl, btnEl } = refs;
+// const { btnEl, showEl } = refs;
 
-const id = nanoid();
-console.log(id);
+// btnEl.addEventListener("click", () => {
+//   if (btnEl.textContent === "Показати") {
+//     btnEl.textContent = "Сховати";
+//     showEl.style.display = "block";
+//   } else {
+//     btnEl.textContent = "Показати";
+//     showEl.style.display = "none";
+//   }
+// });
+
+//? При кліку:
+// API: https://randomuser.me/api/
+//! - Показуй "Завантаження..." в user-card
+// - Отримай користувача
+// - Створи картку з фото, іменем, email
+// - Додай try/catch для помилок
+
+// const refs = {
+//   btnEl: document.querySelector("#load-user"),
+//   showEl: document.querySelector("#user-card"),
+// };
+
+// const { btnEl, showEl } = refs;
+
+// const BASE_URL = "https://randomuser.me/api/";
+
+// async function showUser() {
+//   try {
+//     showEl.innerHTML = "";
+//     showEl.innerHTML = "LOADING...";
+
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     const markup = `
+//     <img src="${data.results[0].picture.thumbnail}"/>
+//     <p>${data.results[0].name.first}</p>
+//     <p>${data.results[0].email}</p>`;
+
+//     showEl.innerHTML = markup;
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     console.log("Код виконано!");
+//   }
+// }
+
+// btnEl.addEventListener("click", showUser);
+
+//? Дія: При кліку на кнопку "Додати друга" отримай нового користувача.
+//! API: https://randomuser.me/api/
+// Розмітка: Кожен користувач — це окремий елемент <li> всередині списку <ul>.
+// Додавання: Використовуй метод insertAdjacentHTML, щоб новий користувач з'являвся на початку списку.
+// Фішка: В кожній картці має бути кнопка "Видалити" (просто <button type="button">Delete</button>).
+// Логіка видалення: При кліку на кнопку "Видалити", картка саме цього користувача має зникнути зі сторінки.
+
+// const refs = {
+//   btnEl: document.querySelector("#add-friend"),
+//   listEl: document.querySelector("#friend-list"),
+// };
+
+// const { btnEl, listEl } = refs;
+
+// const BASE_URL = "https://randomuser.me/api/";
+
+// async function showUser() {
+//   try {
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     listEl.insertAdjacentHTML(
+//       "beforeend",
+//       `<li>
+//             <img src = "${data.results[0].picture.medium}"/>
+//             <p>${data.results[0].name.first}</p>
+//             <p>${data.results[0].email}</p>
+//             <button type="button">Видалити</button>
+//           </li>`
+//     );
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// btnEl.addEventListener("click", showUser);
+
+// listEl.addEventListener("click", (event) => {
+//   const liElement = event.target.closest("li");
+
+//   if (event.target.nodeName === "BUTTON") {
+//     liElement.remove();
+//   }
+// });
+
+//? Задача 1: "Статистика друзів" (Data Manipulation)
+//! Кожного разу, коли ти додаєш нового друга через API, тобі потрібно оновлювати лічильники на сторінці.
+
+// Умови:
+// Створи зверху над списком блок зі статистикою: Всього друзів: 0 | Чоловіків: 0 | Жінок: 0.
+// При кожному успішному запиті до randomuser.me аналізуй поле gender (стать), яке приходить в об'єкті користувача.
+// Оновлюй відповідні цифри в інтерфейсі.
+
+// const refs = {
+//   totalFriendsEl: document.querySelector("#total-count"),
+//   maleCountEl: document.querySelector("#male-count"),
+//   femaleCountEl: document.querySelector("#female-count"),
+//   btnEl: document.querySelector("#add-friend"),
+//   listEl: document.querySelector("#friend-list"),
+// };
+
+// const { totalFriendsEl, maleCountEl, femaleCountEl, btnEl, listEl } = refs;
+
+// const BASE_URL = "https://randomuser.me/api/";
+
+// let countMale = 0;
+// let countFemale = 0;
+// let countTotal = 0;
+
+// btnEl.addEventListener("click", async () => {
+//   try {
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     countTotal += 1;
+//     totalFriendsEl.textContent = countTotal;
+
+//     if (data.results[0].gender === "male") {
+//       countMale += 1;
+//       maleCountEl.textContent = countMale;
+//     } else if (data.results[0].gender === "female") {
+//       countFemale += 1;
+//       femaleCountEl.textContent = countFemale;
+//     } else if (data.results[0].gender) {
+//       countTotal += 1;
+//       totalFriendsEl.textContent = countTotal;
+//     }
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// });
+
+//? Задача: "Менеджер завдань (To-Do) з пріоритетами"
+//! Тут ми поєднаємо роботу з DOM, обробку форм та зміну статусів елементів.
+
+// Умови:
+// Форма: Створи input для тексту завдання та select для вибору пріоритету (Low, Medium, High).
+
+// Додавання: При сабміті форми додавай нове завдання в список. Картка має містити:
+// Текст завдання.
+
+// Позначку пріоритету (колір тексту або фону має залежати від вибраного пріоритету).
+// Кнопку "Done" (виконано).
+// Статус: При кліку на "Done" текст завдання має стати закресленим (клас у CSS text-decoration: line-through), а кнопка "Done" має зникнути або стати неактивною.
+// Валідація: Не дозволяй додавати порожні завдання.
+
+const refs = {
+  formEl: document.querySelector("#todo-form"),
+  inputTaskEl: document.querySelector("#todo-form input"),
+  selectEl: document.querySelector("#todo-form select"),
+  btnEl: document.querySelector("#todo-form button"),
+  showEl: document.querySelector("#todo-list"),
+};
+
+const { formEl, inputTaskEl, selectEl, btnEl, showEl } = refs;
+
+formEl.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const value = inputTaskEl.value.trim();
+  const priority = selectEl.value;
+
+  if (value === "") {
+    alert("Нічого не введено");
+    return;
+  }
+
+  let color = "black";
+  if (priority === "low") color = "green";
+  if (priority === "medium") color = "orange";
+  if (priority === "high") color = "red";
+
+  const markup = `<p>Задача: ${value}</p>`;
+  showEl.innerHTML = markup;
+});
