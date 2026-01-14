@@ -31,22 +31,12 @@
   </head>
   <body>
     <!-- ? -->
-    <form id="todo-form">
-      <input
-        type="text"
-        name="task"
-        placeholder="Що потрібно зробити?"
-        required
-      />
-      <select name="priority">
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
-      <button type="submit">Додати</button>
-    </form>
 
-    <ul id="todo-list"></ul>
+    <input id="country-search" placeholder="Введи країну" />
+    <button id="search-btn">Шукати</button>
+    <div id="loader" style="display: none">⏳ Завантаження...</div>
+
+    <div id="result"></div>
     <!-- ? -->
     <!-- <div class="container">
       <div class="stats-board">

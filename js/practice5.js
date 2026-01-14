@@ -643,32 +643,70 @@
 // Статус: При кліку на "Done" текст завдання має стати закресленим (клас у CSS text-decoration: line-through), а кнопка "Done" має зникнути або стати неактивною.
 // Валідація: Не дозволяй додавати порожні завдання.
 
+//? При кліку на кнопку:
+//! Візьми значення з input
+// Перевір чи input не порожній
+// Покажи loader (display: block)
+// Зроби запит до API з назвою країни
+// Сховай loader після запиту
+
+// Якщо країну знайдено:
+
+// Створи картку з:
+
+// Прапором (flags.png)
+// Назвою (name.common)
+// Столицею (capital[0])
+// Населенням (population)
+// Регіоном (region)
+
+// Якщо країну НЕ знайдено (404):
+
+// Виведи "❌ Країну не знайдено"
+
+// Якщо інша помилка:
+
+// Виведи "❌ Щось пішло не так"
+
+// Додай try/catch/finally
+
 const refs = {
-  formEl: document.querySelector("#todo-form"),
-  inputTaskEl: document.querySelector("#todo-form input"),
-  selectEl: document.querySelector("#todo-form select"),
-  btnEl: document.querySelector("#todo-form button"),
-  showEl: document.querySelector("#todo-list"),
+  inputEl: document.querySelector("#country-search"),
+  btnEl: document.querySelector("#search-btn"),
+  showLoader: document.querySelector("#loader"),
+  showResult: document.querySelector("#result"),
 };
 
-const { formEl, inputTaskEl, selectEl, btnEl, showEl } = refs;
+const { inputEl, btnEl, showLoader, showResult } = refs;
 
-formEl.addEventListener("submit", (event) => {
-  event.preventDefault();
+btnEl.addEventListener("click", async () => {
+  const country = inputEl.value.trim();
+  const BASE_URL = `https://restcountries.com/v3.1/name/${country}`;
 
-  const value = inputTaskEl.value.trim();
-  const priority = selectEl.value;
-
-  if (value === "") {
-    alert("Нічого не введено");
-    return;
+  if (country === "") {
+    alert("❌ не введено країну");
   }
 
-  let color = "black";
-  if (priority === "low") color = "green";
-  if (priority === "medium") color = "orange";
-  if (priority === "high") color = "red";
+  showResult.insertAdjacentHTML(
+    "beforeend",
+    `<div>
+      <p>${data.flag}</p>
+      <p>${data.name.official}</p>
+      <p>${data.capital}</p>
+      <p>${data.population}</p>
+      </div>`
+  );
 
-  const markup = `<p>Задача: ${value}</p>`;
-  showEl.innerHTML = markup;
+  try {
+    showLoader.style.display = "block";
+
+    const response = await axios.get(BASE_URL, country);
+    const { data } = response;
+  } catch (error) {
+    showResult.innerHTML = "❗️ Сталась помилка ";
+    console.error(error.message);
+  } finally {
+    inputEl.value = "";
+    console.log("Код виконався ✅");
+  }
 });
