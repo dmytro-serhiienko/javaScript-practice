@@ -643,70 +643,19 @@
 // Статус: При кліку на "Done" текст завдання має стати закресленим (клас у CSS text-decoration: line-through), а кнопка "Done" має зникнути або стати неактивною.
 // Валідація: Не дозволяй додавати порожні завдання.
 
-//? При кліку на кнопку:
-//! Візьми значення з input
-// Перевір чи input не порожній
-// Покажи loader (display: block)
-// Зроби запит до API з назвою країни
-// Сховай loader після запиту
+// !?
 
-// Якщо країну знайдено:
+const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+const params = { params: { id: 3 } };
 
-// Створи картку з:
-
-// Прапором (flags.png)
-// Назвою (name.common)
-// Столицею (capital[0])
-// Населенням (population)
-// Регіоном (region)
-
-// Якщо країну НЕ знайдено (404):
-
-// Виведи "❌ Країну не знайдено"
-
-// Якщо інша помилка:
-
-// Виведи "❌ Щось пішло не так"
-
-// Додай try/catch/finally
-
-const refs = {
-  inputEl: document.querySelector("#country-search"),
-  btnEl: document.querySelector("#search-btn"),
-  showLoader: document.querySelector("#loader"),
-  showResult: document.querySelector("#result"),
-};
-
-const { inputEl, btnEl, showLoader, showResult } = refs;
-
-btnEl.addEventListener("click", async () => {
-  const country = inputEl.value.trim();
-  const BASE_URL = `https://restcountries.com/v3.1/name/${country}`;
-
-  if (country === "") {
-    alert("❌ не введено країну");
-  }
-
-  showResult.insertAdjacentHTML(
-    "beforeend",
-    `<div>
-      <p>${data.flag}</p>
-      <p>${data.name.official}</p>
-      <p>${data.capital}</p>
-      <p>${data.population}</p>
-      </div>`
-  );
-
+async function fetchData() {
   try {
-    showLoader.style.display = "block";
-
-    const response = await axios.get(BASE_URL, country);
+    const response = await axios.get(BASE_URL, params);
     const { data } = response;
+    console.log(data);
   } catch (error) {
-    showResult.innerHTML = "❗️ Сталась помилка ";
-    console.error(error.message);
-  } finally {
-    inputEl.value = "";
-    console.log("Код виконався ✅");
+    console.error("Помилка запиту:", error.message);
   }
-});
+}
+
+fetchData();
