@@ -751,37 +751,51 @@
 // Після успішної відповіді додай новий елемент у список <ul> на сторінці.
 // Реалізуй механізм "завантаження": поки чекаєш відповідь від API, кнопка має ставати неактивною (disabled), а текст на ній змінюватися на "Збереження...".
 
-const refs = {
-  formEl: document.querySelector("#js-form"),
-  inputEl: document.querySelector("#js-input"),
-  btnEl: document.querySelector("#js-submit"),
-  listEl: document.querySelector("#js-list"),
-};
+// const refs = {
+//   formEl: document.querySelector("#js-form"),
+//   inputEl: document.querySelector("#js-input"),
+//   btnEl: document.querySelector("#js-submit"),
+//   listEl: document.querySelector("#js-list"),
+// };
 
-const { formEl, inputEl, btnEl, listEl } = refs;
+// const { formEl, inputEl, btnEl, listEl } = refs;
 
-async function showTodo(event) {
-  event.preventDefault();
+// async function showTodo(event) {
+//   event.preventDefault();
 
-  const value = inputEl.value.trim();
+//   const value = inputEl.value.trim();
+//   if (!value) {
+//     alert("Empty input");
+//     return;
+//   }
 
-  const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
 
-  try {
-  } catch (error) {
-    console.error(error.message);
-  } finally {
-    console.log("Code Done!");
-  }
-}
+//     const response = await axios.post(BASE_URL, { title: value });
+//     const { data } = response;
+//     const { title } = data;
 
-//? 4. Конвертер валют з обробкою тайм-ауту (Складний рівень)
-//! Мета: Робота з декількома API одночасно або складними структурами даних.
+//     listEl.insertAdjacentHTML("beforeend", `<li>${title}</li>`);
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     inputEl.value = "";
+//     console.log("Code Done!");
+//   }
+// }
 
-// API: ExchangeRate-API (потрібна безкоштовна реєстрація) або аналогічні.
+// formEl.addEventListener("submit", showTodo);
 
-// Завдання:
-// Користувач вводить суму в USD і вибирає валюту (EUR, UAH, GBP).
-// Використовуй async/await для отримання курсу.
-// Додай штучну затримку (за допомогою setTimeout всередині Promise), щоб перевірити роботу індикатора завантаження.
-// Використовуй finally, щоб прибрати спінер або розблокувати інтерфейс незалежно від того, чи був запит успішним чи ні.
+// listEl.addEventListener("click", (event) => {
+//   const liItem = event.target.closest("li").remove();
+// });
+
+//?
+
+require("dotenv").config(); // БЕЗ ЦЬОГО НЕ ПРАЦЮВАТИМЕ
+
+const axios = require("axios");
+const key = process.env.API_KEY;
+
+console.log(key);
