@@ -645,17 +645,143 @@
 
 // !?
 
-const BASE_URL = "https://jsonplaceholder.typicode.com/users";
-const params = { params: { id: 3 } };
+// const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+// const params = { params: { id: 3 } };
 
-async function fetchData() {
+// async function fetchData() {
+//   try {
+//     const response = await axios.get(BASE_URL, params);
+//     const { data } = response;
+//     console.log(data);
+//   } catch (error) {
+//     console.error("Помилка запиту:", error.message);
+//   }
+// }
+
+// fetchData();
+
+// ? Генератор випадкових порад (Простий рівень)
+//! Мета: Навчитися робити базовий fetch та оновлювати текст у DOM.
+
+// API: Advice Slip API (Ендпоінт: https://api.adviceslip.com/advice)
+
+// Завдання:
+// Створи сторінку з кнопкою "Отримати пораду" та порожнім параграфом.
+// При натисканні на кнопку зроби асинхронний запит до API.
+// Виведи текст поради в параграф.
+// Використовуй try...catch для обробки помилок (наприклад, якщо немає інтернету) і виводь повідомлення "Помилка завантаження" у той самий параграф.
+
+// const refs = {
+//   btnEl: document.querySelector("#js-btn"),
+//   showEl: document.querySelector("#js-show"),
+// };
+
+// const { btnEl, showEl } = refs;
+
+// const BASE_URL = "https://api.adviceslip.com/advice";
+
+// async function showAdvice() {
+//   try {
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     showEl.textContent = `${data.slip.advice}`;
+//   } catch (error) {
+//     showEl.textContent = `Помилка ❗️`;
+//     console.error(error.message);
+//   } finally {
+//     console.log("Code is done ✅");
+//   }
+// }
+
+// btnEl.addEventListener("click", showAdvice);
+
+//? 2. Пошук профілів GitHub (Середній рівень)
+//! Мета: Робота з введенням даних від користувача (input) та детальним відображенням даних.
+
+// API: GitHub Users API (https://api.github.com/users/{username})
+
+// Завдання:
+// Створи поле введення для логіна та кнопку "Пошук".
+// При натисканні отримуй дані про користувача.
+// Виведи на сторінку: аватар (<img>), ім'я, кількість репозиторіїв та біографію.
+// Важливо: Оброби специфічну помилку 404. Якщо користувача не знайдено, виведи повідомлення: "Користувача з таким іменем не існує".
+
+// const refs = {
+//   btnEl: document.querySelector("#js-btn"),
+//   inputEl: document.querySelector("#js-input"),
+//   showEl: document.querySelector("#js-show"),
+// };
+
+// const { btnEl, inputEl, showEl } = refs;
+
+// async function showUser() {
+//   const userName = inputEl.value.trim();
+
+//   if (userName === "") {
+//     alert("Error!!!");
+//   }
+
+//   try {
+//     const BASE_URL = `https://api.github.com/users/${userName}`;
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     const markup = `<img src="${data.avatar_url}"/><p>Name: ${data.name}</p><p>Repo: ${data.public_repos}</p><p>Bio: ${data.bio}</p>`;
+
+//     showEl.insertAdjacentHTML("beforeend", markup);
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     console.log("Код виконався ✅");
+//   }
+// }
+
+// btnEl.addEventListener("click", showUser);
+
+//? 3. Список справ із "фейковим" сервером (Просунутий рівень)
+//! Мета: Робота з методами POST та імітація реального додатку.
+
+// API: JSONPlaceholder
+
+// Завдання:
+// Створи форму для додавання нового завдання (текстове поле).
+// При сабміті форми відправляй POST запит на https://jsonplaceholder.typicode.com/posts з текстом завдання.
+// Дочекайся відповіді від сервера (він поверне об'єкт із ID).
+// Після успішної відповіді додай новий елемент у список <ul> на сторінці.
+// Реалізуй механізм "завантаження": поки чекаєш відповідь від API, кнопка має ставати неактивною (disabled), а текст на ній змінюватися на "Збереження...".
+
+const refs = {
+  formEl: document.querySelector("#js-form"),
+  inputEl: document.querySelector("#js-input"),
+  btnEl: document.querySelector("#js-submit"),
+  listEl: document.querySelector("#js-list"),
+};
+
+const { formEl, inputEl, btnEl, listEl } = refs;
+
+async function showTodo(event) {
+  event.preventDefault();
+
+  const value = inputEl.value.trim();
+
+  const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+
   try {
-    const response = await axios.get(BASE_URL, params);
-    const { data } = response;
-    console.log(data);
   } catch (error) {
-    console.error("Помилка запиту:", error.message);
+    console.error(error.message);
+  } finally {
+    console.log("Code Done!");
   }
 }
 
-fetchData();
+//? 4. Конвертер валют з обробкою тайм-ауту (Складний рівень)
+//! Мета: Робота з декількома API одночасно або складними структурами даних.
+
+// API: ExchangeRate-API (потрібна безкоштовна реєстрація) або аналогічні.
+
+// Завдання:
+// Користувач вводить суму в USD і вибирає валюту (EUR, UAH, GBP).
+// Використовуй async/await для отримання курсу.
+// Додай штучну затримку (за допомогою setTimeout всередині Promise), щоб перевірити роботу індикатора завантаження.
+// Використовуй finally, щоб прибрати спінер або розблокувати інтерфейс незалежно від того, чи був запит успішним чи ні.
