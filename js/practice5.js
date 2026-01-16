@@ -856,42 +856,46 @@
 // Додати індикатор завантаження (Spinner), поки дані очікуються.
 // Відображати статус персонажа (Живий/Мертвий) різними кольорами.
 
-const refs = {
-  inputEl: document.querySelector("#search-input"),
-  divLoader: document.querySelector("#loader"),
-  divShow: document.querySelector("#characters-grid"),
-};
+// const refs = {
+//   inputEl: document.querySelector("#search-input"),
+//   divLoader: document.querySelector("#loader"),
+//   divShow: document.querySelector("#characters-grid"),
+// };
 
-const { inputEl, divLoader, divShow } = refs;
+// const { inputEl, divLoader, divShow } = refs;
 
-async function showMe() {
-  const valueInput = inputEl.value.trim();
+// async function showMe() {
+//   divShow.innerHTML = "";
+//   divLoader.style.display = "block";
+//   const valueInput = inputEl.value.trim();
 
-  if (!valueInput) {
-    alert("Insert ID❗️");
-  }
+//   if (!valueInput) {
+//     alert("Insert ID❗️");
+//     return;
+//   }
 
-  try {
-    const BASE_URL = "https://rickandmortyapi.com/api/character";
-    const params = { params: { _limit: 20 }, id: `${valueInput}` };
-    const response = await axios.get(BASE_URL, params);
-    const { data } = response;
+//   try {
+//     const BASE_URL = `https://rickandmortyapi.com/api/character/${valueInput}`;
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
 
-    divShow.insertAdjacentElement(
-      "beforeend",
-      `<img src ="${data.results[0].image}"/>
-      <p>${data.results[0].name}</p>
-      <p>${data.results[0].species}</p>`
-    );
-  } catch (error) {
-    console.error(error.message);
-  } finally {
-    console.log("Код дійшов до finally");
-  }
-}
+//     const markup = `<img src ="${data.image}"/>
+//       <p>${data.name}</p>
+//       <p>${data.species}</p>`;
 
-inputEl.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    showMe();
-  }
-});
+//     divShow.insertAdjacentHTML("beforeend", markup);
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     divLoader.style.display = "none";
+
+//     console.log("Код дійшов до finally");
+//     inputEl.value = "";
+//   }
+// }
+
+// inputEl.addEventListener("keydown", (e) => {
+//   if (e.key === "Enter") {
+//     showMe();
+//   }
+// });
