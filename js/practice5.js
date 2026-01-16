@@ -899,3 +899,65 @@
 //     showMe();
 //   }
 // });
+
+//? 1. Об'єкти та методи (Рівень: Basic)
+//! Задача: "Калькулятор зарплати" Створіть об'єкт department, який містить:
+
+// Властивість staff (масив об'єктів, де кожен об'єкт — це працівник з полями name та salary).
+// Метод getTotalSalary(), який повертає суму всіх зарплат.
+// Метод addEmployee(name, salary), який додає нового працівника в масив.
+// Бонус: Додайте метод getAverageSalary(), який розраховує середню зарплату в департаменті.
+
+// const department = {
+//   staff: [
+//     { name: "Dimitro", salary: 3000 },
+//     { name: "Hordiy", salary: 2000 },
+//     { name: "Lana", salary: 1000 },
+//   ],
+
+//   getTotalSalary() {
+//     return this.staff.reduce((acc, el) => {
+//       return acc + el.salary;
+//     }, 0);
+//   },
+
+//   addEmployee(name, salary) {
+//     this.staff.push({ name, salary });
+//   },
+
+//   getAverageSalary() {
+//     return (
+//       this.staff.reduce((acc, el) => {
+//         return acc + el.salary;
+//       }, 0) / this.staff.length
+//     );
+//   },
+// };
+
+// department.addEmployee("Dmytro", 2000);
+// console.log(department.getTotalSalary());
+// console.log(department.getAverageSalary());
+
+//? 2. Масиви та методи перебору (Рівень: Intermediate)
+//! Задача: "Фільтрація та трансформація каталогу" У вас є масив товарів:
+// Виконайте наступні дії (бажано через chain-ерінг методів):
+// Відфільтруйте товари, ціна яких більша за 100.
+// Створіть новий масив рядків у форматі: "Товар: [name], Ціна зі знижкою 10%: [price * 0.9]".
+// Знайдіть загальну вартість усіх товарів після знижки за допомогою reduce.
+
+const products = [
+  { id: 1, name: "Laptop", price: 1000, category: "electronics" },
+  { id: 2, name: "T-shirt", price: 20, category: "clothing" },
+  { id: 3, name: "Phone", price: 500, category: "electronics" },
+];
+
+const summary = products
+  .filter((el) => el.price > 100)
+  .map((el) => {
+    const disc10 = el.price * 0.9;
+    return `Товар: ${el.name}, Ціна зі знижкою 10%: ${disc10}`;
+  })
+  .reduce((acc, el) => {
+    return acc + el.price;
+  }, 0);
+console.log("🚀 ~ summary:", summary);
