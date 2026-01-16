@@ -945,19 +945,56 @@
 // Створіть новий масив рядків у форматі: "Товар: [name], Ціна зі знижкою 10%: [price * 0.9]".
 // Знайдіть загальну вартість усіх товарів після знижки за допомогою reduce.
 
-const products = [
-  { id: 1, name: "Laptop", price: 1000, category: "electronics" },
-  { id: 2, name: "T-shirt", price: 20, category: "clothing" },
-  { id: 3, name: "Phone", price: 500, category: "electronics" },
-];
+// const products = [
+//   { id: 1, name: "Laptop", price: 1000, category: "electronics" },
+//   { id: 2, name: "T-shirt", price: 20, category: "clothing" },
+//   { id: 3, name: "Phone", price: 500, category: "electronics" },
+// ];
 
-const summary = products
-  .filter((el) => el.price > 100)
-  .map((el) => {
-    const disc10 = el.price * 0.9;
-    return `Товар: ${el.name}, Ціна зі знижкою 10%: ${disc10}`;
-  })
-  .reduce((acc, el) => {
-    return acc + el.price;
-  }, 0);
-console.log("🚀 ~ summary:", summary);
+// const summary = products
+//   .filter((el) => el.price > 100)
+//   .map((el) => {
+//     const disc10 = el.price * 0.9;
+//     return `Товар: ${el.name}, Ціна зі знижкою 10%: ${disc10}`;
+//   })
+//   .reduce((acc, el) => {
+//     return acc + el.price;
+//   }, 0);
+// console.log("🚀 ~ summary:", summary);
+
+//? 3. Деструктуризація та Rest/Spread (Рівень: Intermediate)
+//! Задача: "Обробка профілю користувача" Напишіть функцію displayUserProfile(user), яка приймає об'єкт:
+// Усередині функції:
+// Використовуйте глибоку деструктуризацію, щоб дістати firstName, lastName та email.
+// Використовуйте деструктуризацію масиву, щоб дістати першу роль у змінну mainRole, а решту — у масив otherRoles.
+// Поверніть новий об'єкт, який копіює всі дані user, але змінює lastLogin на поточну дату і додає поле active: true (використовуйте Spread).
+
+const user = {
+  id: 101,
+  info: {
+    firstName: "Ivan",
+    lastName: "Petrenko",
+    email: "ivan@example.com",
+  },
+  roles: ["admin", "editor", "user"],
+  lastLogin: "2024-05-12",
+};
+
+function displayUserProfile(user) {
+  const {
+    info: { firstName, lastName, email },
+  } = user;
+
+  const {
+    roles: [mainRole, ...otherRoles],
+  } = user;
+
+  console.log(firstName);
+  console.log(lastName);
+  console.log(email);
+
+  console.log(mainRole);
+  console.log(otherRoles);
+}
+
+displayUserProfile(user);
