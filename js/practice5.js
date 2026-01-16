@@ -793,9 +793,105 @@
 
 //?
 
-require("dotenv").config(); // БЕЗ ЦЬОГО НЕ ПРАЦЮВАТИМЕ
+// У Vite ми не використовуємо process.env, а використовуємо import.meta.env
+// const apiKey = import.meta.env.VITE_API_KEY;
+// const baseUrl = import.meta.env.VITE_BASE_URL;
 
-const axios = require("axios");
-const key = process.env.API_KEY;
+// export const makeRequest = async () => {
+//   try {
+//     const response = await axios.get(`${baseUrl}/endpoint`, {
+//       headers: {
+//         // Перевір в документації АПІ, як саме передавати ключ.
+//         // Найчастіше це 'Authorization': `Bearer ${apiKey}` або 'x-api-key': apiKey
+//         Authorization: `Bearer ${apiKey}`,
+//       },
+//     });
+//     console.log("Дані:", response.data);
+//     return response.data;
+//   } catch (error) {
+//     console.error("Помилка:", error.response?.data || error.message);
+//   }
+// };
 
-console.log(key);
+// makeRequest();
+
+// ? API
+/* <div class="advice-card">
+  <h1>Порада дня</h1>
+  <p id="advice-text">Натисніть кнопку, щоб отримати пораду...</p>
+  <button id="get-advice">Хочу пораду!</button>
+</div>; */
+
+// const refs = {
+//   btnEl: document.querySelector("#get-advice"),
+//   showEl: document.querySelector("#advice-text"),
+// };
+
+// const { btnEl, showEl } = refs;
+
+// async function showAdvice() {
+//   try {
+//     const BASE_URL = "https://api.adviceslip.com/advice";
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     showEl.textContent = data.slip.advice;
+//   } catch (error) {
+//     showEl.textContent = "Сталась помилка❗️";
+//     console.error(error.message);
+//   } finally {
+//     console.log("Код дійшов до finally");
+//   }
+// }
+
+// btnEl.addEventListener("click", showAdvice);
+
+//? 2. Пошук персонажів "Рік та Морті" (Середній рівень)
+//! Робота з масивами даних та динамічним пошуком.
+// API: https://rickandmortyapi.com/api/character
+
+// Завдання:
+// При завантаженні сторінки вивести перші 20 персонажів (картки з фото та іменами).
+// Додати input для пошуку. При введенні імені список має фільтруватися (робіть запит ?name=...).
+// Додати індикатор завантаження (Spinner), поки дані очікуються.
+// Відображати статус персонажа (Живий/Мертвий) різними кольорами.
+
+const refs = {
+  inputEl: document.querySelector("#search-input"),
+  divLoader: document.querySelector("#loader"),
+  divShow: document.querySelector("#characters-grid"),
+};
+
+const { inputEl, divLoader, divShow } = refs;
+
+async function showMe() {
+  const valueInput = inputEl.value.trim();
+
+  if (!valueInput) {
+    alert("Insert ID❗️");
+  }
+
+  try {
+    const BASE_URL = "https://rickandmortyapi.com/api/character";
+    const params = { params: { _limit: 20 }, id: `${valueInput}` };
+    const response = await axios.get(BASE_URL, params);
+    const { data } = response;
+
+    divShow.insertAdjacentElement(
+      "beforeend",
+      `<img src ="${data.results[0].image}"/>
+      <p>${data.results[0].name}</p>
+      <p>${data.results[0].species}</p>`
+    );
+  } catch (error) {
+    console.error(error.message);
+  } finally {
+    console.log("Код дійшов до finally");
+  }
+}
+
+inputEl.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    showMe();
+  }
+});
