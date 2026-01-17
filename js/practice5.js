@@ -1391,35 +1391,102 @@
 //     <button id="load">Load list</button>
 // <ul id="list"></ul>
 
-const refs = {
-  btnEl: document.querySelector("#load"),
-  listEl: document.querySelector("#list"),
-};
+// const refs = {
+//   btnEl: document.querySelector("#load"),
+//   listEl: document.querySelector("#list"),
+// };
 
-const { btnEl, listEl } = refs;
+// const { btnEl, listEl } = refs;
 
-async function showPlease() {
-  try {
-    const BASE_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";
-    const response = await axios.get(BASE_URL);
+// async function showPlease() {
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";
+//     const response = await axios.get(BASE_URL);
 
-    const answer = response.data;
-    if (!answer || answer.length === 0) {
-      listEl.textContent = "Сталась помилка❗️";
-      return;
-    }
+//     const answer = response.data;
+//     if (!answer || answer.length === 0) {
+//       listEl.textContent = "Сталась помилка❗️";
+//       return;
+//     }
 
-    const markup = answer
-      .map(({ id, title }) => {
-        return `<li>${id}. ${title}</li>`;
-      })
-      .join("");
+//     const markup = answer
+//       .map(({ id, title }) => {
+//         return `<li>${id}. ${title}</li>`;
+//       })
+//       .join("");
 
-    listEl.innerHTML = markup;
-  } catch (error) {
-    console.error(error.message);
-  } finally {
-  }
-}
+//     listEl.innerHTML = markup;
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//   }
+// }
 
-btnEl.addEventListener("click", showPlease);
+// btnEl.addEventListener("click", showPlease);
+
+//? 🟢 Задача 6: Ланцюжок + Loader + 404
+//! Умова:
+// 	1.	Введи ID поста (1 100)
+// 	2.	Показуй Loading... під час запиту
+// 	3.	Зроби GET-запит на пост:
+// https://jsonplaceholder.typicode.com/posts/{id}
+
+// 4.	Потім за userId з поста зроби другий запит:
+// https://jsonplaceholder.typicode.com/users/{userId}
+//   5.	Виведи:
+// 	•	Заголовок поста
+// 	•	Текст поста
+// 	•	Імʼя автора
+// 	6.	Якщо поста не існує → повідомлення про помилку
+// 	7.	Loader ховай завжди після запиту
+
+// const refs = {
+//   inputEl: document.querySelector("#post-id"),
+//   btnEl: document.querySelector("#load-post"),
+//   pStatusEl: document.querySelector("#status"),
+//   showDiv: document.querySelector("#post-card"),
+// };
+
+// const { inputEl, btnEl, pStatusEl, showDiv } = refs;
+
+// async function pleaseShow() {
+//   showDiv.innerHTML = "";
+
+//   const idOfPost = inputEl.value.trim();
+
+//   if (!idOfPost) {
+//     pStatusEl.textContent = "Помилка❗️Даних";
+//     return;
+//   }
+
+//   try {
+//     pStatusEl.textContent = "LOADING...";
+
+//     const POST_URL = `https://jsonplaceholder.typicode.com/posts/${idOfPost}`;
+//     const responsePost = await axios.get(POST_URL);
+//     const { id, title, body } = responsePost.data;
+
+//     const USER_URL = `https://jsonplaceholder.typicode.com/users/${id}`;
+//     const response2 = await axios.get(USER_URL);
+//     const { name } = response2.data;
+
+//     pStatusEl.textContent = "";
+
+//     showDiv.insertAdjacentHTML(
+//       "beforeend",
+//       `<p>${title}</p>, <p>${body}</p>, <p>${name}</p>`,
+//     );
+//   } catch (error) {
+//     pStatusEl.textContent = `Сталась помилка: ${error.message}`;
+//   } finally {
+//     inputEl.value = "";
+//   }
+// }
+
+// btnEl.addEventListener("click", pleaseShow);
+
+// inputEl.addEventListener("keydown", (event) => {
+//   if (event.key === "Enter") {
+//     pleaseShow();
+//   }
+// });
