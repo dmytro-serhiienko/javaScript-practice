@@ -1200,3 +1200,226 @@
 // inputEl.addEventListener("input", () => {
 //   showList();
 // });
+
+//! 🟢 Задача 1: Отримання користувача (axios + try/catch)
+//? Мета: навчитися робити GET-запит і обробляти помилки.
+
+// Умова:
+// 	•	По кліку на кнопку зроби запит до API
+// 	•	Отримай користувача за ID
+// 	•	Виведи імʼя та email
+// 	•	Якщо користувача не знайдено — виведи повідомлення про помилку
+
+//   <input type="number" id="user-id" placeholder="User ID">
+// <button id="load-user">Load user</button>
+
+// <p id="user-name"></p>
+// <p id="user-email"></p>
+
+// const refs = {
+//   inputEl: document.querySelector("#user-id"),
+//   btnEl: document.querySelector("#load-user"),
+//   textName: document.querySelector("#user-name"),
+//   textMail: document.querySelector("#user-email"),
+// };
+
+// const { inputEl, btnEl, textName, textMail } = refs;
+
+// async function showUser() {
+//   const userId = inputEl.value.trim();
+
+//   if (!userId) return;
+
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/users/${userId}`;
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     textName.textContent = data.name;
+//     textMail.textContent = data.email;
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     inputEl.value = "";
+//   }
+// }
+
+// btnEl.addEventListener("click", showUser);
+
+//? 🟢 Задача 2: Пошук персонажа (DOM + axios)
+//! Мета: робота з input + динамічний вивід
+
+// Умова:
+// 	•	Користувач вводить імʼя персонажа
+// 	•	Робиш запит з query-параметром
+// 	•	Виводиш імʼя та картинку
+// 	•	Якщо результатів немає — повідомлення
+
+// const refs = {
+//   inputEl: document.querySelector("#search"),
+//   btnEl: document.querySelector("#search-btn"),
+//   showDiv: document.querySelector("#result"),
+// };
+
+// const { inputEl, btnEl, showDiv } = refs;
+
+// async function searchPerson() {
+//   const valueName = inputEl.value.trim();
+
+//   if (!valueName) return;
+
+//   try {
+//     const BASE_URL = `https://rickandmortyapi.com/api/character/?name=${valueName}`;
+//     const response = await axios.get(BASE_URL);
+//     const { name, image } = response.data.results[0];
+
+//     const markup = `<img src="${image}"/><p>${name}</p>`;
+
+//     showDiv.innerHTML = markup;
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     inputEl.value = "";
+//   }
+// }
+
+// btnEl.addEventListener("click", searchPerson);
+
+//? 🟢 Задача 3: Ланцюжковий запит (axios)
+//! Мета: другий запит на основі першого
+// Умова:
+// 	•	Отримай пост по ID
+// 	•	Із відповіді візьми userId
+// 	•	Зроби другий запит за користувачем
+// 	•	Виведи заголовок поста та імʼя автора
+
+// API:
+// https://jsonplaceholder.typicode.com/posts/1
+// https://jsonplaceholder.typicode.com/users/1
+
+// const refs = {
+//   inputEl: document.querySelector("#post-id"),
+//   btnEl: document.querySelector("#load-post"),
+//   titleEL: document.querySelector("#post-title"),
+//   authornameEl: document.querySelector("#author-name"),
+// };
+
+// const { inputEl, btnEl, titleEL, authornameEl } = refs;
+
+// async function showById(params) {
+//   const valueOfId = inputEl.value.trim();
+
+//   if (!valueOfId) return;
+
+//   try {
+//     const POSTS_URL = `https://jsonplaceholder.typicode.com/posts/${valueOfId}`;
+//     const response = await axios.get(POSTS_URL);
+//     const { data } = response;
+
+//     const idUser = data.userId;
+
+//     titleEL.textContent = data.title;
+
+//     const USER_URL = `https://jsonplaceholder.typicode.com/users/${idUser}`;
+//     const response2 = await axios.get(USER_URL);
+//     const { name } = response2.data;
+
+//     authornameEl.textContent = name;
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     inputEl.value = "";
+//   }
+// }
+
+// btnEl.addEventListener("click", showById);
+
+//? 🟢 Задача 4: try / catch + finally
+//! Мета: навчитися ловити помилки
+// Умова:
+// 	•	Показуй Loading... перед запитом
+// 	•	При успіху — показуй дані
+// 	•	При помилці — текст помилки
+// 	•	В finally ховай loader
+
+//     API (навмисно зламаний ID):
+// https://jsonplaceholder.typicode.com/posts/9999
+
+// const refs = {
+//   btnEl: document.querySelector("#btn"),
+//   statusEl: document.querySelector("#status"),
+//   showEL: document.querySelector("#showdiv"),
+// };
+
+// const { btnEl, statusEl, showEL } = refs;
+
+// async function showRes() {
+//   try {
+//     statusEl.textContent = "LOADING...";
+
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/posts/9";
+//     const response = await axios.get(BASE_URL);
+//     const answer = response.data;
+
+//     if (!answer || answer.length === 0) {
+//       statusEl.textContent = "Помилка❗️Даних немає";
+//     }
+
+//     const { id, title } = answer;
+
+//     const markup = `<p>${id}</p><p>${title}</p>`;
+
+//     statusEl.textContent = "";
+
+//     showEL.innerHTML = markup;
+//   } catch (error) {
+//     statusEl.textContent = `Сталась помилка: ${error.message}`;
+//   } finally {
+//   }
+// }
+
+// btnEl.addEventListener("click", showRes);
+
+//? 🟢 Задача 5: Список + render (DOM)
+//! Мета: рендер масиву в DOM
+
+// Умова:
+// 	•	Отримай список
+// 	•	Перебери масив
+// 	•	Виведи кожен елемент у < li >
+
+//     <button id="load">Load list</button>
+// <ul id="list"></ul>
+
+const refs = {
+  btnEl: document.querySelector("#load"),
+  listEl: document.querySelector("#list"),
+};
+
+const { btnEl, listEl } = refs;
+
+async function showPlease() {
+  try {
+    const BASE_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";
+    const response = await axios.get(BASE_URL);
+
+    const answer = response.data;
+    if (!answer || answer.length === 0) {
+      listEl.textContent = "Сталась помилка❗️";
+      return;
+    }
+
+    const markup = answer
+      .map(({ id, title }) => {
+        return `<li>${id}. ${title}</li>`;
+      })
+      .join("");
+
+    listEl.innerHTML = markup;
+  } catch (error) {
+    console.error(error.message);
+  } finally {
+  }
+}
+
+btnEl.addEventListener("click", showPlease);
