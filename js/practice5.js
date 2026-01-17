@@ -969,32 +969,234 @@
 // Використовуйте деструктуризацію масиву, щоб дістати першу роль у змінну mainRole, а решту — у масив otherRoles.
 // Поверніть новий об'єкт, який копіює всі дані user, але змінює lastLogin на поточну дату і додає поле active: true (використовуйте Spread).
 
-const user = {
-  id: 101,
-  info: {
-    firstName: "Ivan",
-    lastName: "Petrenko",
-    email: "ivan@example.com",
-  },
-  roles: ["admin", "editor", "user"],
-  lastLogin: "2024-05-12",
-};
+// const user = {
+//   id: 101,
+//   info: {
+//     firstName: "Ivan",
+//     lastName: "Petrenko",
+//     email: "ivan@example.com",
+//   },
+//   roles: ["admin", "editor", "user"],
+//   lastLogin: "2024-05-12",
+// };
 
-function displayUserProfile(user) {
-  const {
-    info: { firstName, lastName, email },
-  } = user;
+// function displayUserProfile(user) {
+//   const {
+//     info: { firstName, lastName, email },
+//   } = user;
 
-  const {
-    roles: [mainRole, ...otherRoles],
-  } = user;
+//   const {
+//     roles: [mainRole, ...otherRoles],
+//   } = user;
 
-  console.log(firstName);
-  console.log(lastName);
-  console.log(email);
+//   console.log(firstName);
+//   console.log(lastName);
+//   console.log(email);
 
-  console.log(mainRole);
-  console.log(otherRoles);
-}
+//   console.log(mainRole);
+//   console.log(otherRoles);
+// }
 
-displayUserProfile(user);
+// displayUserProfile(user);
+
+//? Базова деструктуризація об'єкта
+//! У тебе є об'єкт користувача. Витягни властивості firstName та age в окремі змінні.
+
+// const user = {
+//   firstName: "Олексій",
+//   lastName: "Петренко",
+//   age: 28,
+//   city: "Львів",
+// };
+
+// const { firstName, age } = user;
+
+// console.log(firstName);
+// console.log(age);
+
+//? Завдання 2: Перейменування та значення за замовчуванням
+//! Є об'єкт з налаштуваннями сайту. Тобі потрібно:
+
+// Витягнути theme у змінну з назвою currentTheme.
+// Витягнути fontSize, але якщо його немає в об'єкті, встановити значення за замовчуванням "16px".
+
+// const settings = {
+//   theme: "dark",
+//   language: "ua",
+// };
+
+// const { theme: currentTheme } = settings;
+// console.log(currentTheme);
+
+// const { fontSize = "16px" } = settings;
+// console.log(fontSize);
+
+// console.log(settings);
+
+//? Завдання 3: Деструктуризація масивів та Rest-оператор
+//! У тебе є масив кольорів.Запиши перший колір у змінну primary, другий — у secondary, а всі інші кольори збери в масив otherColors.
+
+// const colors = ["red", "blue", "green", "yellow", "orange"];
+
+// const [first, secondary, ...rest] = colors;
+
+// console.log(first);
+// console.log(secondary);
+// console.log(rest);
+
+// Завдання 1: Генератор випадкових порад (Simple GET)
+// API: https://api.adviceslip.com/advice
+// Мета: При натисканні на кнопку отримати пораду та відобразити її в тексті.
+
+// <div id="advice-card">
+//   <p id="advice-text">Тут буде твоя порада...</p>
+//   <button id="get-advice">Отримати пораду</button>
+// </div>;
+
+// const refs = {
+//   btnEl: document.querySelector("#get-advice"),
+//   textEl: document.querySelector("#advice-text"),
+// };
+
+// const { btnEl, textEl } = refs;
+
+// async function showAdvice() {
+//   try {
+//     const BASE_URL = "https://api.adviceslip.com/advice";
+//     const response = await axios.get(BASE_URL);
+
+//     const { data } = response;
+
+//     textEl.textContent = data.slip.advice;
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// btnEl.addEventListener("click", showAdvice);
+
+//? Завдання 2: Список користувачів (Arrays & Rendering)
+//! API: https://jsonplaceholder.typicode.com/users
+// Мета: Завантажити список користувачів та вивести їхні імена та email у вигляді карток.
+
+// const refs = {
+//   btnEl: document.querySelector("#load-users"),
+//   listEl: document.querySelector("#user-list"),
+// };
+
+// const { btnEl, listEl } = refs;
+
+// async function showUsers() {
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     const markup = data
+//       .map((el) => {
+//         return `<p>${el.name}</p><p>${el.email}</p>`;
+//       })
+//       .join("");
+
+//     listEl.innerHTML = markup;
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// btnEl.addEventListener("click", showUsers);
+
+//? Завдання 3: Пошук персонажів (Query Params & Filters)
+//! API: https://rickandmortyapi.com/api/character/?name=
+// Мета: Користувач вводить ім'я в input, а ви отримуєте та показуєте фото та статус персонажа.
+
+// const refs = {
+//   inputEl: document.querySelector("#search-input"),
+//   showEl: document.querySelector("#characters-container"),
+// };
+
+// const { inputEl, showEl } = refs;
+
+//? Твоя задача:
+// Зчитувати значення з input при введенні (подія input або change).
+// Додавати це значення до URL: `.../character/?name=${searchValue}`.
+// Обробити випадок, якщо персонажа не знайдено (API поверне помилку 404).
+// Деструктуризувати image, name та status з масиву results.
+// Вивести картку з картинкою <img>.
+
+// async function showRick() {
+//   const value = inputEl.value.trim();
+
+//   if (!value) return;
+
+//   try {
+//     const BASE_URL = `https://rickandmortyapi.com/api/character/?name=${value}`;
+//     const response = await axios.get(BASE_URL);
+//     const { name, image } = response.data.results[0];
+
+//     showEl.insertAdjacentHTML(
+//       "beforeend",
+//       `<img src="${image}"/>
+//       <p>${name}</p>`
+//     );
+//   } catch (error) {
+//     alert("Немає такого ID❗️");
+//     console.error(error.message);
+//   }
+// }
+
+// inputEl.addEventListener("keydown", (event) => {
+//   if (event.key === "Enter") {
+//     showRick();
+//   }
+// });
+
+//? Завдання 4: Живий пошук з рендером списку
+//! Тут ми вчимося очищувати контейнер і перебирати масив результатів через .map().
+
+// <input type="text" id="search-input" placeholder="Введіть ім'я (напр. Rick, Morty)...">
+// <div id="characters-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;">
+//   </div>
+
+// Твоя задача (JS):
+// При події input зчитуй значення.
+// Якщо інпут порожній — очищуй контейнер.
+// Роби запит: https://rickandmortyapi.com/api/character/?name=${value}.
+// В результаті (response.data.results) приходить масив. Використовуй .map(), щоб створити розмітку для кожного персонажа.
+// Замінюй вміст characters-container на новий результат.
+
+// const refs = {
+//   inputEl: document.querySelector("#search-input"),
+//   showElDiv: document.querySelector("#characters-container"),
+// };
+
+// const { inputEl, showElDiv } = refs;
+
+// async function showList() {
+//   const value = inputEl.value.trim();
+
+//   if (!value) {
+//     inputEl.value = "";
+//     return;
+//   }
+
+//   try {
+//     const BASE_URL = `https://rickandmortyapi.com/api/character/?name=${value}`;
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     const markup = data.results
+//       .map((el) => {
+//         return `<img src="${el.image}"/><p>${el.name}</p>`;
+//       })
+//       .join("");
+
+//     showElDiv.innerHTML = markup;
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// inputEl.addEventListener("input", () => {
+//   showList();
+// });
