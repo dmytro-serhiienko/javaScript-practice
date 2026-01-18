@@ -1490,3 +1490,74 @@
 //     pleaseShow();
 //   }
 // });
+
+//! 🟢 Задача 7: Пошук персонажів Rick & Morty
+//? Умова:
+// 	1.	Введи імʼя персонажа у поле input
+// 	2.	По кліку на кнопку або Enter зроби GET-запит:
+
+// https://rickandmortyapi.com/api/character/?name={імʼя}
+
+// 3.	Виведи усіх персонажів, що збіглися, у вигляді картки:
+// •	картинка (image)
+// •	імʼя (name)
+// •	статус (status)
+// •	вид (species)
+// 4.	Якщо результатів немає → “Персонажів не знайдено”
+
+// const refs = {
+//   inputEl: document.querySelector("#search"),
+//   btnEl: document.querySelector("#search-btn"),
+//   showDiv: document.querySelector("#results"),
+//   statusPEl: document.querySelector("#status"),
+// };
+
+// const { inputEl, btnEl, showDiv, statusPEl } = refs;
+
+// async function showHero() {
+//   showDiv.innerHTML = "";
+//   const inputName = inputEl.value.trim();
+
+//   if (!inputName) {
+//     statusPEl.textContent = "Введть імя персонажа";
+//     return;
+//   }
+
+//   statusPEl.textContent = "LOADING...";
+
+//   try {
+//     const BASE_URL = `https://rickandmortyapi.com/api/character/?name=${inputName}`;
+//     const response = await axios.get(BASE_URL);
+//     const answer = response.data.results;
+
+//     if (!answer || answer.length === 0) {
+//       statusPEl.textContent = "Сталась помилка, персонажів не знайдено❗️";
+//       return;
+//     }
+
+//     const markup = answer
+//       .map(({ image, name, status, species }) => {
+//         return `<img src="${image}"/>
+//        <p>${name}</p>
+//         <p>${status}</p>
+//         <p>${species}</p>`;
+//       })
+//       .join("");
+
+//     statusPEl.textContent = "";
+
+//     showDiv.innerHTML = markup;
+//   } catch (error) {
+//     statusPEl.textContent = `Сталась помилка ${error.message}`;
+//   } finally {
+//     inputEl.value = "";
+//   }
+// }
+
+// btnEl.addEventListener("click", showHero);
+
+// inputEl.addEventListener("keydown", (event) => {
+//   if (event.key === "Enter") {
+//     showHero();
+//   }
+// });
