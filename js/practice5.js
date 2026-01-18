@@ -1561,3 +1561,55 @@
 //     showHero();
 //   }
 // });
+
+//?
+
+// 📌 Умова
+// 	1.	Користувач вводить ID поста (1–100)
+// 	2.	По кліку на кнопку:
+// 	•	показати Loading...
+// 	•	зробити перший запит → отримати пост
+// 	•	зробити другий запит → отримати коментарі до цього поста
+// 	3.	Вивести:
+// 	•	📌 заголовок поста
+// 	•	📝 текст поста
+// 	•	💬 список коментарів (email + body)
+// 	4.	Якщо поста або коментарів немає → показати помилку
+// 	5.	Loading... ховати завжди
+
+// 🟢 1. Лічильник
+
+// Що треба зробити:
+// 	•	Є кнопки + і −
+// 	•	Є число на сторінці
+// 	•	При кліку:
+// 	•	+ → збільшує на 1
+// 	•	− → зменшує на 1
+// 	•	Значення зберігати в localStorage
+
+// Потрібно: querySelector, addEventListener, localStorage
+
+//?
+
+const refs = {
+  btnPlus: document.querySelector("#plus"),
+  btnMinus: document.querySelector("#minus"),
+  resultEl: document.querySelector("#result"),
+};
+
+const { btnPlus, btnMinus, resultEl } = refs;
+
+let count = 0;
+
+function calcFun(event) {
+  if (event.currentTarget === btnPlus) {
+    count += 1;
+    resultEl.textContent = count;
+  } else if (event.currentTarget === btnMinus) {
+    count -= 1;
+    resultEl.textContent = count;
+  }
+}
+
+btnPlus.addEventListener("click", calcFun);
+btnMinus.addEventListener("click", calcFun);
