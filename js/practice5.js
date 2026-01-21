@@ -1591,25 +1591,114 @@
 
 //?
 
+// const refs = {
+//   btnPlus: document.querySelector("#plus"),
+//   btnMinus: document.querySelector("#minus"),
+//   resultEl: document.querySelector("#result"),
+// };
+
+// const { btnPlus, btnMinus, resultEl } = refs;
+
+// let count = 0;
+
+// function calcFun(event) {
+//   if (event.currentTarget === btnPlus) {
+//     count += 1;
+//     resultEl.textContent = count;
+//   } else if (event.currentTarget === btnMinus) {
+//     count -= 1;
+//     resultEl.textContent = count;
+//   }
+// }
+
+// btnPlus.addEventListener("click", calcFun);
+// btnMinus.addEventListener("click", calcFun);
+
+// ? remember all
+
+// Є рядок "javascript"
+// ➡ зроби першу букву великою
+
+// const word = "javascript";
+
+// const firstLetter = word.slice(0, 1).toUpperCase();
+// const otherLetters = word.slice(1);
+
+// const concWord = firstLetter.concat(otherLetters);
+// console.log("🚀 ~ concWord:", concWord);
+
+//?  перевір, чи всі числа парні
+
+// const numbers = [2, 4, 6, 8];
+
+// const checker = numbers.every((el) => el % 2 === 0);
+// console.log("🚀 ~ checker:", checker);
+
+// ? знайди найдовше слово
+
+// const words = ["cat", "dog", "elephant"];
+
+// const checker = words.reduce((acc, el) => {
+//   return el.length > acc.length ? el : acc;
+// }, "");
+// console.log("🚀 ~ checker:", checker);
+
+// ? прибери дублікати
+
+// const numbers = [1, 2, 2, 3, 4, 4, 5];
+
+// const nuevo = new Set(numbers);
+// console.log("🚀 ~ nuevo:", nuevo);
+
+//? 🟢 1. Пошук користувача
+
+// API:
+// https://jsonplaceholder.typicode.com/users
+
+// 	•	GET /users?username=...
+// 	•	якщо знайшов → name, email
+// 	•	якщо ні → "User not found"
+
 const refs = {
-  btnPlus: document.querySelector("#plus"),
-  btnMinus: document.querySelector("#minus"),
-  resultEl: document.querySelector("#result"),
+  inputEl: document.querySelector("#js-input"),
+  btnEl: document.querySelector("#js-btn"),
+  showEL: document.querySelector("#js-show"),
+  statusEl: document.querySelector("#js-status"),
 };
 
-const { btnPlus, btnMinus, resultEl } = refs;
+const { inputEl, btnEl, showEL, statusEl } = refs;
 
-let count = 0;
+async function showUser() {
+  showEL.innerHTML = "";
 
-function calcFun(event) {
-  if (event.currentTarget === btnPlus) {
-    count += 1;
-    resultEl.textContent = count;
-  } else if (event.currentTarget === btnMinus) {
-    count -= 1;
-    resultEl.textContent = count;
+  const userID = inputEl.value.trim();
+
+  statusEl.textContent = "LODAING...";
+
+  try {
+    const BASE_URL = `https://jsonplaceholder.typicode.com/users/${userID}`;
+    const response = await axios.get(BASE_URL);
+    const {
+      name,
+      email,
+      address: { city },
+      company: { name: companyName },
+    } = response.data;
+
+    const markup = `
+<p>Name: ${name}</p>
+<p>Email: ${email}</p>
+<p>City: ${city}</p>
+<p>Company name: ${companyName}</p>`;
+
+    statusEl.innerHTML = "";
+    showEL.innerHTML = markup;
+  } catch ({ message }) {
+    statusEl.textContent = `Сталась помилка: ${message}`;
+    statusEl.style.color = "red";
+  } finally {
+    inputEl.value = "";
   }
 }
 
-btnPlus.addEventListener("click", calcFun);
-btnMinus.addEventListener("click", calcFun);
+btnEl.addEventListener("click", showUser);
