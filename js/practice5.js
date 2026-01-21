@@ -1659,56 +1659,119 @@
 // 	•	якщо знайшов → name, email
 // 	•	якщо ні → "User not found"
 
+// const refs = {
+//   inputEl: document.querySelector("#js-input"),
+//   btnEl: document.querySelector("#js-btn"),
+//   showEL: document.querySelector("#js-show"),
+//   statusEl: document.querySelector("#js-status"),
+// };
+
+// const { inputEl, btnEl, showEL, statusEl } = refs;
+
+// async function showUser() {
+//   showEL.innerHTML = "";
+
+//   const userID = inputEl.value.trim();
+
+//   if (!userID) {
+//     alert("введіть ID❗️");
+//     return;
+//   }
+
+//   statusEl.textContent = "LOADING...";
+
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/users/${userID}`;
+//     const response = await axios.get(BASE_URL);
+
+//     if (!response || response.length === 0) {
+//       throw new Error(`Сталась помилка, масив пустий`);
+//     }
+
+//     const {
+//       name,
+//       email,
+//       address: { city },
+//       company: { name: companyName },
+//     } = response.data;
+
+//     const markup = `
+// <p>Name: ${name}</p>
+// <p>Email: ${email}</p>
+// <p>City: ${city}</p>
+// <p>Company name: ${companyName}</p>`;
+
+//     statusEl.innerHTML = "";
+//     showEL.insertAdjacentHTML("beforeend", markup);
+//   } catch ({ message }) {
+//     statusEl.textContent = `Сталась помилка: ${message}`;
+//     statusEl.style.color = "red";
+//   } finally {
+//     inputEl.value = "";
+//   }
+// }
+
+// btnEl.addEventListener("click", showUser);
+
+// ? ЗАДАЧА: Пагінація користувачів (JS + DOM)
+
+// 📋 Умова задачі
+// 	1.	Отримати користувачів з API
+// 	2.	Виводити по 3 користувачі на сторінку
+// 	3.	Реалізувати пагінацію:
+// 	•	кнопка Previous
+// 	•	кнопка Next
+// 	4.	Дані виводити в DOM
+// 	5.	Заборонити перехід за межі списку
+
+// <h2>Users</h2>
+
+//     <div id="users"></div>
+
+//     <div class="pagination">
+//       <button id="prev" disabled>Previous</button>
+//       <span id="page-info"></span>
+//       <button id="next">Next</button>
+//     </div>
+
 const refs = {
-  inputEl: document.querySelector("#js-input"),
-  btnEl: document.querySelector("#js-btn"),
-  showEL: document.querySelector("#js-show"),
-  statusEl: document.querySelector("#js-status"),
+  usersDiv: document.querySelector("#users"),
+  btnPrev: document.querySelector("#prev"),
+  btnNext: document.querySelector("#next"),
+  spanInfo: document.querySelector("#page-info"),
 };
 
-const { inputEl, btnEl, showEL, statusEl } = refs;
+const { usersDiv, btnNext, btnPrev, spanInfo } = refs;
+
+let idCount = 1;
 
 async function showUser() {
-  showEL.innerHTML = "";
-
-  const userID = inputEl.value.trim();
-
-  if (!userID) {
-    alert("введіть ID❗️");
-    return;
-  }
-
-  statusEl.textContent = "LOADING...";
+  usersDiv.innerHTML = "";
+  usersDiv.innerHTML = "LOADING...";
 
   try {
-    const BASE_URL = `https://jsonplaceholder.typicode.com/users/${userID}`;
+    const BASE_URL = `https://jsonplaceholder.typicode.com/users/${idCount}`;
     const response = await axios.get(BASE_URL);
+    const { data } = response;
 
-    if (!response || response.length === 0) {
-      throw new Error(`Сталась помилка, масив пустий`);
-    }
+    const markup = `<p>${data.name}</p>`;
 
-    const {
-      name,
-      email,
-      address: { city },
-      company: { name: companyName },
-    } = response.data;
+    usersDiv.innerHTML = "";
 
-    const markup = `
-<p>Name: ${name}</p>
-<p>Email: ${email}</p>
-<p>City: ${city}</p>
-<p>Company name: ${companyName}</p>`;
-
-    statusEl.innerHTML = "";
-    showEL.insertAdjacentHTML("beforeend", markup);
+    usersDiv.insertAdjacentHTML("beforeend", markup);
   } catch ({ message }) {
-    statusEl.textContent = `Сталась помилка: ${message}`;
-    statusEl.style.color = "red";
+    console.log(message);
   } finally {
-    inputEl.value = "";
   }
 }
 
-btnEl.addEventListener("click", showUser);
+btnNext.addEventListener("click", () => {
+  idCount += 1;
+  btnPrev.removeAttribute("disabled");
+  showUser();
+});
+
+btnPrev.addEventListener("click", () => {
+  idCount -= 1;
+  showUser();
+});
