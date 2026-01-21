@@ -1673,11 +1673,21 @@ async function showUser() {
 
   const userID = inputEl.value.trim();
 
-  statusEl.textContent = "LODAING...";
+  if (!userID) {
+    alert("введіть ID❗️");
+    return;
+  }
+
+  statusEl.textContent = "LOADING...";
 
   try {
     const BASE_URL = `https://jsonplaceholder.typicode.com/users/${userID}`;
     const response = await axios.get(BASE_URL);
+
+    if (!response || response.length === 0) {
+      throw new Error(`Сталась помилка, масив пустий`);
+    }
+
     const {
       name,
       email,
@@ -1692,7 +1702,7 @@ async function showUser() {
 <p>Company name: ${companyName}</p>`;
 
     statusEl.innerHTML = "";
-    showEL.innerHTML = markup;
+    showEL.insertAdjacentHTML("beforeend", markup);
   } catch ({ message }) {
     statusEl.textContent = `Сталась помилка: ${message}`;
     statusEl.style.color = "red";
