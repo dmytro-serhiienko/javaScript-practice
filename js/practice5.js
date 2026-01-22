@@ -1724,54 +1724,189 @@
 // 	4.	Дані виводити в DOM
 // 	5.	Заборонити перехід за межі списку
 
-// <h2>Users</h2>
+// const refs = {
+//   usersDiv: document.querySelector("#users"),
+//   btnPrev: document.querySelector("#prev"),
+//   btnNext: document.querySelector("#next"),
+//   spanInfo: document.querySelector("#page-info"),
+//   loaderEl: document.querySelector("#js-loader"),
+// };
 
-//     <div id="users"></div>
+// const { usersDiv, btnNext, btnPrev, spanInfo, loaderEl } = refs;
 
-//     <div class="pagination">
-//       <button id="prev" disabled>Previous</button>
-//       <span id="page-info"></span>
-//       <button id="next">Next</button>
-//     </div>
+// let idCount = 1;
 
-const refs = {
-  usersDiv: document.querySelector("#users"),
-  btnPrev: document.querySelector("#prev"),
-  btnNext: document.querySelector("#next"),
-  spanInfo: document.querySelector("#page-info"),
-};
+// async function showUser() {
+//   usersDiv.innerHTML = "";
 
-const { usersDiv, btnNext, btnPrev, spanInfo } = refs;
+//   loaderEl.classList.remove("hidden");
 
-let idCount = 1;
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/users/${idCount}`;
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
 
-async function showUser() {
-  usersDiv.innerHTML = "";
-  usersDiv.innerHTML = "LOADING...";
+//     const markup = `<p>${data.name}</p>`;
+
+//     usersDiv.insertAdjacentHTML("beforeend", markup);
+//   } catch ({ message }) {
+//     console.log(message);
+//   } finally {
+//     loaderEl.classList.add("hidden");
+//   }
+// }
+
+// btnNext.addEventListener("click", () => {
+//   idCount += 1;
+//   btnPrev.removeAttribute("disabled");
+//   showUser();
+// });
+
+// btnPrev.addEventListener("click", () => {
+//   idCount -= 1;
+//   showUser();
+// });
+
+//? 📋 Умова
+// 	1.	На сторінці є кнопка Load users
+// 	2.	При кліку:
+// 	•	завантажити користувачів
+// 	•	показати тільки імена
+// 	3.	Дані рендерити в DOM
+// 	4.	При повторному кліку не дублювати список
+
+// import { refs } from "./refs";
+// const { btnEl, listEl, loaderEl } = refs;
+
+// async function showUser() {
+//   try {
+//     listEl.innerHTML = "";
+
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+//     const response = await axios.get(BASE_URL);
+
+//     if (!response.data || response.data.length === 0) {
+//       throw new Error("Масив повернувся путий");
+//     }
+
+//     const markup = response.data
+//       .map((el) => {
+//         return `<li>${el.name}</li>`;
+//       })
+//       .join("");
+
+//     listEl.innerHTML = markup;
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// btnEl.addEventListener("click", showUser);
+
+//? 🧪 ЗАДАЧА: Показати список постів
+
+// 📌 Мета
+// 	•	Попрактикувати axios + async/await
+// 	•	Рендер у DOM
+// 	•	Використовувати map + join("")
+// 	•	Обробка помилок через throw/catch
+// 	•	Loader (опційно)
+
+// import { refs } from "./refs";
+// const { btnEl, listEl, loaderEl, morebtnEl } = refs;
+
+// let limitParams = 5;
+// let pageParams = 1;
+
+// async function showPost() {
+//   loaderEl.classList.remove("hidden");
+
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/posts?_limit=${limitParams}&_page=${pageParams}`;
+//     const response = await axios.get(BASE_URL);
+
+//     if (response.data.length === 0) {
+//       throw new Error("Ой ой ой, масив то пустий");
+//     }
+
+//     const markup = response.data
+//       .map(({ title }) => {
+//         return `<li>${title}</li>`;
+//       })
+//       .join("");
+
+//     if (response.data.length < 1) {
+//       morebtnEl.style.display = "none";
+//     }
+
+//     listEl.insertAdjacentHTML("beforeend", markup);
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     loaderEl.classList.add("hidden");
+//   }
+// }
+
+// btnEl.addEventListener("click", () => {
+//   showPost();
+//   pageParams += 1;
+//   morebtnEl.removeAttribute("hidden");
+
+//   btnEl.disabled = true;
+// });
+
+// morebtnEl.addEventListener("click", () => {
+//   pageParams += 1;
+//   showPost();
+// });
+
+//? 🧪 Нова задача: Користувачі + Load More + email
+//! 📌 Умова
+// 	1.	Використовуємо API: https://jsonplaceholder.typicode.com/users
+// 	2.	Показуємо по 3 користувачі за раз
+// 	3.	Для кожного користувача в списку <li> виводимо name + email
+// 	4.	Кнопка Load More завантажує наступні 3 користувачі
+// 	5.	Коли постів більше нема → кнопка ховається або з’являється повідомлення All users loaded
+// 	6.	Використовуємо loader, щоб показати завантаження
+
+import { refs } from "./refs";
+
+const { btnEl, listEl, loaderEl } = refs;
+
+let limitParams = 3;
+let pageParams = 1;
+
+async function showUsers() {
+  loaderEl.classList.remove("hidden");
 
   try {
-    const BASE_URL = `https://jsonplaceholder.typicode.com/users/${idCount}`;
+    const BASE_URL = `https://jsonplaceholder.typicode.com/users?_limit=${limitParams}&_page=${pageParams}`;
     const response = await axios.get(BASE_URL);
-    const { data } = response;
 
-    const markup = `<p>${data.name}</p>`;
+    if (!response.data.length) {
+      btnEl.style.display = "none";
+      throw new Error("Йой, масив пустий");
+    }
 
-    usersDiv.innerHTML = "";
+    const markup = response.data
+      .map(({ name, email }) => {
+        return `<li>Name: ${name}, Email: ${email}</li>`;
+      })
+      .join("");
 
-    usersDiv.insertAdjacentHTML("beforeend", markup);
-  } catch ({ message }) {
-    console.log(message);
+    listEl.insertAdjacentHTML("beforeend", markup);
+
+    btnEl.removeAttribute("hidden");
+  } catch (error) {
+    console.log(error.message);
   } finally {
+    loaderEl.classList.add("hidden");
   }
 }
 
-btnNext.addEventListener("click", () => {
-  idCount += 1;
-  btnPrev.removeAttribute("disabled");
-  showUser();
-});
+showUsers();
 
-btnPrev.addEventListener("click", () => {
-  idCount -= 1;
-  showUser();
+btnEl.addEventListener("click", () => {
+  pageParams++;
+  showUsers();
 });
