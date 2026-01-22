@@ -1869,44 +1869,170 @@
 // 	5.	Коли постів більше нема → кнопка ховається або з’являється повідомлення All users loaded
 // 	6.	Використовуємо loader, щоб показати завантаження
 
+// import { refs } from "./refs";
+
+// const { btnEl, listEl, loaderEl } = refs;
+
+// let limitParams = 3;
+// let pageParams = 1;
+
+// async function showUsers() {
+//   loaderEl.classList.remove("hidden");
+
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/users?_limit=${limitParams}&_page=${pageParams}`;
+//     const response = await axios.get(BASE_URL);
+
+//     if (!response.data.length) {
+//       btnEl.style.display = "none";
+//       throw new Error("Йой, масив пустий");
+//     }
+
+//     const markup = response.data
+//       .map(({ name, email }) => {
+//         return `<li>Name: ${name}, Email: ${email}</li>`;
+//       })
+//       .join("");
+
+//     listEl.insertAdjacentHTML("beforeend", markup);
+
+//     btnEl.removeAttribute("hidden");
+//   } catch (error) {
+//     console.log(error.message);
+//   } finally {
+//     loaderEl.classList.add("hidden");
+//   }
+// }
+
+// showUsers();
+
+// btnEl.addEventListener("click", () => {
+//   pageParams++;
+//   showUsers();
+// });
+
+//? 🧠 Задача: Пошук користувачів + debounce
+//! 📌 Умова
+
+// 	•	input для введення імені
+// 	•	список для результатів
+// 	•	loader
+
+// Треба:
+// 	1.	Робити запит до API по імені
+// 	2.	Запит виконується не одразу, а через 500ms після того як користувач перестав писати
+// 	3.	Якщо результатів немає — показати повідомлення
+// 	4.	Якщо поле пусте — очистити список і НЕ робити запит
+
+// API:
+// https://jsonplaceholder.typicode.com/users?name_like=Le
+
+// import { refs } from "./refs";
+// const { inputEl, listEl, loaderEl } = refs;
+
+// async function showUser() {
+//   const valueFromInput = inputEl.value.trim();
+
+//   if (/\d/.test(valueFromInput)) {
+//     alert("Введіть імя юзера");
+//   }
+
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/users?name_like=${valueFromInput}`;
+//     const response = await axios.get(BASE_URL);
+
+//     if (!response.data.length) {
+//       throw new Error("Пустий масив");
+//     }
+
+//     const markup = response.data
+//       .map(({ name, email }) => {
+//         return `<li>${name}, ${email}</li>`;
+//       })
+//       .join("");
+
+//     listEl.insertAdjacentHTML("beforeend", markup);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
+
+// inputEl.addEventListener("input", showUser);
+
+//? Є:
+//! 	•	input — для пошуку
+// 	•	ul — список постів
+// 	•	кнопка Знайти
+// 	•	кнопка Завантажити ще
+// 	•	loader
+
+// ⚙️ ЛОГІКА (дуже важливо)
+
+// 1️⃣ Пошук
+// 	•	користувач вводить текст
+// 	•	натискає Знайти
+// 	•	робиться запит:
+
+//   	•	список очищається
+// 	•	кнопка Завантажити ще зʼявляється
+
+// 2️⃣ Завантажити ще
+// 	•	кожен клік:
+//   	•	нові пости додаються в список
+// 	•	якщо API повернув менше ніж 3 елементи:
+// 👉 кнопку сховати
+
 import { refs } from "./refs";
+const { inputEl, btnEl, btnMoreEl, listEl, loaderEl } = refs;
 
-const { btnEl, listEl, loaderEl } = refs;
+let limitParam = 3;
+let pageParam = 1;
 
-let limitParams = 3;
-let pageParams = 1;
+async function showPosts() {
+  loaderEl.removeAttribute("hidden");
 
-async function showUsers() {
-  loaderEl.classList.remove("hidden");
+  const inputValue = inputEl.value.trim();
 
   try {
-    const BASE_URL = `https://jsonplaceholder.typicode.com/users?_limit=${limitParams}&_page=${pageParams}`;
-    const response = await axios.get(BASE_URL);
+    const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+    const params = {
+      params: {
+        _limit: `${limitParam}`,
+        _page: `${pageParam}`,
+        userId: inputValue,
+      },
+    };
+    const response = await axios.get(BASE_URL, params);
 
     if (!response.data.length) {
-      btnEl.style.display = "none";
-      throw new Error("Йой, масив пустий");
+      throw new Error("ОЙ, масив пустий!");
     }
 
     const markup = response.data
-      .map(({ name, email }) => {
-        return `<li>Name: ${name}, Email: ${email}</li>`;
+      .map(({ title }) => {
+        return `<li>${title}</li>`;
       })
       .join("");
 
     listEl.insertAdjacentHTML("beforeend", markup);
-
-    btnEl.removeAttribute("hidden");
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   } finally {
-    loaderEl.classList.add("hidden");
+    loaderEl.style.display = "none";
+
+    inputEl.value = "";
   }
 }
 
-showUsers();
-
 btnEl.addEventListener("click", () => {
-  pageParams++;
-  showUsers();
+  showPosts();
+  pageParam++;
+
+  btnMoreEl.removeAttribute("hidden");
+  btnEl.disabled = true;
+});
+
+btnMoreEl.addEventListener("click", () => {
+  pageParam++;
+  showPosts();
 });

@@ -20,8 +20,22 @@
 //   morebtnEl: document.querySelector("#js-more"),
 // };
 
+// export const refs = {
+//   btnEl: document.querySelector("#load-more"),
+//   listEl: document.querySelector("#users-list"),
+//   loaderEl: document.querySelector("#js-loader"),
+// };
+
+// export const refs = {
+//   inputEl: document.querySelector("#js-input"),
+//   listEl: document.querySelector("#js-list"),
+//   loaderEl: document.querySelector("#loader"),
+// };
+
 export const refs = {
-  btnEl: document.querySelector("#load-more"),
-  listEl: document.querySelector("#users-list"),
-  loaderEl: document.querySelector("#js-loader"),
+  inputEl: document.querySelector("#js-input"),
+  btnEl: document.querySelector("#search"),
+  btnMoreEl: document.querySelector("#more"),
+  listEl: document.querySelector("#js-list"),
+  loaderEl: document.querySelector(".loader"),
 };
