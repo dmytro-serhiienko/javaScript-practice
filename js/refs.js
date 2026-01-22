@@ -32,10 +32,18 @@
 //   loaderEl: document.querySelector("#loader"),
 // };
 
+// export const refs = {
+//   inputEl: document.querySelector("#js-input"),
+//   btnEl: document.querySelector("#search"),
+//   btnMoreEl: document.querySelector("#more"),
+//   listEl: document.querySelector("#js-list"),
+//   loaderEl: document.querySelector(".loader"),
+// };
+
 export const refs = {
-  inputEl: document.querySelector("#js-input"),
-  btnEl: document.querySelector("#search"),
-  btnMoreEl: document.querySelector("#more"),
-  listEl: document.querySelector("#js-list"),
-  loaderEl: document.querySelector(".loader"),
+  inputEl: document.querySelector("#post-id"),
+  btnSearch: document.querySelector("#search-btn"),
+  btnLoadMore: document.querySelector("#load-more"),
+  loaderEl: document.querySelector("#loader"),
+  listEl: document.querySelector("#comments"),
 };

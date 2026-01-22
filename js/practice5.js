@@ -1982,57 +1982,125 @@
 // 	•	якщо API повернув менше ніж 3 елементи:
 // 👉 кнопку сховати
 
-import { refs } from "./refs";
-const { inputEl, btnEl, btnMoreEl, listEl, loaderEl } = refs;
+// import { refs } from "./refs";
+// const { inputEl, btnEl, btnMoreEl, listEl, loaderEl } = refs;
 
-let limitParam = 3;
+// let limitParam = 3;
+// let pageParam = 1;
+
+// async function showPosts() {
+//   loaderEl.removeAttribute("hidden");
+
+//   const inputValue = inputEl.value.trim();
+
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+//     const params = {
+//       params: {
+//         _limit: `${limitParam}`,
+//         _page: `${pageParam}`,
+//         userId: inputValue,
+//       },
+//     };
+//     const response = await axios.get(BASE_URL, params);
+
+//     if (!response.data.length) {
+//       throw new Error("ОЙ, масив пустий!");
+//     }
+
+//     const markup = response.data
+//       .map(({ title }) => {
+//         return `<li>${title}</li>`;
+//       })
+//       .join("");
+
+//     listEl.insertAdjacentHTML("beforeend", markup);
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     loaderEl.style.display = "none";
+
+//     inputEl.value = "";
+//   }
+// }
+
+// btnEl.addEventListener("click", () => {
+//   showPosts();
+//   pageParam++;
+
+//   btnMoreEl.removeAttribute("hidden");
+//   btnEl.disabled = true;
+// });
+
+// btnMoreEl.addEventListener("click", () => {
+//   pageParam++;
+//   showPosts();
+// });
+
+//? 🧠 ЗАДАЧА: Пошук коментарів + Load more + reset
+//! 📌 Умова
+
+// 1️⃣ Є input — вводиш postId
+// 2️⃣ Кнопка Search — робить запит
+// 3️⃣ За один раз показуєш 2 коментарі
+// 4️⃣ Є кнопка Load more
+// 5️⃣ При новому пошуку:
+// 	•	очищається список
+// 	•	page = 1
+// 	•	кнопка Load more знову з’являється
+// 6️⃣ Якщо коментарів більше нема → Load more ховається
+// 7️⃣ Лоадер показується під час запиту
+// https://jsonplaceholder.typicode.com/comments
+
+import { refs } from "./refs.js";
+const { inputEl, btnSearch, btnLoadMore, loaderEl, listEl } = refs;
+
+let limitParam = 2;
 let pageParam = 1;
 
-async function showPosts() {
-  loaderEl.removeAttribute("hidden");
-
+async function showContent() {
   const inputValue = inputEl.value.trim();
 
+  if (!inputValue) {
+    alert("Введи хоть шось!");
+  }
+
+  loaderEl.hidden = false;
+
   try {
-    const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
-    const params = {
-      params: {
-        _limit: `${limitParam}`,
-        _page: `${pageParam}`,
-        userId: inputValue,
-      },
-    };
+    const BASE_URL = `https://jsonplaceholder.typicode.com/comments?_limit=${limitParam}&_page=${pageParam}`;
+    const params = { params: { postId: inputValue } };
     const response = await axios.get(BASE_URL, params);
 
-    if (!response.data.length) {
-      throw new Error("ОЙ, масив пустий!");
+    if (response.data.length < limitParam) {
+      btnLoadMore.hidden = true; // Даних мало або нема — ховаємо
+    } else {
+      btnLoadMore.hidden = false; // Дані ще можуть бути — показуємо
     }
 
     const markup = response.data
-      .map(({ title }) => {
-        return `<li>${title}</li>`;
+      .map(({ body }) => {
+        return `<li>${body}</li>`;
       })
       .join("");
 
     listEl.insertAdjacentHTML("beforeend", markup);
   } catch (error) {
+    // ?
     console.error(error.message);
   } finally {
-    loaderEl.style.display = "none";
-
-    inputEl.value = "";
+    loaderEl.hidden = true;
   }
 }
 
-btnEl.addEventListener("click", () => {
-  showPosts();
+btnSearch.addEventListener("click", () => {
+  showContent();
   pageParam++;
 
-  btnMoreEl.removeAttribute("hidden");
-  btnEl.disabled = true;
+  btnSearch.style.display = "none";
 });
 
-btnMoreEl.addEventListener("click", () => {
+btnLoadMore.addEventListener("click", () => {
+  showContent();
   pageParam++;
-  showPosts();
 });
