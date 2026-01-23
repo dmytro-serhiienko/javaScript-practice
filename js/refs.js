@@ -48,10 +48,20 @@
 //   listEl: document.querySelector("#comments"),
 // };
 
+// export const refs = {
+//   inputEl: document.querySelector("#user-id"),
+//   btnSearch: document.querySelector("#search-btn"),
+//   btnMore: document.querySelector("#load-more"),
+//   loaderEl: document.querySelector("#loader"),
+//   listEl: document.querySelector("#albums"),
+// };
+
 export const refs = {
-  inputEl: document.querySelector("#user-id"),
-  btnSearch: document.querySelector("#search-btn"),
-  btnMore: document.querySelector("#load-more"),
-  loaderEl: document.querySelector("#loader"),
-  listEl: document.querySelector("#albums"),
+  inputEl: document.querySelector("#searchInput"),
+  btnSearch: document.querySelector("#btnSearch"),
+  loaderDiv: document.querySelector("#loader"),
+  totalCount: document.querySelector("#totalCount"),
+  listUser: document.querySelector("#usersList"),
+  btnMore: document.querySelector("#btnLoadMore"),
+  endMessage: document.querySelector("#endMessage"),
 };

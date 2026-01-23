@@ -2207,3 +2207,140 @@
 // }
 
 // console.log(unique([1, 2, 2, 3, 4, 4]));
+
+//! Реверс рядка - напиши функцію, що перевертає рядок
+// const word = "ball";
+
+// const changed = word.split("").toReversed().join("");
+// console.log("🚀 ~ changed:", changed);
+
+//! Паліндром - перевір, чи є слово паліндромом
+// const word = "abba";
+// const revWord = word.split("").toReversed().join("");
+
+// if (word === revWord) {
+//   console.log(true);
+// } else {
+//   console.log(false);
+// }
+
+//! FizzBuzz - класична задача (1-100: якщо ділиться на 3 - "Fizz", на 5 - "Buzz", на обидва - "FizzBuzz")
+// for (let i = 0; i < 100; i++) {
+//   if (i % 3 === 0 && i % 5 === 0) {
+//     console.log("FizzBuzz");
+//   } else if (i % 3 === 0) {
+//     console.log("Fizz");
+//   } else if (i % 5 === 0) {
+//     console.log("Buzz");
+//   }
+// }
+
+//? Робота з масивами:
+//! Видалити дублікати - з масиву [1, 2, 2, 3, 4, 4, 5] отримати унікальні значення
+const arr = [1, 2, 2, 3, 4, 4, 5];
+// const result = new Set(arr);
+// console.log("🚀 ~ result:", result);
+//! Найбільше число - знайти найбільше число в масиві без Math.max()
+// const bigest = arr.reduce((acc, el) => {
+//   if (el > acc) {
+//     return el;
+//   }
+//   return acc;
+// });
+// console.log("🚀 ~ bigest:", bigest);
+//! Сума масиву - порахувати суму всіх елементів
+// const summary = arr.reduce((acc, el) => {
+//   return acc + el;
+// }, 0);
+// console.log("🚀 ~ summary:", summary);
+
+//? 📌 Умова: Пошук користувачів з пагінацією
+//! 1️⃣ По кліку Search:
+// 	•	взяти значення з input (мінімум 3 символи)
+// 	•	очистити список користувачів
+// 	•	page = 1
+// 	•	завантажити перші 5 користувачів
+// 	•	показати кнопку Load more
+// 	•	показати загальну кількість знайдених
+
+// 2️⃣ По кліку Load more:
+// 	•	завантажити наступні 5 користувачів
+// 	•	додати в список (НЕ перезатирати)
+// 	•	якщо завантажено всіх → сховати кнопку + показати повідомлення
+
+// 3️⃣ Loader:
+// 	•	показується перед кожним запитом
+// 	•	ховається після отримання даних або помилки
+
+// 4️⃣ Додатково:
+// 	•	показати картку користувача: name, email, phone, company name
+// 	•	якщо пошук порожній - показати alert
+// 	•	зробити disabled для кнопки Search під час пошуку
+
+// API: https://jsonplaceholder.typicode.com/users
+// Фільтрувати по name (регістронезалежно)
+
+import { refs } from "./refs.js";
+
+const {
+  inputEl,
+  btnSearch,
+  loaderDiv,
+  totalCount,
+  listUser,
+  btnMore,
+  endMessage,
+} = refs;
+
+let limitParam = 5;
+let pageParam = 1;
+
+async function showContent() {
+  const inputValue = inputEl.value.trim("");
+
+  if (inputValue.length <= 3) {
+    alert("Введи нормально більше 3 символів");
+    return;
+  }
+
+  try {
+    const BASE_URL = `https://jsonplaceholder.typicode.com/users?_limit=${limitParam}&_page=${pageParam}`;
+    const params = { params: { name: inputValue } };
+    const response = await axios.get(BASE_URL, params);
+
+    if (response.data < limitParam) {
+      btnMore.hidden = false;
+    } else {
+      btnMore.hidden = true;
+    }
+
+    loaderDiv.hidden = false;
+    totalCount.textContent = response.data.length;
+
+    const markup = response.data
+      .map(({ name }) => {
+        return `<li>${name}</li>`;
+      })
+      .join("");
+
+    listUser.insertAdjacentHTML("beforeend", markup);
+  } catch (error) {
+    console.error(error.message);
+  } finally {
+    loaderDiv.hidden = true;
+  }
+}
+
+btnSearch.addEventListener("click", () => {
+  showContent();
+  pageParam++;
+
+  btnMore.hidden = false;
+});
+
+btnMore.addEventListener("click", () => {
+  pageParam++;
+  showContent();
+});
+
+// still work, see you tomorow

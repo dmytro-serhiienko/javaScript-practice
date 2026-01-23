@@ -31,14 +31,13 @@
   </head>
   <body>
     <!-- ? -->
-    <input id="user-id" type="number" placeholder="Enter userId" />
-
-    <button id="search-btn">Search</button>
-    <button id="load-more" hidden>Load more</button>
-
-    <p id="loader" hidden>Loading...</p>
-
-    <ul id="albums"></ul>
+    <input id="searchInput" type="text" placeholder="Введи ім'я..." />
+    <button id="btnSearch">Search</button>
+    <div id="loader" hidden>Loading...</div>
+    <p id="totalCount">Total find:</p>
+    <ul id="usersList"></ul>
+    <button id="btnLoadMore" hidden>Load more</button>
+    <p id="endMessage" hidden>Всіх користувачів завантажено!</p>
 
     <!-- ? -->
     <!-- <input type="number" id="post-id" placeholder="Enter postId" />
