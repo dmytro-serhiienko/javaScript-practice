@@ -40,10 +40,18 @@
 //   loaderEl: document.querySelector(".loader"),
 // };
 
+// export const refs = {
+//   inputEl: document.querySelector("#post-id"),
+//   btnSearch: document.querySelector("#search-btn"),
+//   btnLoadMore: document.querySelector("#load-more"),
+//   loaderEl: document.querySelector("#loader"),
+//   listEl: document.querySelector("#comments"),
+// };
+
 export const refs = {
-  inputEl: document.querySelector("#post-id"),
+  inputEl: document.querySelector("#user-id"),
   btnSearch: document.querySelector("#search-btn"),
-  btnLoadMore: document.querySelector("#load-more"),
+  btnMore: document.querySelector("#load-more"),
   loaderEl: document.querySelector("#loader"),
-  listEl: document.querySelector("#comments"),
+  listEl: document.querySelector("#albums"),
 };

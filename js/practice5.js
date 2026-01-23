@@ -2052,41 +2052,115 @@
 // 7️⃣ Лоадер показується під час запиту
 // https://jsonplaceholder.typicode.com/comments
 
-import { refs } from "./refs.js";
-const { inputEl, btnSearch, btnLoadMore, loaderEl, listEl } = refs;
+// import { refs } from "./refs.js";
+// const { inputEl, btnSearch, btnLoadMore, loaderEl, listEl } = refs;
 
-let limitParam = 2;
+// let limitParam = 2;
+// let pageParam = 1;
+
+// async function showContent() {
+//   const inputValue = inputEl.value.trim();
+
+//   if (!inputValue) {
+//     alert("Введи хоть шось!");
+//   }
+
+//   loaderEl.hidden = false;
+
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/comments?_limit=${limitParam}&_page=${pageParam}`;
+//     const params = { params: { postId: inputValue } };
+//     const response = await axios.get(BASE_URL, params);
+
+//     if (response.data.length < limitParam) {
+//       btnLoadMore.hidden = true; // Даних мало або нема — ховаємо
+//     } else {
+//       btnLoadMore.hidden = false; // Дані ще можуть бути — показуємо
+//     }
+
+//     const markup = response.data
+//       .map(({ body }) => {
+//         return `<li>${body}</li>`;
+//       })
+//       .join("");
+
+//     listEl.insertAdjacentHTML("beforeend", markup);
+//   } catch (error) {
+//     // ?
+//     console.error(error.message);
+//   } finally {
+//     loaderEl.hidden = true;
+//   }
+// }
+
+// btnSearch.addEventListener("click", () => {
+//   showContent();
+//   pageParam++;
+
+//   btnSearch.style.display = "none";
+// });
+
+// btnLoadMore.addEventListener("click", () => {
+//   showContent();
+//   pageParam++;
+// });
+
+//? 📌 Умова
+//! 1️⃣ По кліку Search:
+// 	•	взяти значення з input
+// 	•	очистити список
+// 	•	page = 1
+// 	•	завантажити по 3 альбоми
+// 	•	показати кнопку Load more
+
+// 2️⃣ По кліку Load more:
+// 	•	завантажити наступні 3
+// 	•	додати в список (НЕ перезатирати)
+// 	•	якщо даних більше нема → сховати кнопку
+
+// 3️⃣ Loader:
+// 	•	показується перед запитом
+// 	•	ховається після
+// https://jsonplaceholder.typicode.com/albums
+
+import { refs } from "./refs.js";
+const { inputEl, btnSearch, btnMore, loaderEl, listEl } = refs;
+
+let limitParam = 3;
 let pageParam = 1;
 
 async function showContent() {
-  const inputValue = inputEl.value.trim();
+  const valueFromInput = inputEl.value.trim();
 
-  if (!inputValue) {
-    alert("Введи хоть шось!");
+  if (!valueFromInput) {
+    alert("Введи хоть щось!");
+    return;
   }
 
   loaderEl.hidden = false;
 
   try {
-    const BASE_URL = `https://jsonplaceholder.typicode.com/comments?_limit=${limitParam}&_page=${pageParam}`;
-    const params = { params: { postId: inputValue } };
+    const BASE_URL = `https://jsonplaceholder.typicode.com/albums?_limit=${limitParam}&_page=${pageParam}`;
+    const params = {
+      params: {
+        userId: valueFromInput,
+      },
+    };
+
     const response = await axios.get(BASE_URL, params);
 
-    if (response.data.length < limitParam) {
-      btnLoadMore.hidden = true; // Даних мало або нема — ховаємо
-    } else {
-      btnLoadMore.hidden = false; // Дані ще можуть бути — показуємо
+    if (!response.data.length) {
+      throw new Error("Упс! Помилка!");
     }
 
     const markup = response.data
-      .map(({ body }) => {
-        return `<li>${body}</li>`;
+      .map(({ title }) => {
+        return `<li>${title}</li>`;
       })
       .join("");
 
     listEl.insertAdjacentHTML("beforeend", markup);
   } catch (error) {
-    // ?
     console.error(error.message);
   } finally {
     loaderEl.hidden = true;
@@ -2097,10 +2171,11 @@ btnSearch.addEventListener("click", () => {
   showContent();
   pageParam++;
 
-  btnSearch.style.display = "none";
+  btnMore.hidden = false;
+  btnSearch.disabled = true;
 });
 
-btnLoadMore.addEventListener("click", () => {
-  showContent();
+btnMore.addEventListener("click", () => {
   pageParam++;
+  showContent();
 });
