@@ -2123,59 +2123,87 @@
 // 	•	ховається після
 // https://jsonplaceholder.typicode.com/albums
 
-import { refs } from "./refs.js";
-const { inputEl, btnSearch, btnMore, loaderEl, listEl } = refs;
+// import { refs } from "./refs.js";
+// const { inputEl, btnSearch, btnMore, loaderEl, listEl } = refs;
 
-let limitParam = 3;
-let pageParam = 1;
+// let limitParam = 3;
+// let pageParam = 1;
 
-async function showContent() {
-  const valueFromInput = inputEl.value.trim();
+// async function showContent() {
+//   const valueFromInput = inputEl.value.trim();
 
-  if (!valueFromInput) {
-    alert("Введи хоть щось!");
-    return;
-  }
+//   if (!valueFromInput) {
+//     alert("Введи хоть щось!");
+//     return;
+//   }
 
-  loaderEl.hidden = false;
+//   loaderEl.hidden = false;
 
-  try {
-    const BASE_URL = `https://jsonplaceholder.typicode.com/albums?_limit=${limitParam}&_page=${pageParam}`;
-    const params = {
-      params: {
-        userId: valueFromInput,
-      },
-    };
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/albums?_limit=${limitParam}&_page=${pageParam}`;
+//     const params = {
+//       params: {
+//         userId: valueFromInput,
+//       },
+//     };
 
-    const response = await axios.get(BASE_URL, params);
+//     const response = await axios.get(BASE_URL, params);
 
-    if (!response.data.length) {
-      throw new Error("Упс! Помилка!");
-    }
+//     if (!response.data.length) {
+//       throw new Error("Упс! Помилка!");
+//     }
 
-    const markup = response.data
-      .map(({ title }) => {
-        return `<li>${title}</li>`;
-      })
-      .join("");
+//     const markup = response.data
+//       .map(({ title }) => {
+//         return `<li>${title}</li>`;
+//       })
+//       .join("");
 
-    listEl.insertAdjacentHTML("beforeend", markup);
-  } catch (error) {
-    console.error(error.message);
-  } finally {
-    loaderEl.hidden = true;
-  }
-}
+//     listEl.insertAdjacentHTML("beforeend", markup);
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     loaderEl.hidden = true;
+//   }
+// }
 
-btnSearch.addEventListener("click", () => {
-  showContent();
-  pageParam++;
+// btnSearch.addEventListener("click", () => {
+//   showContent();
+//   pageParam++;
 
-  btnMore.hidden = false;
-  btnSearch.disabled = true;
-});
+//   btnMore.hidden = false;
+//   btnSearch.disabled = true;
+// });
 
-btnMore.addEventListener("click", () => {
-  pageParam++;
-  showContent();
-});
+// btnMore.addEventListener("click", () => {
+//   pageParam++;
+//   showContent();
+// });
+
+//? 🟢 ЛЕГКІ (розігрів)
+//! 1️⃣ Парні числа
+
+// Напиши функцію, яка:
+// 	•	приймає масив чисел
+// 	•	повертає тільки парні
+
+// function getEven(num) {
+//   return num.filter((el) => el % 2 === 0);
+// }
+
+// console.log(getEven([1, 2, 3, 4, 5]));
+
+//! 2️⃣ Реверс рядка
+// function reverseString(word) {
+//   return word.split("").reverse().join("");
+// }
+
+// console.log(reverseString("hello"));
+
+//! 4️⃣ Унікальні значення
+
+// function unique(num) {
+//   return new Set("num");
+// }
+
+// console.log(unique([1, 2, 2, 3, 4, 4]));
