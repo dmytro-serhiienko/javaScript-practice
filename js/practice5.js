@@ -2280,67 +2280,228 @@ const arr = [1, 2, 2, 3, 4, 4, 5];
 // API: https://jsonplaceholder.typicode.com/users
 // Фільтрувати по name (регістронезалежно)
 
-import { refs } from "./refs.js";
+// import { refs } from "./refs.js";
 
-const {
-  inputEl,
-  btnSearch,
-  loaderDiv,
-  totalCount,
-  listUser,
-  btnMore,
-  endMessage,
-} = refs;
+// const {
+//   inputEl,
+//   btnSearch,
+//   loaderDiv,
+//   totalCount,
+//   listUser,
+//   btnMore,
+//   endMessage,
+// } = refs;
 
-let limitParam = 5;
-let pageParam = 1;
+// let limitParam = 5;
+// let pageParam = 1;
 
-async function showContent() {
-  const inputValue = inputEl.value.trim("");
+// async function showContent() {
+//   const inputValue = inputEl.value.trim("");
 
-  if (inputValue.length <= 3) {
-    alert("Введи нормально більше 3 символів");
+//   if (inputValue.length <= 3) {
+//     alert("Введи нормально більше 3 символів");
+//     return;
+//   }
+
+//   try {
+//     const BASE_URL = `https://jsonplaceholder.typicode.com/users?_limit=${limitParam}&_page=${pageParam}`;
+//     const params = { params: { name: inputValue } };
+//     const response = await axios.get(BASE_URL, params);
+
+//     if (response.data < limitParam) {
+//       btnMore.hidden = false;
+//     } else {
+//       btnMore.hidden = true;
+//     }
+
+//     loaderDiv.hidden = false;
+//     totalCount.textContent = response.data.length;
+
+//     const markup = response.data
+//       .map(({ name }) => {
+//         return `<li>${name}</li>`;
+//       })
+//       .join("");
+
+//     listUser.insertAdjacentHTML("beforeend", markup);
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     loaderDiv.hidden = true;
+//   }
+// }
+
+// btnSearch.addEventListener("click", () => {
+//   showContent();
+//   pageParam++;
+
+//   btnMore.hidden = false;
+// });
+
+// btnMore.addEventListener("click", () => {
+//   pageParam++;
+//   showContent();
+// });
+// still work, see you tomorow
+
+//! Згрупуй людей по віку:
+// const people = [
+//   { name: "Alex", age: 20 },
+//   { name: "Max", age: 20 },
+//   { name: "Ivan", age: 25 },
+// ];
+
+// const group = people.toSorted((a, b) => a.age - b.age);
+// console.log("🚀 ~ group:", group);
+
+//! 1️⃣ Array → Object (by id)
+// const users = [
+//   { id: 1, name: "Alex" },
+//   { id: 2, name: "Max" },
+// ];
+
+// const result = users.reduce((acc, user) => {
+//   acc[user.id] = user;
+//   return acc;
+// }, {});
+
+// console.log(result);
+
+//! 1️⃣ Масив → обʼєкт (інше поле як ключ)
+//? 👉 Зроби обʼєкт, де ключ = email, значення — весь користувач.
+
+// const users = [
+//   { id: 1, email: "a@mail.com", name: "Alex" },
+//   { id: 2, email: "b@mail.com", name: "Max" },
+// ];
+
+// const sum = users.reduce((acc, el) => {
+//   acc[el.email] = users;
+//   return acc;
+// }, {});
+// console.log("🚀 ~ sum:", sum);
+
+//? Рівень 1: Базові задачі
+// 	1.	Задача: Обчислити суму чисел
+// 	•	Умова: Напиши функцію sum(a, b), яка повертає суму двох чисел.
+
+// function sum(...numbers) {
+//   return numbers.reduce((acc, el) => {
+//     return acc + el;
+//   }, 0);
+// }
+
+// console.log(sum(2, 3)); // 5
+
+//? 2.	Задача: Перевірка парності
+// •	Умова: Напиши функцію isEven(n), яка повертає true, якщо число парне, і false, якщо непарне.
+
+// function isEven(n) {
+//   if (n % 2 === 0) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// console.log(isEven(4)); // true
+// console.log(isEven(7)); // false
+
+//? Умова: Функція reverseString(str) повертає рядок у зворотньому порядку.
+// function reverseString(str) {
+//   return str.split("").toReversed().join("");
+// }
+
+// console.log(reverseString("hello")); // "olleh"
+
+//?	Задача: Максимальне число в масиві
+//Умова: Напиши функцію maxInArray(arr) яка повертає найбільше число у масиві.
+
+// function maxInArray(arr) {
+//   return Math.max(...arr);
+// }
+
+// console.log(maxInArray([1, 5, 2, 9, 3])); // 9
+
+//? Задача: Підрахунок парних чисел
+// •	Умова: Функція countEvenNumbers(arr) повертає кількість парних чисел у масиві.
+
+// function countEvenNumbers(arr) {
+//   return arr.filter((el) => el % 2 === 0);
+// }
+
+// console.log(countEvenNumbers([1, 2, 3, 4, 5, 6])); // 3
+
+//?	Задача: Фільтр рядків
+// •	Умова: Функція filterShortWords(arr) повертає масив лише з рядками довжиною менше 5 символів.
+
+// function filterShortWords(arr) {
+//   return arr.filter((el) => el.length < 5);
+// }
+
+// console.log(filterShortWords(["cat", "elephant", "dog", "sun"])); // ["cat","dog","sun"]
+
+//?	Задача: Сума значень об’єкта
+// •	Умова: Функція sumObjectValues(obj) підсумовує всі числові значення об’єкта.
+
+// const data = { a: 5, b: 10, c: 3 };
+// function sumObjectValues(obj) {
+//   return Object.values(data).reduce((acc, el) => acc + el);
+// }
+
+// var 2
+// function sumObjectValues(obj) {
+//   const { a, b, c } = data;
+//   return a + b + c;
+// }
+
+// console.log(sumObjectValues(data)); // 18
+
+//?	Задача: Пошук за ключем
+// •	Умова: Функція findByKey(arr, key, value) повертає перший об’єкт у масиві, де obj[key] === value.
+
+// const users = [
+//   { name: "John", age: 20 },
+//   { name: "Alice", age: 25 },
+// ];
+
+// function findByKey(arr, key, value) {
+//   return arr.find((el) => el[key] === value);
+// }
+
+// console.log(findByKey(users, "name", "Alice")); // {name:"Alice", age:25}
+
+//! Створи просту сторінку, де користувач вводить ім’я користувача GitHub, натискає кнопку “Отримати профіль”, а на сторінці під формою з’являються дані про цього користувача: аватар, логін і кількість репозиторіїв.
+// 	•	Використовуй Axios для запиту: https://api.github.com/users/{username}
+// 	•	Обов’язково обробляй помилки через try/catch (наприклад, якщо користувач не знайдений).
+// 	•	Дані потрібно вставляти у DOM.
+
+const refs = {
+  inputUserName: document.querySelector("#usernameInput"),
+  btnSearch: document.querySelector("#fetchBtn"),
+  showEl: document.querySelector("#userProfile"),
+};
+
+const { inputUserName, btnSearch, showEl } = refs;
+
+async function showUser() {
+  const inputValue = inputUserName.value.trim();
+
+  if (!inputValue) {
+    alert("Нічого не знайдено❗️");
     return;
   }
 
   try {
-    const BASE_URL = `https://jsonplaceholder.typicode.com/users?_limit=${limitParam}&_page=${pageParam}`;
-    const params = { params: { name: inputValue } };
-    const response = await axios.get(BASE_URL, params);
+    const BASE_URL = `https://api.github.com/users/${inputValue}`;
+    const response = await axios.get(BASE_URL);
 
-    if (response.data < limitParam) {
-      btnMore.hidden = false;
-    } else {
-      btnMore.hidden = true;
-    }
+    const markup = `<img src="${response.data.avatar_url}"/><p>${response.data.login}</p>`;
 
-    loaderDiv.hidden = false;
-    totalCount.textContent = response.data.length;
-
-    const markup = response.data
-      .map(({ name }) => {
-        return `<li>${name}</li>`;
-      })
-      .join("");
-
-    listUser.insertAdjacentHTML("beforeend", markup);
+    showEl.innerHTML = markup;
   } catch (error) {
     console.error(error.message);
-  } finally {
-    loaderDiv.hidden = true;
   }
 }
 
-btnSearch.addEventListener("click", () => {
-  showContent();
-  pageParam++;
-
-  btnMore.hidden = false;
-});
-
-btnMore.addEventListener("click", () => {
-  pageParam++;
-  showContent();
-});
-
-// still work, see you tomorow
+btnSearch.addEventListener("click", showUser);
