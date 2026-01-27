@@ -1,3 +1,6 @@
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
+
 // import { nanoid } from "nanoid";
 
 // const id = nanoid();
@@ -2476,32 +2479,165 @@ const arr = [1, 2, 2, 3, 4, 4, 5];
 // 	•	Обов’язково обробляй помилки через try/catch (наприклад, якщо користувач не знайдений).
 // 	•	Дані потрібно вставляти у DOM.
 
-const refs = {
-  inputUserName: document.querySelector("#usernameInput"),
-  btnSearch: document.querySelector("#fetchBtn"),
-  showEl: document.querySelector("#userProfile"),
-};
+// const refs = {
+//   inputUserName: document.querySelector("#usernameInput"),
+//   btnSearch: document.querySelector("#fetchBtn"),
+//   showEl: document.querySelector("#userProfile"),
+// };
 
-const { inputUserName, btnSearch, showEl } = refs;
+// const { inputUserName, btnSearch, showEl } = refs;
 
-async function showUser() {
-  const inputValue = inputUserName.value.trim();
+// async function showUser() {
+//   const inputValue = inputUserName.value.trim();
 
-  if (!inputValue) {
-    alert("Нічого не знайдено❗️");
-    return;
-  }
+//   if (!inputValue) {
+//     alert("Нічого не знайдено❗️");
+//     return;
+//   }
 
-  try {
-    const BASE_URL = `https://api.github.com/users/${inputValue}`;
-    const response = await axios.get(BASE_URL);
+//   try {
+//     const BASE_URL = `https://api.github.com/users/${inputValue}`;
+//     const response = await axios.get(BASE_URL);
 
-    const markup = `<img src="${response.data.avatar_url}"/><p>${response.data.login}</p>`;
+//     const markup = `<img src="${response.data.avatar_url}"/><p>${response.data.login}</p>`;
 
-    showEl.innerHTML = markup;
-  } catch (error) {
-    console.error(error.message);
-  }
-}
+//     showEl.innerHTML = markup;
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
 
-btnSearch.addEventListener("click", showUser);
+// btnSearch.addEventListener("click", showUser);
+
+//! Умова
+//? Зроби пошук репозиторіїв GitHub користувача.
+// 🔹 Користувач вводить username
+// 🔹 По кліку “Знайти репозиторії”:
+// 	•	робиш запит
+// https://api.github.com/users/{username}/repos
+
+// 	•	показуєш список репозиторіїв
+// 	•	для кожного репозиторію показати:
+// 	•	назву
+// 	•	⭐ кількість зірок (stargazers_count)
+// 	•	якщо репозиторіїв немає → показати повідомлення
+// 	•	якщо username неправильний → показати помилку
+// 	•	перед новим пошуком очищати DOM
+
+// const refs = {
+//   userInput: document.querySelector("#usernameInput"),
+//   btnSearch: document.querySelector("#fetchBtn"),
+//   showRepoList: document.querySelector("#repoList"),
+// };
+
+// const { userInput, btnSearch, showRepoList } = refs;
+
+// async function fetchRepo() {
+//   showRepoList.innerHTML = "";
+
+//   const inputValue = userInput.value.trim();
+
+//   if (!inputValue) {
+//     iziToast.warning({
+//       // title: "Помилка",
+//       message: "Введи імя розробника!",
+//     });
+//     return;
+//   }
+
+//   try {
+//     const BASE_URL = `https://api.github.com/users/${inputValue}/repos`;
+//     const response = await axios.get(BASE_URL);
+
+//     const markup = response.data
+//       .map(({ name, stargazers_count }) => {
+//         return `<li>Назва: <b>${name}</b>,<br>Зірки: ${stargazers_count}</li>`;
+//       })
+//       .join("");
+
+//     showRepoList.innerHTML = markup;
+//   } catch (error) {
+//     if (error.response?.status === 404) {
+//       iziToast.error({
+//         message: "Користувача не знайдено! 🔍",
+//         position: "topRight",
+//       });
+//     }
+//   } finally {
+//     userInput.value = "";
+//   }
+// }
+
+// btnSearch.addEventListener("click", fetchRepo);
+
+//! Умова:
+//? Є масив чисел [3, 7, 2, 9, 4].
+// 	•	Зроби функцію, яка повертає середнє арифметичне чисел.
+// 	•	Потім знайди максимальне і мінімальне число.
+
+// function res(num) {
+//   return num.reduce((acc, el) => {
+//     return acc + el;
+//   }, 0);
+// }
+// console.log(res([3, 7, 2, 9, 4]));
+
+// function max(num) {
+//   return Math.max(...num);
+// }
+// console.log(max([3, 7, 2, 9, 4]));
+
+// function min(num) {
+//   return Math.min(...num);
+// }
+// console.log(min([3, 7, 2, 9, 4]));
+
+//! •	Є масив об’єктів:
+// const products = [
+//   { name: "Apple", price: 50 },
+//   { name: "Banana", price: 30 },
+//   { name: "Cherry", price: 70 },
+// ];
+// // 	•	Створи функцію, яка повертає всі продукти дешевше 60.
+// // 	•	Потім відсортуй результати за ціною по зростанню.
+// function result(products) {
+//   return products
+//     .filter((el) => el.price < 60)
+//     .toSorted((a, b) => a.price - b.price);
+// }
+// console.log(result(products));
+
+//! Є об’єкт:
+// const user = {
+//   name: "Dmytro",
+//   age: 26,
+//   city: "Bucharest",
+//   job: "Full Stack Developer",
+// };
+// // •	Витягни name і city через деструктуризацію.
+// // •	Виведи їх у консоль.
+// const { name, city } = user;
+// console.log("🚀 ~ city:", city);
+// console.log("🚀 ~ name:", name);
+
+//! Умова:
+// const users = [
+//   { name: "Alice", age: 25 },
+//   { name: "Bob", age: 30 },
+//   { name: "Charlie", age: 35 },
+// ];
+// // •	Створи новий масив, де буде тільки імена користувачів.
+// // •	Потім створіть масив, де до кожного об’єкта додано поле isAdult: true/false (true якщо age >= 18).
+
+// const newArr = users.map((el) => {
+//   return el.name;
+// });
+// console.log("🚀 ~ newArr:", newArr);
+
+// const usersWithAdultFlag = users.map((user) => {
+//   return {
+//     ...user,
+//     isAdult: user.age >= 18,
+//   };
+// });
+// console.log("🚀 ~ usersWithAdultFlag:", usersWithAdultFlag);
