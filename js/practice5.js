@@ -2804,8 +2804,25 @@ const arr = [1, 2, 2, 3, 4, 4, 5];
 
 // 🔥 Не забудь: units=metric
 
-// ⸻
+const refs = {
+  inputEl: document.querySelector("#cityInput"),
+  btnEl: document.querySelector("#weatherBtn"),
+  divResult: document.querySelector("#weatherResult"),
+  pError: document.querySelector("#weatherError"),
+};
 
+const { inputEl, btnEl, divResult, pError } = refs;
+
+async function showWeather() {
+  const inputValue = inputEl.value.trim();
+
+  try {
+    const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+
+    const response = await axios.get(BASE_URL, appid);
+  } catch (error) {}
+}
+ß;
 // 🔴 Задача 5 — CRUD + API + DOM
 
 // API: https://jsonplaceholder.typicode.com/todos
