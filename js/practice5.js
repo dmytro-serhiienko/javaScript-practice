@@ -2641,3 +2641,183 @@ const arr = [1, 2, 2, 3, 4, 4, 5];
 //   };
 // });
 // console.log("🚀 ~ usersWithAdultFlag:", usersWithAdultFlag);
+
+//! 🟢 Задача 1 — Fetch + DOM (база)
+//? API: https://jsonplaceholder.typicode.com/users
+// Умова:
+// 	1.	Отримай список користувачів
+// 	2.	Виведи в HTML список:
+// 	•	name
+// 	•	email
+// 	•	city (address.city)
+// 	3.	Для кожного користувача — кнопка “Show posts”
+
+// Додатково:
+// 	•	По кліку на кнопку підвантажити пости цього користувача
+// /posts?userId=ID
+
+// const refs = {
+//   listEl: document.querySelector("#usersList"),
+//   btnEl: document.querySelector("#js-btn"),
+// };
+
+// const { listEl, btnEl } = refs;
+
+// async function showUser() {
+//   try {
+//     const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+//     const response = await axios.get(BASE_URL);
+//     const { data } = response;
+
+//     const markup = data
+//       .map(({ name, email, address: { city } }) => {
+//         return `<li>${name}</li><li>${email}</li><li>${city}</li>`;
+//       })
+//       .join("");
+
+//     listEl.innerHTML = markup;
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// btnEl.addEventListener("click", showUser);
+
+//! 🟡 Задача 2 — Axios + error handling
+//? API: https://api.github.com/users/{username}
+// Умова:
+// 	1.	Поле input + кнопка Search
+// 	2.	По кліку:
+// 	•	отримай дані користувача GitHub через axios
+// 	•	покажи:
+// 	•	avatar
+// 	•	login
+// 	•	followers
+// 	•	public repos
+// 	3.	Якщо користувача не знайдено — показати повідомлення
+
+// Вимога:
+// 	•	обовʼязково try / catch
+// 	•	обробка 404
+
+// const refs = {
+//   inputEl: document.querySelector("#githubInput"),
+//   btnEl: document.querySelector("#githubBtn"),
+//   resultDiv: document.querySelector("#githubResult"),
+//   pError: document.querySelector("#githubError"),
+// };
+
+// const { inputEl, btnEl, resultDiv, pError } = refs;
+
+// async function showUser() {
+//   const inputValue = inputEl.value.trim();
+
+//   try {
+//     const BASE_URL = `https://api.github.com/users/${inputValue}`;
+//     const response = await axios.get(BASE_URL);
+
+//     const { avatar_url, login, followers, public_repos } = response.data;
+
+//     const markup = `<ul>
+//         <li>
+//         <img src="${avatar_url}"/>
+//         <p>Login: ${login}</p>
+//         <p>Followers: ${followers}</p>
+//         <p>Repositories: ${public_repos}</p>
+//         </li>
+//         </ul>`;
+
+//     resultDiv.innerHTML = markup;
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     inputEl.value = "";
+//   }
+// }
+
+// inputEl.addEventListener("change", showUser);
+// btnEl.addEventListener("click", showUser);
+
+//! 🟡 Задача 3 — DOM + API + loading
+//? API: https://dummyjson.com/products
+
+// Умова:
+// 	1.	При завантаженні сторінки:
+// 	•	показати Loading...
+// 	•	підвантажити продукти
+// 	2.	Вивести:
+// 	•	title
+// 	•	price
+// 	•	thumbnail
+// 	3.	Після завантаження — прибрати Loading
+
+// Плюс:
+// 	•	якщо помилка → показати Error loading data
+
+// const refs = {
+//   lodaingP: document.querySelector("#loading"),
+//   showPro: document.querySelector("#products"),
+// };
+// const { lodaingP, showPro } = refs;
+
+// async function showProducts() {
+//   lodaingP.hidden = false;
+
+//   try {
+//     const BASE_URL = "https://dummyjson.com/products";
+//     const response = await axios.get(BASE_URL);
+//     const answer = response.data.products;
+
+//     if (!answer.length) {
+//       throw new Error("Error loading data❗️");
+//     }
+
+//     const markup = answer
+//       .map(({ title, price, thumbnail }) => {
+//         return `<p>${title}</p><p>${price}</p><img src="${thumbnail}"/>`;
+//       })
+//       .join("");
+
+//     showPro.innerHTML = markup;
+//   } catch (error) {
+//     console.error(error.message);
+//   } finally {
+//     lodaingP.hidden = true;
+//   }
+// }
+
+// window.addEventListener("load", () => {
+//   console.log("DOM готовий, робимо запит...");
+//   showProducts();
+// });
+
+//! 🟠 Задача 4 — Axios + params + фільтрація
+//? API: https://api.openweathermap.org/data/2.5/weather
+
+// Умова:
+// 	1.	Input для міста
+// 	2.	По кліку:
+// 	•	axios GET з params
+// 	•	температура
+// 	•	опис погоди
+// 	3.	Якщо місто не існує — показати помилку
+
+// 🔥 Не забудь: units=metric
+
+// ⸻
+
+// 🔴 Задача 5 — CRUD + API + DOM
+
+// API: https://jsonplaceholder.typicode.com/todos
+
+// Умова:
+// 	1.	Отримай todos
+// 	2.	Виведи список:
+// 	•	title
+// 	•	checkbox completed
+// 	3.	Реалізуй:
+// 	•	✅ toggle completed (PATCH)
+// 	•	❌ delete todo (DELETE)
+// 	•	➕ add new todo (POST)
+
+// навіть якщо API fake — логіку реалізуй повністю
