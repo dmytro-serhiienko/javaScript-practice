@@ -154,20 +154,36 @@
 //   resetFun();
 // });
 
-// <div>
-//   <button id="getDog">Get random dog</button>
-//   <img id="dogImg" src="" alt="Random dog" width="300" />
-// </div>;
+//! Задача 2. Випадковий жарт про Chuck Norris
+// API: https://api.chucknorris.io/jokes/random
 
-//!	2.	Кожен клік на + або - робить:
-// 	•	Змінює counter
-// 	•	Робить GET-запит на безкоштовне API цитат, наприклад https://api.quotable.io/random￼
-// 	•	Виводить цитату у p#quote
-// 	3.	При Reset:
-// 	•	Скидає лічильник
-// 	•	Очищає цитату (p.textContent = "")
-// 	4.	Використовуй axios і обов’язково обробляй помилки через try/catch.
+// Завдання:
 
-// 💡 Бонус:
-// 	•	Можеш показувати автора цитати поряд з текстом
-// 	•	Можна зробити, щоб кількість натискань впливала на стиль цитати (колір, розмір)
+// завантажувати новий жарт при натисканні
+// додай категорії і вибір категорії через <select>
+
+// const refs = {
+//   btnEl: document.querySelector("#new-joke"),
+//   textJoke: document.querySelector("#joke"),
+// };
+
+// const { btnEl, textJoke } = refs;
+
+// const BASE_URL = "https://api.chucknorris.io/jokes/random";
+
+// async function apiCheck() {
+//   try {
+//     const response = await axios.get(BASE_URL);
+//     const { value } = response.data;
+
+//     if (value) {
+//       textJoke.textContent = value;
+//     } else {
+//       textJoke.textContent = `Сорі, жарти закінчились!`;
+//     }
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// btnEl.addEventListener("click", apiCheck);
