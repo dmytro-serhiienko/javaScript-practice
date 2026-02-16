@@ -3,18 +3,19 @@ common * {
 }
 
 body {
-  background-color: #ffffff;
-  font:
-    1.2em / 1.5 Helvetica Neue,
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: "Courier New", Courier, monospace;
   padding: 0;
   margin: 0;
 }
 
 button {
   cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* section {
@@ -289,3 +290,83 @@ ul {
 .hidden {
   display: none;
 } */
+
+/*! MY CUSTOM API */
+
+body {
+  background: -webkit-linear-gradient(
+    90deg,
+    #f6f7ec,
+    #a9ccca,
+    #179096
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    90deg,
+    #f6f7ec,
+    #a9ccca,
+    #179096
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.wrap {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+p {
+  font-size: 18px;
+  color: #333333;
+  font-weight: 600;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.list-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 0 20px;
+}
+.title {
+}
+.title-dscr {
+}
+.difficulty {
+}
+.difficulty-dscr {
+}
+.category {
+}
+.category-dscr {
+}
+.example {
+}
+.example-dscr {
+}
+.explanation {
+}
+.explanation-dscr {
+}
+.show-btn {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 20px;
+  color: #333333;
+  border: none;
+  text-transform: uppercase;
+  padding: 20px 40px;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+}

@@ -187,3 +187,49 @@
 // }
 
 // btnEl.addEventListener("click", apiCheck);
+
+//! CUSTOM API TEST
+
+const refs = {
+  titleEl: document.querySelector("#js-title"),
+  difEl: document.querySelector("#js-difficulty"),
+  catEl: document.querySelector("#js-category"),
+  exEl: document.querySelector("#js-example"),
+  explEl: document.querySelector("#js-explanation"),
+  btnEl: document.querySelector("#js-btn"),
+};
+
+const { titleEl, difEl, catEl, exEl, explEl, btnEl } = refs;
+
+const BASE_URL =
+  "https://api.mockfly.dev/mocks/e3e41127-b283-47d4-9b7a-34a42621b4b3/hacks";
+
+let currentIndex = 0;
+let hacksData = [];
+
+async function showMe() {
+  try {
+    if (hacksData.length === 0) {
+      const response = await axios.get(BASE_URL);
+      hacksData = response.data;
+    }
+
+    const el = hacksData[currentIndex];
+
+    titleEl.textContent = el.title;
+    difEl.textContent = el.difficulty;
+    catEl.textContent = el.category;
+    exEl.textContent = el.code;
+    explEl.textContent = el.explanation;
+
+    currentIndex += 1;
+
+    if (currentIndex >= hacksData.length) {
+      currentIndex = 0;
+    }
+  } catch (error) {
+    console.error("Помилка:", error.message);
+  }
+}
+
+btnEl.addEventListener("click", showMe);
