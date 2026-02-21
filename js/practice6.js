@@ -189,7 +189,6 @@
 // btnEl.addEventListener("click", apiCheck);
 
 //! CUSTOM API TEST
-
 const refs = {
   titleEl: document.querySelector("#js-title"),
   difEl: document.querySelector("#js-difficulty"),
@@ -233,3 +232,72 @@ async function showMe() {
 }
 
 btnEl.addEventListener("click", showMe);
+
+// !Початковий рівень (основи)
+
+//? Напиши функцію, яка приймає число і повертає "парне" або "непарне".
+// function numbers(num) {
+//   return num.filter((el) => el % 2 === 0);
+// }
+// console.log(numbers([1, 2, 3, 4, 5]));
+
+//? Напиши функцію, яка приймає рядок і повертає його в зворотному порядку
+// function reverseFun(text) {
+//   return text.split("").reverse().join("");
+// }
+// console.log(text("word"));
+
+//? Напиши функцію, яка приймає масив чисел і повертає суму всіх елементів.
+// function calc(numb) {
+//   return numb.reduce((acc, el) => {
+//     return acc + el;
+//   }, 0);
+// }
+// console.log(calc([2, 4, 6]));
+
+//? Напиши функцію, яка приймає масив і повертає новий масив, в якому всі елементи помножені на 2.
+// function calc(numb) {
+//   return numb.map((el) => el * 2);
+// }
+// console.log(calc([2, 4, 6]));
+
+//? Напиши функцію, яка приймає рядок і повертає true, якщо це паліндром (читається однаково зліва направо і справа наліво), інакше false.
+// Ігноруй регістр і пробіли.
+// Приклади: "А роза упала на лапу Азора", "radar", "hello"
+
+// function pali(word) {
+//   const wordOr = word.toLowerCase();
+
+//   const reversed = word.split("").reverse().join("").trim().toLowerCase();
+
+//   if (wordOr === reversed) {
+//     console.log(true);
+//   } else {
+//     console.log(false);
+//   }
+// }
+// pali("hello");
+// pali("alla");
+
+//? Напиши функцію, яка приймає масив рядків і повертає об'єкт, де ключ — це довжина рядка, а значення — масив рядків такої довжини.
+// Приклад: ["one", "two", "three", "four", "tree"]
+// → { 3: ["one", "two"], 4: ["four"], 5: ["three", "tree"] }
+
+// const words = ["one", "two", "three", "four", "tree"];
+
+// function groupByLength(arr) {
+//   return arr.reduce((acc, word) => {
+//     const len = word.length;
+
+//     if (!acc[len]) {
+//       acc[len] = [];
+//     }
+
+//     acc[len].push(word);
+
+//     return acc;
+//   }, {});
+// }
+
+// const result = groupByLength(words);
+// console.log(result);
