@@ -1,6 +1,8 @@
 //! 1️⃣ Фільтрація чисел
 // const numbers = [3, -1, 0, 7, -5, 9];
 
+// const { loadConfigFromFile } = require("vite");
+
 // 👉 Поверни новий масив тільки з додатних чисел, помножених на 2
 
 // const result = numbers.filter((el) => el > 0).map((el) => el * 2);
@@ -301,3 +303,22 @@ btnEl.addEventListener("click", showMe);
 
 // const result = groupByLength(words);
 // console.log(result);
+
+// 2. Средняя: "Фильтр и поиск в списке дел (ToDo)"
+// Суть: Работа с массивами объектов.
+
+// Что повторишь: Методы массивов (filter, map, find), стрелочные функции.
+
+// Задание:
+// Напиши функцию, которая возвращает только невыполненные задачи.
+
+const tasks = [
+  { id: 1, title: "Купить молоко", completed: true },
+  { id: 2, title: "Выучить JS", completed: false },
+  { id: 3, title: "Написать код", completed: false },
+];
+
+function checker(tasks) {
+  return tasks.filter((el) => el.completed === true);
+}
+console.log(checker(tasks));
