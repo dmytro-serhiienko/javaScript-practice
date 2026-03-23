@@ -312,13 +312,79 @@ btnEl.addEventListener("click", showMe);
 // Задание:
 // Напиши функцию, которая возвращает только невыполненные задачи.
 
-const tasks = [
-  { id: 1, title: "Купить молоко", completed: true },
-  { id: 2, title: "Выучить JS", completed: false },
-  { id: 3, title: "Написать код", completed: false },
-];
+// const tasks = [
+//   { id: 1, title: "Купить молоко", completed: true },
+//   { id: 2, title: "Выучить JS", completed: false },
+//   { id: 3, title: "Написать код", completed: false },
+// ];
 
-function checker(tasks) {
-  return tasks.filter((el) => el.completed === true);
-}
-console.log(checker(tasks));
+// function checker(tasks) {
+//   return tasks.filter((el) => el.completed === true);
+// }
+// console.log(checker(tasks));
+
+//! Згадати з нуля
+// Є масив:
+// 👉 Поверни новий масив, де всі числа помножені на 2
+
+//! 1
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+// const result = arr.map((num) => num * 2);
+// console.log("🚀 ~ result:", result);
+
+//! 2
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+// const result = arr.filter((num) => num % 2 === 0);
+// console.log("🚀 ~ result:", result);
+
+//! 3
+// const users = [
+//   { name: "Ivan", age: 20 },
+//   { name: "Oleg", age: 17 },
+//   { name: "Anna", age: 25 },
+// ];
+// const checker = users.filter((age) => age.age >= 18);
+// console.log("🚀 ~ checker:", checker);
+
+//! 4
+// 👉 Поверни масив довжин кожного слова
+// const arr = ["apple", "banana", "kiwi"];
+// const res = arr.reduce((acc, el) => {
+//   acc.push(el.length);
+//   return acc;
+// }, []);
+// console.log("🚀 ~ res:", res);
+
+//! 5
+// 👉 Отримай масив тільки з користувачами 18+
+// const users = [
+//   { name: "Ivan", age: 20 },
+//   { name: "Oleg", age: 17 },
+//   { name: "Anna", age: 25 },
+// ];
+// const newuser = users.filter((el) => el.age >= 18);
+// console.log("🚀 ~ newuser:", newuser);
+
+//! 6
+// яка перевертає рядок
+// "hello" → "olleh"
+// function reverseString(str) {
+//   return str.split("").reverse().join("");
+// }
+// console.log(reverseString("Hello"));
+
+//! 7
+// 👉 Напиши функцію:
+// яка перевіряє чи слово паліндром
+// "madam" → true
+
+// function isPalindrome(str) {
+//   const palin = str.split("").reverse().join("").toLowerCase();
+//   if (str.toLowerCase() === palin.toLowerCase()) {
+//     console.log(true);
+//   } else {
+//     console.log(false);
+//   }
+// }
+// isPalindrome("Hello");
+// isPalindrome("Anna");
