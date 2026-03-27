@@ -1,3 +1,5 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
 common * {
   box-sizing: border-box;
 }
@@ -369,4 +371,11 @@ p {
   padding: 20px 40px;
   border-radius: 30px;
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.container-inp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
