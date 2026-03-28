@@ -294,21 +294,11 @@ ul {
 } */
 
 /*! MY CUSTOM API */
-
+/* 
 body {
-  background: -webkit-linear-gradient(
-    90deg,
-    #f6f7ec,
-    #a9ccca,
-    #179096
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    90deg,
-    #f6f7ec,
-    #a9ccca,
-    #179096
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+  background: -webkit-linear-gradient(90deg, #f6f7ec, #a9ccca, #179096);
+  background: linear-gradient(90deg, #f6f7ec, #a9ccca, #179096);
+} */
 
 .wrap {
   width: 100%;
@@ -378,4 +368,40 @@ p {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+/* !!! */
+
+.pageSun {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: white;
+}
+
+.night {
+  background: black;
+  color: white;
+}
+
+.title {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 36px;
+  color: #333333;
+}
+
+.btn {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 20px;
+  color: #333333;
+  border: 1px solid #333333;
+  text-transform: uppercase;
+  padding: 20px 40px;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
