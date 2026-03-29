@@ -107,3 +107,44 @@ btnEl.addEventListener("click", () => {
 
   inputEl.console.log("Pushed");
 });
+
+// !
+// Створи масив об'єктів під назвою cart. Кожен об'єкт має представляти товар і містити:
+
+// name (назва товару — рядок);
+
+// price (ціна — число);
+
+// quantity (кількість — число).
+
+// Напиши функцію getTotalSum(basket), яка приймає масив товарів і повертає
+// загальну вартість усіх товарів у кошику (з урахуванням їхньої кількості).
+
+// Напиши функцію applyDiscount(basket, discountPercent), яка зменшує
+// ціну кожного товару в масиві на заданий відсоток.
+
+const basket = [
+  { name: "Tomato", price: 40, quantity: 2 },
+  { name: "Potato", price: 30, quantity: 3 },
+  { name: "Salat", price: 10, quantity: 5 },
+];
+
+// ?
+function getTotalSum(basket) {
+  return basket.reduce((acc, el) => {
+    return acc + el.price * el.quantity;
+  }, 0);
+}
+console.log(getTotalSum(basket));
+
+// ?
+function applyDiscount(basket, discountPercent) {
+  const total = basket.reduce((acc, el) => {
+    return acc + el.price * el.quantity;
+  }, 0);
+
+  return total - (total * discountPercent) / 100;
+}
+console.log(applyDiscount(basket, 10));
+
+// ?
