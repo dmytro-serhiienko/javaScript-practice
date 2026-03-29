@@ -68,3 +68,42 @@ buttonChange.addEventListener("click", () => {
 
   console.log("Pushed");
 });
+
+//! 2. Рівень: Середній (Робота зі списками та формами)
+// Завдання: "Динамічний список справ (To-Do)"
+
+// У React ти б просто оновив масив об'єктів у useState, а React сам би відрендерив список. Тут нам доведеться бути "руками" браузера.
+
+// Зловити подію: Повісити клік на кнопку "Додати".
+
+// Отримати дані: Прочитати те, що користувач надрукував у input.
+
+// Створити елемент: Використати магічну команду document.createElement('li').
+
+// Наповнити елемент: Записати текст із інпуту всередину нового li.
+
+// Додати в дерево: Сказати списку ul: "Прийми цього нового сина до себе" (метод appendChild).
+
+// Очистити поле: Зробити input порожнім, щоб можна було писати наступну справу.
+
+const refs123 = {
+  inputEl: document.querySelector("#js-innput"),
+  btnEl: document.querySelector("#js-bttn"),
+  divEl: document.querySelector("#js-divv"),
+};
+
+const { inputEl, btnEl, divEl } = refs123;
+
+btnEl.addEventListener("click", () => {
+  const INVALUES = inputEl.value.trim();
+
+  if (INVALUES) {
+    const newLii = document.createElement("li");
+    newLii.textContent = INVALUES;
+    divEl.append(newLii);
+  }
+
+  inputEl.value = "";
+
+  inputEl.console.log("Pushed");
+});
